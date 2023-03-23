@@ -1,0 +1,27 @@
+{
+    "include": {
+        "prefix": "include",
+        "body": [
+            "local ${1} = include(\"${1:module}\")"
+        ]
+    },
+    "increase var": {
+        "prefix": "incre",
+        "body": [
+            "${1} = ${1:var} + 1$0"
+        ]
+    },
+    "singleton instance": {
+        "prefix": "gSing",
+        "body": [
+            "gSingleton(\"${1:module}\"):$0"
+        ]
+
+    },
+    "log dump": {
+        "prefix":"logdum",
+        "body": [
+            "Log.dump(${CLIPBOARD}, \"${TM_FILENAME_BASE}:${TM_LINE_NUMBER}$0\", 3)"
+        ]
+    }
+}
