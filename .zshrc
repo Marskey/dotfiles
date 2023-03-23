@@ -107,6 +107,8 @@ alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vim/vimrc"
 alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find * -type d | fzf); fi}'
 
+ln -s $HOME/.config/nvim_nvchad_conf/ $HOME/.config/nvim/lua/custom
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
