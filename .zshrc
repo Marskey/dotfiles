@@ -92,5 +92,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vim/vimrc"
 alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find * -type d | fzf); fi}'
