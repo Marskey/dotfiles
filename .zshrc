@@ -61,7 +61,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions z sudo)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,3 +93,12 @@ source $ZSH/oh-my-zsh.sh
 
 alias zshconfig="vim ~/.zshrc"
 alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find * -type d | fzf); fi}'
+
+# Using 256-colors mode
+export TERM="xterm-256color"
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+#
+# zle_highlight+=(paste:none)
+# export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"

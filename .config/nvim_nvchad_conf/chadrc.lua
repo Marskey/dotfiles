@@ -19,6 +19,9 @@ M.ui = {
   tabufline = {
     enabled = false,
   },
+  hl_override = {
+    -- CursorLineNr = { reverse = true }
+  }
 }
 
 return M
