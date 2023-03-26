@@ -2,7 +2,6 @@ local opt = vim.opt
 local g = vim.g
 
 opt.confirm = true
--- opt.undofile = true -- enable persistent undo
 -- opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 
 -- Indenting
