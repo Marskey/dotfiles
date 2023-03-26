@@ -32,14 +32,7 @@ return {
 	-- misc plugins
 	{
 		"nvim-tree/nvim-tree.lua",
-		enabled = false,
-		opts = {
-			filters = {
-				dotfiles = false,
-				exclude = { vim.fn.stdpath("config") .. "/lua/custom" },
-				custom = { "^.git$" },
-			},
-		},
+        enabled = false,
 	},
 
 	{
@@ -189,10 +182,7 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		lazy = false,
-		config = function()
-			require("bufferline").setup({})
-			-- require("base46").load_highlight "bufferline"
-		end,
+        opts = overrides.bufferline,
 		init = function()
 			require("core.utils").load_mappings("bufferline")
 		end,
@@ -241,11 +231,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = overrides.treesitter,
-	},
-
-	{
-		"nvim-tree/nvim-tree.lua",
-		opts = overrides.nvimtree,
 	},
 
 	{

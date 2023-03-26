@@ -52,4 +52,26 @@ M.colorizer = {
 		names = false,
 	},
 }
+
+M.bufferline = {
+	options = {
+		indicator = {
+            icon = '▎', -- this should be omitted if indicator style is not 'icon'
+			style = "icon",
+		},
+		offsets = {
+			{
+				filetype = "neo-tree",
+				text = "File Explorer",
+				text_align = "center", --  | "center" | "right"
+				separator = true,
+			},
+		},
+		show_buffer_close_icons = false,
+		separator_style = "thin", -- slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+		always_show_bufferline = false,
+		sort_by = "insert_at_end",
+	},
+}
+
 return M
