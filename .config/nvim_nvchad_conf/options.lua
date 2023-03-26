@@ -8,9 +8,9 @@ opt.confirm = true
 -- Indenting
 opt.expandtab = true
 opt.shiftwidth = 4
-opt.smartindent = true
 opt.tabstop = 4
 opt.softtabstop = 4
+opt.smartindent = true
 
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
@@ -24,7 +24,7 @@ opt.relativenumber = true
 opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -41,10 +41,11 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")
 opt.guifont = "Hack Nerd Font:h14"
 
 g.mapleader = " "
 g.luasnippets_path = "./lua/custom/my_snippets"
 
-opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
+opt.guicursor =
+	"n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
