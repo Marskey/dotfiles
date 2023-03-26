@@ -2,8 +2,8 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconf = require("lspconfig")
-local servers = { "lua_ls" }
+local lspconf = require "lspconfig"
+local servers = { "lua_ls", "clangd" }
 
 for _, server in ipairs(servers) do
 	local opts = {
