@@ -56,7 +56,7 @@ M.colorizer = {
 M.bufferline = {
 	options = {
 		indicator = {
-            icon = '▎', -- this should be omitted if indicator style is not 'icon'
+			icon = "▊", -- this should be omitted if indicator style is not 'icon'
 			style = "icon",
 		},
 		offsets = {
@@ -72,6 +72,31 @@ M.bufferline = {
 		always_show_bufferline = false,
 		sort_by = "insert_at_end",
 	},
+}
+
+M.ts_textobj = {
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+			},
+			include_surrounding_whitespace = true,
+		},
+	},
+}
+
+M.blankline = {
+  indentLine_enabled = 1,
+  show_trailing_blankline_indent = false,
+  show_first_indent_level = false,
+  show_current_context = true,
+  show_current_context_start = false,
 }
 
 return M

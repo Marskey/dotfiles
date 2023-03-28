@@ -32,7 +32,7 @@ return {
 	-- misc plugins
 	{
 		"nvim-tree/nvim-tree.lua",
-        enabled = false,
+		enabled = false,
 	},
 
 	{
@@ -182,7 +182,7 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		lazy = false,
-        opts = overrides.bufferline,
+		opts = overrides.bufferline,
 		init = function()
 			require("core.utils").load_mappings("bufferline")
 		end,
@@ -247,4 +247,17 @@ return {
 		"NvChad/nvim-colorizer.lua",
 		opts = overrides.colorizer,
 	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = "BufEnter",
+        main = "nvim-treesitter.configs",
+        opts = overrides.ts_textobj,
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        opts = overrides.blankline,
+    }
 }

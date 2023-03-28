@@ -20,6 +20,14 @@ M.ui = {
 	tabufline = {
 		enabled = false,
 	},
+
+    hl_override = {
+        -- CursorLine = { bg = "darker_black" }
+    },
+
+    hl_add = {
+        BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
+    }
 }
 
 return M

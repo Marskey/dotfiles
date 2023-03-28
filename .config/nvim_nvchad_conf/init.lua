@@ -8,3 +8,4 @@ vim.cmd([[
 ]])
 
 vim.cmd([[ autocmd User TelescopePreviewerLoaded setlocal wrap ]])
+vim.cmd([[ autocmd VimEnter * :clearjumps ]])
