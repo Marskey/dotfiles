@@ -48,4 +48,5 @@ vim.lsp.handlers["textDocument/definition"] = function(err, result, ctx, config)
 	end
 
 	location_handler(err, result, ctx, config)
+    vim.cmd ":normal! zz"
 end
