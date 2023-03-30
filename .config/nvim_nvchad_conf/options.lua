@@ -44,7 +44,7 @@ opt.whichwrap:append("<>[]hl")
 opt.guifont = "Hack Nerd Font:h14"
 
 g.mapleader = " "
-g.luasnippets_path = "./lua/custom/my_snippets"
+g.vscode_snippets_path = "./lua/custom/my_snippets"
 
 opt.guicursor =
 	"n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
