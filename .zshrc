@@ -91,7 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find * -type d | fzf); fi}'
 
 # Using 256-colors mode
