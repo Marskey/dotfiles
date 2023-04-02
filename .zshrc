@@ -103,4 +103,14 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #
 # zle_highlight+=(paste:none)
 # export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+if [ -n "$NVIM" ]; then
+    alias nvim="nvr -l --remote"
+fi
 
+if [ -n "$NVIM" ]; then
+    export VISUAL="nvr -l --remote"
+    export EDITOR="nvr -l --remote"
+else
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+fi
