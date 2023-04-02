@@ -56,7 +56,7 @@ M.colorizer = {
 M.bufferline = {
 	options = {
 		indicator = {
-			icon = "▌", -- this should be omitted if indicator style is not 'icon' ▌ ▋ ▊
+			-- icon = "▌", -- this should be omitted if indicator style is not 'icon' ▌ ▋ ▊
 			style = "icon",
 		},
 		offsets = {
@@ -68,7 +68,7 @@ M.bufferline = {
 			},
 		},
 		show_buffer_close_icons = false,
-		separator_style = "thin", -- slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+		separator_style = {"", ""}, -- slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
 		always_show_bufferline = true,
 		sort_by = "insert_at_end",
 	},

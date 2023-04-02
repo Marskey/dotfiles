@@ -26,7 +26,7 @@ M.ui = {
     },
 
     hl_add = {
-        BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
+        -- BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
     }
 }
 
