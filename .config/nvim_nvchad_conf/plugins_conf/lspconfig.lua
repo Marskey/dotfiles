@@ -3,9 +3,11 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconf = require "lspconfig"
-local servers = { "lua_ls", "clangd" }
+lspconf.setup({
+	ensure_installed = { "jsonls", "lua_ls", "clangd", "pylsp" },
+})
 
-for _, server in ipairs(servers) do
+for _, server in ipairs(lspconf.get_installed_servers()) do
 	local opts = {
 		on_attach = on_attach,
 		capabilities = capabilities,

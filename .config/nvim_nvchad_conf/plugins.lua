@@ -215,5 +215,10 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         opts = overrides.blankline,
+    },
+
+    {
+        "github/copilot.vim",
+        event = "BufEnter"
     }
 }
