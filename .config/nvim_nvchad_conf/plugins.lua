@@ -182,6 +182,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
+        dependencies = "williamboman/mason-lspconfig.nvim"
 	},
 
 	{
@@ -219,6 +220,10 @@ return {
 
     {
         "github/copilot.vim",
-        event = "BufEnter"
+        event = "BufEnter",
+        config = function()
+            vim.g.copilot_no_tab_map = true
+            vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+        end
     }
 }

@@ -2,26 +2,29 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconf = require "lspconfig"
-lspconf.setup({
-	ensure_installed = { "jsonls", "lua_ls", "clangd", "pylsp" },
-})
+local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
+if status_ok then
+	local lspconf = require("lspconfig")
 
-for _, server in ipairs(lspconf.get_installed_servers()) do
 	local opts = {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
-	local has_custom_opts, server_custom_opts = pcall(require, "custom.plugins_conf.lspconfig." .. server)
-	if has_custom_opts then
-		opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
-	end
 
-	if server == "lua_ls" then
-		opts.root_dir = lspconf.util.root_pattern(".luarc.json", ".git")
-	end
+	mason_lsp.setup_handlers({
+		function(server_name)
+			local has_custom_opts, server_custom_opts = pcall(require, "custom.plugins_conf.lspconfig." .. server_name)
+			if has_custom_opts then
+				opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
+			end
 
-	lspconf[server].setup(opts)
+			if server_name == "lua_ls" then
+				opts.root_dir = lspconf.util.root_pattern(".luarc.json", ".git")
+			end
+
+			lspconf[server_name].setup(opts)
+		end,
+	})
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -50,5 +53,5 @@ vim.lsp.handlers["textDocument/definition"] = function(err, result, ctx, config)
 	end
 
 	location_handler(err, result, ctx, config)
-    vim.cmd ":normal! zz"
+	vim.cmd(":normal! zz")
 end

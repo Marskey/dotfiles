@@ -22,6 +22,9 @@ M.mason = {
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
+        "clangd",
+        "jsonls",
+        "python-lsp-server",
 	},
 }
 
