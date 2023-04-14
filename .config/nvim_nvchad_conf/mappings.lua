@@ -161,7 +161,8 @@ M.lspconfig = {
 
 		["<leader>lr"] = {
 			function()
-				require("nvchad_ui.renamer").open()
+                vim.lsp.buf.rename()
+				-- require("nvchad_ui.renamer").open()
 			end,
 			"lsp rename",
 		},
@@ -240,10 +241,10 @@ M.neotree = {
 	plugin = true,
 	n = {
 		-- toggle
-		["<C-n>"] = { ":Neotree filesystem reveal left toggle <CR>", "toggle filetree" },
+		["<C-n>"] = { "<cmd> Neotree filesystem reveal left toggle <CR>", "toggle filetree" },
 
 		-- focus
-		["<leader>e"] = { ":Neotree filesystem reveal left <CR>", "focus filetree" },
+		["<leader>e"] = { "<cmd> Neotree filesystem reveal left <CR>", "focus filetree" },
 	},
 }
 
