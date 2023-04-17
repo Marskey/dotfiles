@@ -182,7 +182,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
-        dependencies = "williamboman/mason-lspconfig.nvim"
+		dependencies = "williamboman/mason-lspconfig.nvim",
 	},
 
 	{
@@ -208,26 +208,31 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "BufEnter",
-        main = "nvim-treesitter.configs",
-        opts = overrides.ts_textobj,
+		main = "nvim-treesitter.configs",
+		opts = overrides.ts_textobj,
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        opts = overrides.blankline,
-    },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		opts = overrides.blankline,
+	},
 
-    {
-        "github/copilot.vim",
-        event = "BufEnter",
-        config = function()
-            vim.g.copilot_no_tab_map = true
-            vim.api.nvim_set_keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-            vim.g.copilot_filetypes = {
-                ["TelescopePrompt"] = false,
-                ["neo-tree"] = false
-            }
-        end
-    }
+	{
+		"github/copilot.vim",
+		event = "BufEnter",
+		config = function()
+			vim.g.copilot_no_tab_map = true
+			vim.g.copilot_filetypes = {
+                ["*"] = false,
+				["lua"] = true,
+				["c"] = true,
+				["c++"] = true,
+				["go"] = true,
+				["python"] = true,
+			}
+			vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+            vim.g.copilot_assume_mapped = true
+		end,
+	},
 }

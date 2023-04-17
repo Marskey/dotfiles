@@ -81,7 +81,7 @@ vim.api.nvim_set_keymap("", "<SPACE>", "<Nop>", { noremap = true, silent = true 
 M.general = {
 	n = {
 		-- line numbers
-		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number" },
+		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number", opts = { noremap = true, silent = true }},
 		["*"] = {
 			":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>",
 			opts = { noremap = true, silent = true },
@@ -97,17 +97,20 @@ M.bufferline = {
 		["<c-l>"] = {
 			"<cmd> bnext <CR>",
 			"goto next buffer",
+            opts = { noremap = true, silent = true }
 		},
 
 		["<c-h>"] = {
 			"<cmd> bprev <CR>",
 			"goto prev buffer",
+            opts = { noremap = true, silent = true }
 		},
 
 		-- close buffer + hide terminal buffer
 		["<leader>x"] = {
 			"<cmd> bd <CR>",
 			"close buffer",
+            opts = { noremap = true, silent = true }
 		},
 	},
 }
@@ -230,10 +233,10 @@ M.nvimtree = {
 
 	n = {
 		-- toggle
-		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true }},
 
 		-- focus
-		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
+		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree", opts = { noremap = true, silent = true }},
 	},
 }
 
@@ -241,10 +244,10 @@ M.neotree = {
 	plugin = true,
 	n = {
 		-- toggle
-		["<C-n>"] = { "<cmd> Neotree filesystem reveal left toggle <CR>", "toggle filetree" },
+		["<C-n>"] = { "<cmd> Neotree filesystem reveal left toggle <CR>", "toggle filetree" , opts = { noremap = true, silent = true }},
 
 		-- focus
-		["<leader>e"] = { "<cmd> Neotree filesystem reveal left <CR>", "focus filetree" },
+		["<leader>e"] = { "<cmd> Neotree filesystem reveal left <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
 	},
 }
 
@@ -261,7 +264,6 @@ local function getVisualSelection()
 	end
 end
 
-local last_find_files = nil
 M.telescope = {
 	plugin = true,
 
