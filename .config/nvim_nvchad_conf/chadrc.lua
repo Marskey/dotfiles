@@ -23,6 +23,7 @@ M.ui = {
 
     hl_override = {
         -- CursorLine = { bg = "darker_black" }
+        FloatBorder = { link = "LineNr" }
     },
 
     hl_add = {

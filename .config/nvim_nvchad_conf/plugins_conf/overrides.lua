@@ -26,6 +26,9 @@ M.mason = {
         "jsonls",
         "python-lsp-server",
 	},
+    ui = {
+        border = "single"
+    }
 }
 
 -- git support in nvimtree
@@ -104,7 +107,6 @@ M.blankline = {
 
 M.telescope = {
 	defaults = {
-		-- prompt_prefix = "   ",
 		prompt_prefix = "",
 		path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
 		history = false,
@@ -132,6 +134,25 @@ M.telescope = {
 			ignore_current_buffer = true,
 			scroll_strategy = "limit",
 		},
+        git_bcommits = {
+            git_command = {
+                "git",
+                "log",
+                "--pretty=format:%h <%an> %s (%cr)",
+                "--abbrev-commit",
+                "--follow",
+            },
+        },
+        git_commits = {
+            git_command = {
+                "git",
+                "log",
+                "--pretty=%h <%an> %s (%cr)",
+                "--abbrev-commit",
+                "--",
+                "."
+            },
+        }
 	},
 	extensions_list = { "themes", "terms", "live_grep_args", "aerial" },
 	extensions = {

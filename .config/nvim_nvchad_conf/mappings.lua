@@ -283,7 +283,8 @@ M.telescope = {
 		["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
 
 		-- git
-		["<leader>gm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
+		["<leader>gf"] = { "<cmd> Telescope git_bcommits <CR>", "git buffer commits" },
+		["<leader>gm"] = { "<cmd> Telescope git_commits <CR>", "git buffer commits" },
 		["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
 		-- pick a hidden term
