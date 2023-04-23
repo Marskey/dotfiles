@@ -21,6 +21,7 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		cmd = { "ToggleTerm" },
+        keys = { "<c-\\>" },
 		config = function()
 			require("custom.plugins_conf.toggleterm")
 		end,
