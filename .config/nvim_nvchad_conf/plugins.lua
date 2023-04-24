@@ -39,7 +39,7 @@ return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
-		cmd = "Neotree",
+		cmd = {"NeoTreeReveal", "NeoTreeFocusToggle"},
 		config = function()
 			require("custom.plugins_conf.neo_tree")
 		end,

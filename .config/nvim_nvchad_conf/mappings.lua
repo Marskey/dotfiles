@@ -244,10 +244,10 @@ M.neotree = {
 	plugin = true,
 	n = {
 		-- toggle
-		["<C-n>"] = { "<cmd> Neotree filesystem reveal left toggle <CR>", "toggle filetree" , opts = { noremap = true, silent = true }},
+		["<C-n>"] = { "<cmd> NeoTreeFocusToggle <CR>", "toggle filetree" , opts = { noremap = true, silent = true }},
 
 		-- focus
-		["<leader>e"] = { "<cmd> Neotree filesystem reveal left <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
+		["<leader>e"] = { "<cmd> NeoTreeReveal <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
 	},
 }
 
