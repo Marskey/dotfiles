@@ -62,6 +62,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions z)
+plugins=(git zsh-autosuggestions z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,6 +104,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #
 # zle_highlight+=(paste:none)
 # export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [ -n "$NVIM" ]; then
     alias nvim="nvr -l --remote"
 fi
