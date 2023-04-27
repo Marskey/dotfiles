@@ -18,6 +18,12 @@ local sources = {
 	-- Shell
 	b.formatting.shfmt,
 	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+
+    -- python
+    b.formatting.black.with({
+        extra_args = { "--line-length=79" }
+    }),
+    b.formatting.reorder_python_imports,
 }
 
 null_ls.setup({
