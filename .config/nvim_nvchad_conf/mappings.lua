@@ -83,7 +83,7 @@ M.general = {
 		-- line numbers
 		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number", opts = { noremap = true, silent = true }},
 		["*"] = {
-			":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>",
+			":keepjumps normal! mi*`i<CR>",
 			opts = { noremap = true, silent = true },
 		},
 		["<A-o>"] = { "<cmd> !open %:p:h <CR>", opts = { noremap = true, silent = true } },
