@@ -247,7 +247,7 @@ M.neotree = {
 		["<C-n>"] = { "<cmd> NeoTreeFocusToggle <CR>", "toggle filetree" , opts = { noremap = true, silent = true }},
 
 		-- focus
-		["<leader>e"] = { "<cmd> NeoTreeReveal <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
+		["<leader>e"] = { "<cmd> NeoTreeFocus <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
 	},
 }
 
