@@ -233,7 +233,7 @@ M.nvimtree = {
 
 	n = {
 		-- toggle
-		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true }},
+		["<C-n>"] = { "<cmd> NeoTreeShowToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true }},
 
 		-- focus
 		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree", opts = { noremap = true, silent = true }},
@@ -244,10 +244,10 @@ M.neotree = {
 	plugin = true,
 	n = {
 		-- toggle
-		["<C-n>"] = { "<cmd> NeoTreeFocusToggle <CR>", "toggle filetree" , opts = { noremap = true, silent = true }},
+		["<C-n>"] = { "<cmd> NeoTreeShow <CR>", "toggle filetree" , opts = { noremap = true, silent = true }},
 
 		-- focus
-		["<leader>e"] = { "<cmd> NeoTreeFocus <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
+		["<leader>e"] = { "<cmd> Neotree filesystem reveal <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
 	},
 }
 
