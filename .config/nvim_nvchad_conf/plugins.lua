@@ -97,6 +97,7 @@ return {
 
 	{
 		"stevearc/stickybuf.nvim",
+        enabled = false,
 		lazy = false,
 		config = function()
 			require("stickybuf").setup()
