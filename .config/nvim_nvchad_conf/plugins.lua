@@ -39,7 +39,7 @@ return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
-		cmd = {"NeoTreeReveal", "NeoTreeFocusToggle"},
+		cmd = {"NeoTreeReveal", "NeoTreeFocusToggle", "NeoTreeShowToggle", "Neotree"},
 		config = function()
 			require("custom.plugins_conf.neo_tree")
 		end,
@@ -97,6 +97,7 @@ return {
 
 	{
 		"stevearc/stickybuf.nvim",
+        enabled = false,
 		lazy = false,
 		config = function()
 			require("stickybuf").setup()
@@ -225,16 +226,22 @@ return {
 		config = function()
 			vim.g.copilot_no_tab_map = true
 			vim.g.copilot_filetypes = {
-				["*"] = false,
-				["lua"] = true,
-				["c"] = true,
-				["cc"] = true,
-				["c++"] = true,
-				["cpp"] = true,
-				["cxx"] = true,
-				["go"] = true,
-				["python"] = true,
-                ["sh"] = true,
+                ["TelescopePrompt"] = false,
+                ["Neo-tree"] = false,
+				-- ["*"] = false,
+				-- ["lua"] = true,
+				-- ["c"] = true,
+				-- ["cc"] = true,
+				-- ["c++"] = true,
+				-- ["cpp"] = true,
+				-- ["cxx"] = true,
+				-- ["go"] = true,
+				-- ["python"] = true,
+    --             ["sh"] = true,
+    --             ["html"] = true,
+    --             ["htmldjango"] = true,
+    --             ["xml"] = true,
+    --             ["javascript"] = true,
 			}
 			vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 			vim.g.copilot_assume_mapped = true

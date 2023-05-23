@@ -24,6 +24,11 @@ local sources = {
         extra_args = { "--line-length=79" }
     }),
     b.formatting.reorder_python_imports,
+
+    -- html
+    b.formatting.htmlbeautifier.with({
+        extra_args = { "--indent-size=2" }
+    }),
 }
 
 null_ls.setup({

@@ -2,3 +2,8 @@ gui:
   showIcons: true
 os:
   editCommandTemplate: "{{editor}} +{{line}} {{filename}}"
+
+git:
+  paging:
+    colorArg: always
+    pager: diff-so-fancy
