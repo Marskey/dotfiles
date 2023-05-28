@@ -79,6 +79,9 @@ M.disabled = {
 vim.api.nvim_set_keymap("", "<SPACE>", "<Nop>", { noremap = true, silent = true })
 
 M.general = {
+    i = {
+        ["<C-j>"] = {"<Nop>"},
+    },
 	n = {
 		-- line numbers
 		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number", opts = { noremap = true, silent = true }},
