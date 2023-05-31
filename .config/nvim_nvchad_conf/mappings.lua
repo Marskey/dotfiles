@@ -76,12 +76,9 @@ M.disabled = {
 }
 
 --Remap space as leader key
-vim.api.nvim_set_keymap("", "<SPACE>", "<Nop>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("", "<SPACE>", "<Nop>", { noremap = true, silent = true })
 
 M.general = {
-    i = {
-        ["<C-j>"] = {"<Nop>"},
-    },
 	n = {
 		-- line numbers
 		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number", opts = { noremap = true, silent = true }},
@@ -90,6 +87,7 @@ M.general = {
 			opts = { noremap = true, silent = true },
 		},
 		["<A-o>"] = { "<cmd> !open %:p:h <CR>", opts = { noremap = true, silent = true } },
+        ["<Space>"] = {"<Nop>"}
 	},
 }
 

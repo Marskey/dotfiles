@@ -21,7 +21,7 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		cmd = { "ToggleTerm" },
-        keys = { "<c-\\>" },
+		keys = { "<c-\\>" },
 		config = function()
 			require("custom.plugins_conf.toggleterm")
 		end,
@@ -39,7 +39,7 @@ return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
-		cmd = {"NeoTreeReveal", "NeoTreeFocusToggle", "NeoTreeShowToggle", "Neotree"},
+		cmd = { "NeoTreeReveal", "NeoTreeFocusToggle", "NeoTreeShowToggle", "Neotree" },
 		config = function()
 			require("custom.plugins_conf.neo_tree")
 		end,
@@ -97,7 +97,7 @@ return {
 
 	{
 		"stevearc/stickybuf.nvim",
-        enabled = false,
+		enabled = false,
 		lazy = false,
 		config = function()
 			require("stickybuf").setup()
@@ -226,8 +226,8 @@ return {
 		config = function()
 			vim.g.copilot_no_tab_map = true
 			vim.g.copilot_filetypes = {
-                ["TelescopePrompt"] = false,
-                ["Neo-tree"] = false,
+				["TelescopePrompt"] = false,
+				["Neo-tree"] = false,
 				-- ["*"] = false,
 				-- ["lua"] = true,
 				-- ["c"] = true,
@@ -237,12 +237,14 @@ return {
 				-- ["cxx"] = true,
 				-- ["go"] = true,
 				-- ["python"] = true,
-    --             ["sh"] = true,
-    --             ["html"] = true,
-    --             ["htmldjango"] = true,
-    --             ["xml"] = true,
-    --             ["javascript"] = true,
+				-- ["sh"] = true,
+				-- ["html"] = true,
+				-- ["htmldjango"] = true,
+				-- ["xml"] = true,
+				-- ["javascript"] = true,
 			}
+		end,
+		init = function()
 			vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 			vim.g.copilot_no_tab_map = true
 		end,
