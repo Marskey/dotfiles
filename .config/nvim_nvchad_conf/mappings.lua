@@ -327,8 +327,6 @@ M.toggleterm = {
 	t = {},
 
 	n = {
-		["<leader>tv"] = { "<cmd> ToggleTerm size=80 direction=vertical<cr>", "term vertical" },
-		["<leader>th"] = { "<cmd> ToggleTerm size=10 direction=horizontal<cr>", "term horizontal" },
 		["<leader>gg"] = {
 			function()
 				if not lazygit then
