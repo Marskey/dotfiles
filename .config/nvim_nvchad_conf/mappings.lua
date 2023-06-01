@@ -82,6 +82,7 @@ M.general = {
 	n = {
 		-- line numbers
 		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number", opts = { noremap = true, silent = true }},
+		["<leader>rr"] = { "<cmd> checktime <CR>", "check if buffer were changed outside", opts = { noremap = true, silent = true }},
 		["*"] = {
 			":keepjumps normal! mi*`i<CR>",
 			opts = { noremap = true, silent = true },
