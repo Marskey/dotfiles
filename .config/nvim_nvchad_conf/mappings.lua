@@ -81,14 +81,18 @@ M.disabled = {
 M.general = {
 	n = {
 		-- line numbers
-		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number", opts = { noremap = true, silent = true }},
-		["<leader>rr"] = { "<cmd> checktime <CR>", "check if buffer were changed outside", opts = { noremap = true, silent = true }},
+		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number", opts = { noremap = true, silent = true } },
+		["<leader>rr"] = {
+			"<cmd> checktime <CR>",
+			"check if buffer were changed outside",
+			opts = { noremap = true, silent = true },
+		},
 		["*"] = {
 			":keepjumps normal! mi*`i<CR>",
 			opts = { noremap = true, silent = true },
 		},
 		["<A-o>"] = { "<cmd> !open %:p:h <CR>", opts = { noremap = true, silent = true } },
-        ["<Space>"] = {"<Nop>"}
+		["<Space>"] = { "<Nop>" },
 	},
 }
 
@@ -99,20 +103,20 @@ M.bufferline = {
 		["<c-l>"] = {
 			"<cmd> bnext <CR>",
 			"goto next buffer",
-            opts = { noremap = true, silent = true }
+			opts = { noremap = true, silent = true },
 		},
 
 		["<c-h>"] = {
 			"<cmd> bprev <CR>",
 			"goto prev buffer",
-            opts = { noremap = true, silent = true }
+			opts = { noremap = true, silent = true },
 		},
 
 		-- close buffer + hide terminal buffer
 		["<leader>x"] = {
 			"<cmd> bd <CR>",
 			"close buffer",
-            opts = { noremap = true, silent = true }
+			opts = { noremap = true, silent = true },
 		},
 	},
 }
@@ -166,7 +170,7 @@ M.lspconfig = {
 
 		["<leader>lr"] = {
 			function()
-                vim.lsp.buf.rename()
+				vim.lsp.buf.rename()
 				-- require("nvchad_ui.renamer").open()
 			end,
 			"lsp rename",
@@ -235,10 +239,10 @@ M.nvimtree = {
 
 	n = {
 		-- toggle
-		["<C-n>"] = { "<cmd> NeoTreeShowToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true }},
+		["<C-n>"] = { "<cmd> NeoTreeShowToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true } },
 
 		-- focus
-		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree", opts = { noremap = true, silent = true }},
+		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree", opts = { noremap = true, silent = true } },
 	},
 }
 
@@ -246,10 +250,14 @@ M.neotree = {
 	plugin = true,
 	n = {
 		-- toggle
-		["<C-n>"] = { "<cmd> NeoTreeShow <CR>", "toggle filetree" , opts = { noremap = true, silent = true }},
+		["<C-n>"] = { "<cmd> NeoTreeShow <CR>", "toggle filetree", opts = { noremap = true, silent = true } },
 
 		-- focus
-		["<leader>e"] = { "<cmd> Neotree filesystem reveal <CR>", "focus filetree" , opts = { noremap = true, silent = true }},
+		["<leader>e"] = {
+			"<cmd> Neotree filesystem reveal <CR>",
+			"focus filetree",
+			opts = { noremap = true, silent = true },
+		},
 	},
 }
 
@@ -502,9 +510,6 @@ M.live_grep_args = {
 	plugin = true,
 	n = {
 		["<leader>fe"] = { "<cmd> Telescope live_grep_args<CR>" },
-	},
-	i = {
-		-- ["<c-i>"] = require("telescope-live-grep-args.actions").quote_prompt(),
 	},
 }
 

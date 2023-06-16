@@ -127,6 +127,9 @@ M.telescope = {
                 ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
 			},
 		},
+        preview = {
+            timeout = 500,
+        },
 	},
 	pickers = {
 		buffers = {
@@ -167,6 +170,13 @@ M.telescope = {
 		},
 		live_grep_args = {
 			auto_quoting = true, -- enable/disable auto-quoting
+            mappings = {
+                i = {
+                    ["<c-i>"] = function(...)
+                        require("telescope-live-grep-args.actions").quote_prompt()(...)
+                    end
+                },
+            },
 		},
 	},
 }
