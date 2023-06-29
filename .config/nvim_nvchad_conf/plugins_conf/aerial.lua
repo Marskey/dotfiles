@@ -9,6 +9,7 @@ al.setup({
 	layout = {
 		min_width = 50,
 		placement = "edge",
+        default_direction = "prefer_left",
 	},
 	-- close_behavior = "auto",
 	attach_mode = "global",
@@ -16,16 +17,16 @@ al.setup({
 	show_guides = true,
 })
 
-require("telescope").setup({
-	extensions = {
-		aerial = {
-			default_selection_index = 1,
-			-- Display symbols as <root>.<parent>.<symbol>
-			show_nesting = {
-				["_"] = false, -- This key will be the default
-				json = true, -- You can set the option for specific filetypes
-				yaml = true,
-			},
-		},
-	},
-})
+-- require("telescope").setup({
+-- 	extensions = {
+-- 		aerial = {
+-- 			default_selection_index = 1,
+-- 			-- Display symbols as <root>.<parent>.<symbol>
+-- 			show_nesting = {
+-- 				["_"] = false, -- This key will be the default
+-- 				json = true, -- You can set the option for specific filetypes
+-- 				yaml = true,
+-- 			},
+-- 		},
+-- 	},
+-- })

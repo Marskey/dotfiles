@@ -181,4 +181,10 @@ M.telescope = {
 	},
 }
 
+M.lazy = {
+    ui = {
+        border = "single"
+    }
+}
+
 return M

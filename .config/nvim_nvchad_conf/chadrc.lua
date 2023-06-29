@@ -33,4 +33,6 @@ M.ui = {
     }
 }
 
+M.lazy_nvim = vim.tbl_deep_extend("force", require "plugins.configs.lazy_nvim", require "custom.plugins_conf.lazy_nvim")
+
 return M
