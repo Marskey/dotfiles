@@ -39,8 +39,7 @@ local location_handler = vim.lsp.handlers["textDocument/definition"]
 vim.lsp.handlers["textDocument/definition"] = function(err, result, ctx, config)
 	if result == nil or vim.tbl_isempty(result) then
 		local posParam = vim.lsp.util.make_position_params()
-		if
-			posParam.textDocument.uri == ctx.params.textDocument.uri
+		if posParam.textDocument.uri == ctx.params.textDocument.uri
 			and posParam.position.character == ctx.params.position.character
 			and posParam.position.line == ctx.params.position.line
 		then
