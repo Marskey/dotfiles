@@ -13,7 +13,7 @@ al.setup({
 	},
 	-- close_behavior = "auto",
 	attach_mode = "global",
-	close_on_select = true,
+	-- close_on_select = true,
 	show_guides = true,
 })
 

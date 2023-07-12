@@ -22,13 +22,13 @@ M.mason = {
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
-        "clangd",
-        "jsonls",
-        "python-lsp-server",
+		"clangd",
+		"jsonls",
+		"python-lsp-server",
 	},
-    ui = {
-        border = "single"
-    }
+	ui = {
+		border = "single",
+	},
 }
 
 -- git support in nvimtree
@@ -44,12 +44,6 @@ M.nvimtree = {
 				git = true,
 			},
 		},
-	},
-}
-
-M.cmp = {
-	completion = {
-		completeopt = "menu,menuone,noselect",
 	},
 }
 
@@ -74,7 +68,7 @@ M.bufferline = {
 			},
 		},
 		show_buffer_close_icons = false,
-		separator_style = {"", ""}, -- slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+		separator_style = { "", "" }, -- slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
 		always_show_bufferline = true,
 		sort_by = "insert_at_end",
 	},
@@ -119,17 +113,17 @@ M.telescope = {
 				["<c-j>"] = "move_selection_next",
 				["<c-n>"] = "cycle_history_next",
 				["<c-p>"] = "cycle_history_prev",
-                ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
+				["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
 			},
 			n = {
 				["<c-n>"] = "cycle_history_next",
 				["<c-p>"] = "cycle_history_prev",
-                ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
+				["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
 			},
 		},
-        preview = {
-            timeout = 500,
-        },
+		preview = {
+			timeout = 500,
+		},
 	},
 	pickers = {
 		buffers = {
@@ -137,25 +131,25 @@ M.telescope = {
 			ignore_current_buffer = true,
 			scroll_strategy = "limit",
 		},
-        git_bcommits = {
-            git_command = {
-                "git",
-                "log",
-                "--pretty=format:%h <%an> %s (%cr)",
-                "--abbrev-commit",
-                "--follow",
-            },
-        },
-        git_commits = {
-            git_command = {
-                "git",
-                "log",
-                "--pretty=%h <%an> %s (%cr)",
-                "--abbrev-commit",
-                "--",
-                "."
-            },
-        }
+		git_bcommits = {
+			git_command = {
+				"git",
+				"log",
+				"--pretty=format:%h <%an> %s (%cr)",
+				"--abbrev-commit",
+				"--follow",
+			},
+		},
+		git_commits = {
+			git_command = {
+				"git",
+				"log",
+				"--pretty=%h <%an> %s (%cr)",
+				"--abbrev-commit",
+				"--",
+				".",
+			},
+		},
 	},
 	extensions_list = { "themes", "terms", "live_grep_args", "aerial" },
 	extensions = {
@@ -170,21 +164,21 @@ M.telescope = {
 		},
 		live_grep_args = {
 			auto_quoting = true, -- enable/disable auto-quoting
-            mappings = {
-                i = {
-                    ["<c-i>"] = function(...)
-                        require("telescope-live-grep-args.actions").quote_prompt()(...)
-                    end
-                },
-            },
+			mappings = {
+				i = {
+					["<c-i>"] = function(...)
+						require("telescope-live-grep-args.actions").quote_prompt()(...)
+					end,
+				},
+			},
 		},
 	},
 }
 
 M.lazy = {
-    ui = {
-        border = "single"
-    }
+	ui = {
+		border = "single",
+	},
 }
 
 return M
