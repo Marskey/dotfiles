@@ -112,10 +112,9 @@ M.bufferline = {
 			opts = { noremap = true, silent = true },
 		},
 
-		-- close buffer + hide terminal buffer
 		["<leader>x"] = {
-			"<cmd> bd <CR>",
-			"close buffer",
+			"<cmd> bp<bar>sp<bar>bn<bar>bd <CR>",
+			"close buffer without closing window",
 			opts = { noremap = true, silent = true },
 		},
 	},
