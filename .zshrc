@@ -61,7 +61,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions z zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias zshconfig="nvim ~/.zshrc"
 alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find * -type d | fzf); fi}'
+alias grepc="grep --color=always"
 
 # Using 256-colors mode
 export TERM="xterm-256color"
@@ -103,6 +104,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #
 # zle_highlight+=(paste:none)
 # export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+bindkey '^j' autosuggest-accept
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_OPTS='--border --info=inline'
 if [ -n "$NVIM" ]; then
@@ -116,3 +119,5 @@ else
     export VISUAL="nvim"
     export EDITOR="nvim"
 fi
+
+eval "$(lua /Users/marskey/.oh-my-zsh/custom/plugins/z-lua/z.lua --init zsh enhanced once fzf)"
