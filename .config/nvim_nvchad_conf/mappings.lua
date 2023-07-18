@@ -231,6 +231,14 @@ M.lspconfig = {
 			"list workspace folders",
 		},
 	},
+    v = {
+		["<leader>lf"] = {
+			function()
+				vim.lsp.buf.format({ async = true })
+			end,
+			"lsp formatting",
+		},
+    }
 }
 
 M.nvimtree = {
