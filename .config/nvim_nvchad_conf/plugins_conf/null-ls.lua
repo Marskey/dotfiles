@@ -13,7 +13,7 @@ local sources = {
 	b.formatting.prettier,
 
 	-- Lua
-	b.formatting.stylua,
+	-- b.formatting.lua_format,
 
 	-- Shell
 	b.formatting.shfmt,
@@ -32,6 +32,6 @@ local sources = {
 }
 
 null_ls.setup({
-	debug = true,
+	debug = false,
 	sources = sources,
 })

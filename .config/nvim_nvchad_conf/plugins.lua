@@ -116,7 +116,6 @@ return {
 			},
 		},
 		config = function()
-			require("plugins.configs.lspconfig")
 			require("custom.plugins_conf.lspconfig")
 		end, -- Override to setup mason-lspconfig
 	},
