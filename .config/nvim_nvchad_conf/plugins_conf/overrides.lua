@@ -101,6 +101,11 @@ M.blankline = {
 
 M.telescope = {
 	defaults = {
+        -- vimgrep_arguments = {
+        --     "rg",
+        --     "--json",
+        --     "--smart-case",
+        -- },
 		prompt_prefix = "",
 		path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
 		history = false,

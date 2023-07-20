@@ -1,7 +1,10 @@
 gui:
   showIcons: true
 os:
-  editCommandTemplate: "{{editor}} +{{line}} {{filename}}"
+  edit: '[ -n "$NVIM" ] && nvr -l --remote {{filename}} || nvim {{filename}}'
+  editInLine: '[ -n "$NVIM" ] && nvr -l --remote +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
+  editAtLineAndWait: '[ -n "$NVIM" ] && nvr -l --remote +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
+  editInTerminal: true
 
 git:
   paging:
