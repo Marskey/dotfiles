@@ -113,11 +113,9 @@ if [ -n "$NVIM" ]; then
 fi
 
 if [ -n "$NVIM" ]; then
-    export VISUAL="nvr -l --remote"
-    export EDITOR="nvr -l --remote"
+    alias nvim="nvr -l --remote"
 else
-    export VISUAL="nvim"
-    export EDITOR="nvim"
+    alias nvim="nvim"
 fi
 
 eval "$(lua /Users/marskey/.oh-my-zsh/custom/plugins/z-lua/z.lua --init zsh enhanced once fzf)"
