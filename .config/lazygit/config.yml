@@ -2,14 +2,14 @@ gui:
   showIcons: true
 os:
   edit: '[ -n "$NVIM" ] && nvr -l --remote {{filename}} || nvim {{filename}}'
-  editInLine: '[ -n "$NVIM" ] && nvr -l --remote +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
-  editAtLineAndWait: '[ -n "$NVIM" ] && nvr -l --remote +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
+  editAtLine: '[ -n "$NVIM" ] && nvr -l --remote +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
+  editAtLineAndWait: '[ -n "$NVIM" ] && nvr -l --remote-tab-wait +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
   editInTerminal: true
 
 git:
   paging:
     colorArg: always
-    pager: diff-so-fancy
+    pager: delta --paging=never --diff-so-fancy
 
 confirmOnQuit: true
 showCommandLog: false
