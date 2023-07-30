@@ -156,7 +156,7 @@ M.telescope = {
 			},
 		},
 	},
-	extensions_list = { "themes", "terms", "live_grep_args", "aerial" },
+	extensions_list = { "themes", "terms", "live_grep_args", "aerial", "ast_grep" },
 	extensions = {
 		aerial = {
 			default_selection_index = 1,

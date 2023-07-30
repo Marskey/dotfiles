@@ -288,7 +288,6 @@ M.telescope = {
         -- find
         ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-        -- ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>fo"] = { "<cmd> Telescope oldfiles only_cwd=true <CR>", "find oldfiles" },
@@ -297,7 +296,7 @@ M.telescope = {
         ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "document symbols" },
         ["<leader>fr"] = { "<cmd> Telescope resume <CR>", "Resume last find" },
         ["<leader>fl"] = { "<cmd> Telescope pickers <CR>", "find pickers cache" },
-        ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
+        ["<leader>ft"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
 
         -- git
         ["<leader>gf"] = { "<cmd> Telescope git_bcommits <CR>", "git buffer commits" },
@@ -320,7 +319,7 @@ M.telescope = {
             end,
             "find files",
         },
-        ["<leader>fg"] = {
+        ["<leader>ft"] = {
             function()
                 require("telescope.builtin").live_grep({
                     default_text = getVisualSelection(),
@@ -522,6 +521,23 @@ M.live_grep_args = {
     n = {
         ["<leader>fe"] = { "<cmd> Telescope live_grep_args<CR>" },
     },
+}
+
+M.telescope_sg = {
+    plugin = true,
+    n = {
+        ["<leader>fg"] = { "<cmd> Telescope ast_grep<CR>", "Find lint text" },
+    },
+    v = {
+        ["<leader>fg"] = {
+            function()
+                require("telescope").extensions.ast_grep.ast_grep({
+                    default_text = getVisualSelection(),
+                })
+            end,
+            "Find lint text",
+        },
+    }
 }
 
 return M

@@ -140,6 +140,14 @@ return {
     },
 
     {
+        "marskey/telescope-sg",
+        dependencies = "telescope.nvim",
+        init = function()
+            require("core.utils").load_mappings("telescope_sg")
+        end,
+    },
+
+    {
         "akinsho/bufferline.nvim",
         lazy = false,
         opts = overrides.bufferline,
