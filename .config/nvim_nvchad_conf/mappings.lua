@@ -526,7 +526,7 @@ M.live_grep_args = {
 M.telescope_sg = {
     plugin = true,
     n = {
-        ["<leader>fg"] = { "<cmd> Telescope ast_grep<CR>", "Find lint text" },
+        ["<leader>fg"] = { "<cmd> Telescope ast_grep<CR>", "Structural search" },
     },
     v = {
         ["<leader>fg"] = {
@@ -535,7 +535,7 @@ M.telescope_sg = {
                     default_text = getVisualSelection(),
                 })
             end,
-            "Find lint text",
+            "Structural search",
         },
     }
 }
