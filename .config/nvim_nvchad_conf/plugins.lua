@@ -123,12 +123,33 @@ return {
         end, -- Override to setup mason-lspconfig
     },
 
+    -- {
+    --     "ggandor/leap.nvim",
+    --     lazy = false,
+    --     config = function()
+    --         require("leap").add_default_mappings()
+    --     end,
+    -- },
     {
-        "ggandor/leap.nvim",
-        lazy = false,
-        config = function()
-            require("leap").add_default_mappings()
-        end,
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = overrides.flash,
+        keys = {
+            {
+                "r",
+                mode = "o",
+                function() require("flash").remote() end,
+                desc =
+                "Remote Flash"
+            },
+            {
+                "R",
+                mode = { "o", "x" },
+                function() require("flash").treesitter_search() end,
+                desc =
+                "Treesitter Search"
+            },
+        },
     },
 
     {
@@ -262,7 +283,8 @@ return {
         end,
     },
 
-    { 'nvim-telescope/telescope-fzf-native.nvim',
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
         build =
         'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     }

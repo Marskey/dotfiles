@@ -30,6 +30,7 @@ M.ui = {
 
     hl_add = {
         -- BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
+        FlashLabel = { fg = "black", bg = "red" },
     }
 }
 
