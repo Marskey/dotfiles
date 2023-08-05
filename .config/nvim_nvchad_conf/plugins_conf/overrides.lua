@@ -105,11 +105,71 @@ M.telescope = {
         --     "--json",
         --     "--smart-case",
         -- },
-        prompt_prefix = "",
-        path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
-        history = false,
-        cache_picker = {
-            num_pickers = 5,
+		prompt_prefix = "",
+		path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
+		history = false,
+		cache_picker = {
+			num_pickers = 5,
+		},
+		mappings = {
+			i = {
+				["<c-k>"] = "move_selection_previous",
+				["<c-j>"] = "move_selection_next",
+				["<c-n>"] = "cycle_history_next",
+				["<c-p>"] = "cycle_history_prev",
+				["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
+			},
+			n = {
+				["<c-n>"] = "cycle_history_next",
+				["<c-p>"] = "cycle_history_prev",
+				["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
+			},
+		},
+		preview = {
+			timeout = 500,
+		},
+	},
+	pickers = {
+        live_grep = {
+            entry_index = {
+                colend = function(t)
+                    local prompt = vim.api.nvim_buf_get_lines(0, 0, -1, false)[1]
+                    return t["col"] + string.len(prompt or "")
+                end,
+            }
+        },
+		buffers = {
+			sort_mru = true,
+			ignore_current_buffer = true,
+			scroll_strategy = "limit",
+		},
+		git_bcommits = {
+			git_command = {
+				"git",
+				"log",
+				"--pretty=format:%h <%an> %s (%cr)",
+				"--abbrev-commit",
+				"--follow",
+			},
+		},
+		git_commits = {
+			git_command = {
+				"git",
+				"log",
+				"--pretty=%h <%an> %s (%cr)",
+				"--abbrev-commit",
+				"--",
+				".",
+			},
+		},
+	},
+	extensions_list = {"fzf", "themes", "terms", "live_grep_args", "aerial", "ast_grep" },
+	extensions = {
+        fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = false, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         },
         mappings = {
             i = {
