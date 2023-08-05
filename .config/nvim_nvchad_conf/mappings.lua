@@ -553,6 +553,13 @@ M.flash = {
         }
     },
 
+    x = {
+        ["R"] = {
+            function() require("flash").treesitter_search() end,
+            "Treesitter Search"
+        }
+    },
+
     c = {
         ["<c-s>"] = {
             function() require("flash").toggle() end,
