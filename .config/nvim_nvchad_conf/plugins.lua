@@ -134,22 +134,9 @@ return {
         "folke/flash.nvim",
         event = "VeryLazy",
         opts = overrides.flash,
-        keys = {
-            {
-                "r",
-                mode = "o",
-                function() require("flash").remote() end,
-                desc =
-                "Remote Flash"
-            },
-            {
-                "R",
-                mode = { "o", "x" },
-                function() require("flash").treesitter_search() end,
-                desc =
-                "Treesitter Search"
-            },
-        },
+        init = function()
+            require("core.utils").load_mappings("flash")
+        end,
     },
 
     {
@@ -261,20 +248,6 @@ return {
             vim.g.copilot_filetypes = {
                 ["TelescopePrompt"] = false,
                 ["Neo-tree"] = false,
-                -- ["*"] = false,
-                -- ["lua"] = true,
-                -- ["c"] = true,
-                -- ["cc"] = true,
-                -- ["c++"] = true,
-                -- ["cpp"] = true,
-                -- ["cxx"] = true,
-                -- ["go"] = true,
-                -- ["python"] = true,
-                -- ["sh"] = true,
-                -- ["html"] = true,
-                -- ["htmldjango"] = true,
-                -- ["xml"] = true,
-                -- ["javascript"] = true,
             }
         end,
         init = function()

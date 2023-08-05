@@ -540,4 +540,25 @@ M.telescope_sg = {
     }
 }
 
+M.flash = {
+    plugin = true,
+    o = {
+        ["r"] = {
+            function() require("flash").remote() end,
+            "Remote Flash"
+        },
+        ["R"] = {
+            function() require("flash").treesitter_search() end,
+            "Treesitter Search"
+        }
+    },
+
+    c = {
+        ["<c-s>"] = {
+            function() require("flash").toggle() end,
+            "Toggle Flash Search"
+        }
+    }
+}
+
 return M
