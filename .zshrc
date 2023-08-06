@@ -61,7 +61,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,4 +118,3 @@ else
     alias nvim="nvim"
 fi
 
-eval "$(lua /Users/marskey/.oh-my-zsh/custom/plugins/z-lua/z.lua --init zsh enhanced once fzf)"
