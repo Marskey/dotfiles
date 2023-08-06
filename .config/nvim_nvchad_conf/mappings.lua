@@ -542,6 +542,13 @@ M.telescope_sg = {
 
 M.flash = {
     plugin = true,
+    n = {
+        ["s"] = {
+            function() require("flash").jump() end,
+            "Flash"
+        }
+    },
+
     o = {
         ["r"] = {
             function() require("flash").remote() end,
@@ -550,6 +557,10 @@ M.flash = {
         ["R"] = {
             function() require("flash").treesitter_search() end,
             "Treesitter Search"
+        },
+        ["s"] = {
+            function() require("flash").jump() end,
+            "Flash"
         }
     },
 
@@ -557,6 +568,10 @@ M.flash = {
         ["R"] = {
             function() require("flash").treesitter_search() end,
             "Treesitter Search"
+        },
+        ["s"] = {
+            function() require("flash").jump() end,
+            "Flash"
         }
     },
 
