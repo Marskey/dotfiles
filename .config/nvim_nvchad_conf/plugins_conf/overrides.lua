@@ -201,6 +201,9 @@ M.lazy = {
 
 M.flash = {
     modes = {
+        search = {
+            enabled = false,
+        },
         char = {
             multi_line = false,
             jump_labels = true,
