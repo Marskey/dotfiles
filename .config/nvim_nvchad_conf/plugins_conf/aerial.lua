@@ -9,7 +9,7 @@ al.setup({
 	layout = {
 		min_width = 50,
 		placement = "edge",
-        default_direction = "prefer_left",
+        default_direction = "prefer_right",
 	},
 	-- close_behavior = "auto",
 	attach_mode = "global",
