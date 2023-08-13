@@ -1,19 +1,6 @@
 local overrides = require("custom.plugins_conf.overrides")
 return {
     {
-        "NvChad/ui",
-        opts = {
-            statusline = {
-                separator_style = "block",
-            },
-            tabufline = {
-                enabled = false,
-                overriden_modules = nil,
-            },
-        },
-    },
-
-    {
         "NvChad/nvterm",
         enabled = false,
     },
