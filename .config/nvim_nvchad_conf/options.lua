@@ -35,6 +35,10 @@ opt.wrap = true -- display lines as one long line
 opt.foldmethod = "indent"
 opt.foldlevelstart = 99
 
+
+opt.list = true
+opt.listchars:append "space:⋅,trail:⋅"
+
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
 
