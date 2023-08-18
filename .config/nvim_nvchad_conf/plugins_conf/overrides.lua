@@ -118,11 +118,13 @@ M.telescope = {
                 ["<c-n>"] = "cycle_history_next",
                 ["<c-p>"] = "cycle_history_prev",
                 ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
+                ["<c-s>"] = "select_horizontal",
             },
             n = {
                 ["<c-n>"] = "cycle_history_next",
                 ["<c-p>"] = "cycle_history_prev",
                 ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
+                ["<c-s>"] = "select_horizontal",
             },
         },
         preview = {
