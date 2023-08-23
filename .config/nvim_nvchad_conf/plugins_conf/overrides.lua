@@ -7,7 +7,6 @@ M.treesitter = {
         "c",
         "markdown",
         "markdown_inline",
-        "comment",
     },
     additional_vim_regex_highlighting = false,
     indent = {
