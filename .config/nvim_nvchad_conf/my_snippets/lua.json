@@ -23,5 +23,11 @@
         "body": [
             "Log.dump(${CLIPBOARD}, \"${TM_FILENAME_BASE}:${TM_LINE_NUMBER}$0\", 3)"
         ]
+    },
+    "todo": {
+        "prefix": "todo",
+        "body": [
+            "--TODO(marskey): $0"
+        ]
     }
 }
