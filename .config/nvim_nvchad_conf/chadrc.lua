@@ -31,6 +31,9 @@ M.ui = {
     hl_add = {
         -- BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
         FlashLabel = { fg = "black", bg = "red" },
+        DiagnosticUnderlineError = { undercurl = true, sp = "red" },
+        DiagnosticUnderlineHint = { undercurl = true, sp = "blue" },
+        DiagnosticUnderlineWarn = { undercurl = true, sp = "yellow" },
     }
 }
 
