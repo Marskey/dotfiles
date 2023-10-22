@@ -881,6 +881,7 @@ key_bindings:
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
   - { key: E,              mods: Command|shift,               action: ToggleMaximized       }
+  - { key: Key6,           mods: Control, chars: "\x1e"                     }
 
 #debug:
   # Display the time it takes to redraw each frame.

@@ -194,8 +194,6 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "master",
-        commit = "f2778bd1a28b74adf5b1aa51aa57da85adfa3d16",
         opts = overrides.treesitter,
     },
 
@@ -219,10 +217,9 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         event = "BufEnter",
-        branch = "master",
-        commit = "35a60f093fa15a303874975f963428a5cd24e4a0",
-        main = "nvim-treesitter.configs",
-        opts = overrides.ts_textobj,
+        config = function()
+            require'nvim-treesitter.configs'.setup(overrides.ts_textobj)
+        end,
         dependencies = "nvim-treesitter/nvim-treesitter",
     },
 
@@ -234,6 +231,7 @@ return {
 
     {
         "github/copilot.vim",
+        enabled = false,
         event = "BufEnter",
         config = function()
             vim.g.copilot_no_tab_map = true
@@ -260,4 +258,9 @@ return {
     --     build = function() vim.fn["mkdp#util#install"]() end,
     -- }
 
+    {
+        "folke/trouble.nvim",
+        event = "BufEnter",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    }
 }
