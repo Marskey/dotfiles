@@ -1,0 +1,18 @@
+[alias]
+    unstage = reset HEAD --
+    last = log -1 HEAD
+[credential]
+    helper = cache
+[core]
+    autocrlf = input
+    pager = delta --diff-so-fancy
+    quotepath = false
+
+[interactive]
+    diffFilter = delta --diff-so-fancy --color-only --features=interactive
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
