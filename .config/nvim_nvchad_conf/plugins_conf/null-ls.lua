@@ -9,8 +9,8 @@ local b = null_ls.builtins
 local sources = {
 
 	-- webdev stuff
-	b.formatting.deno_fmt,
-	b.formatting.prettier,
+	-- b.formatting.deno_fmt,
+	-- b.formatting.prettier,
 
 	-- Lua
 	-- b.formatting.lua_format,
@@ -29,6 +29,9 @@ local sources = {
     b.formatting.htmlbeautifier.with({
         extra_args = { "--indent-size=2" }
     }),
+
+    -- json
+    b.formatting.jq
 }
 
 null_ls.setup({

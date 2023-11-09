@@ -7,6 +7,8 @@ M.treesitter = {
         "c",
         "markdown",
         "markdown_inline",
+        "bash",
+        "python",
     },
     additional_vim_regex_highlighting = false,
     indent = {
@@ -25,6 +27,9 @@ M.mason = {
         "clangd",
         "jsonls",
         "python-lsp-server",
+        "jq",
+        "json-lsp",
+        "bash",
     },
     ui = {
         border = "single",
