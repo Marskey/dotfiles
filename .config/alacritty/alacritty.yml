@@ -219,9 +219,11 @@ colors:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #cursor:
+  cursor:
   #  text: CellBackground
   #  cursor: CellForeground
+   text: '#000000'
+   cursor: '#eaeaea'
 
   # Vi mode cursor colors
   #
@@ -229,9 +231,11 @@ colors:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #vi_mode_cursor:
+  vi_mode_cursor:
   #  text: CellBackground
   #  cursor: CellForeground
+   text: '#000000'
+   cursor: '#eaeaea'
 
   # Search colors
   #

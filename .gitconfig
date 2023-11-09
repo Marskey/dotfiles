@@ -1,9 +1,19 @@
+[user]
+    email = marskeymill@icloud.com
+    name = Marskey
 [alias]
     unstage = reset HEAD --
     last = log -1 HEAD
 [credential]
     helper = cache
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 [core]
+    excludesfile = /Users/marskey/.gitignore_global
     autocrlf = input
     pager = delta --diff-so-fancy
     quotepath = false
