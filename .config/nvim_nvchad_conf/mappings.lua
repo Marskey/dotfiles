@@ -257,7 +257,7 @@ M.neotree = {
     plugin = true,
     n = {
         -- toggle
-        ["<C-n>"] = { "<cmd> NeoTreeShow <CR>", "toggle filetree", opts = { noremap = true, silent = true } },
+        ["<C-n>"] = { "<cmd> NeoTreeFocusToggle <CR>", "toggle filetree", opts = { noremap = true, silent = true } },
 
         -- focus
         ["<leader>e"] = {
