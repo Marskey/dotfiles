@@ -104,7 +104,7 @@ alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find
 alias grepc="grep --color=always"
 
 # Using 256-colors mode
-# export TERM="xterm-256color"
+export TERM="xterm-256color"
 export XDG_CONFIG_HOME="$HOME/.config" 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
