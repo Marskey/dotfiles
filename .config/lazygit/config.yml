@@ -1,5 +1,5 @@
 gui:
-  showIcons: true
+  showIcons: false
 os:
   edit: '[ -n "$NVIM" ] && nvr -l --remote {{filename}} || nvim {{filename}}'
   editAtLine: '[ -n "$NVIM" ] && nvr -l --remote +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
@@ -12,4 +12,4 @@ git:
     pager: delta --paging=never --diff-so-fancy
 
 confirmOnQuit: true
-showCommandLog: false
+showCommandLog: true
