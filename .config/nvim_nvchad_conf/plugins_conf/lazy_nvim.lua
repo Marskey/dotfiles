@@ -1,5 +1,5 @@
 return {
-	ui = {
-		border = "single",
-	},
+  ui = {
+    border = "single",
+  },
 }

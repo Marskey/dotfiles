@@ -23,7 +23,7 @@ opt.relativenumber = true
 opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append("sI")
+opt.shortmess:append "sI"
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -35,7 +35,6 @@ opt.wrap = true -- display lines as one long line
 opt.foldmethod = "indent"
 opt.foldlevelstart = 99
 
-
 opt.list = true
 opt.listchars:append "space:⋅,trail:⋅,tab:→ "
 
@@ -44,15 +43,15 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append("<>[]hl")
+opt.whichwrap:append "<>[]hl"
 opt.guifont = "Hack Nerd Font:h14"
 
 g.mapleader = " "
 g.vscode_snippets_path = "./lua/custom/my_snippets"
 
 opt.guicursor =
-"n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
+  "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
 
-if vim.fn.has('nvim') and vim.fn.executable('nvr') then
-    vim.env.GIT_EDITOR = "nvr -l --remote"
+if vim.fn.has "nvim" and vim.fn.executable "nvr" then
+  vim.env.GIT_EDITOR = "nvr -l --remote"
 end

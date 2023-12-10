@@ -2,39 +2,39 @@
 
 local M = {}
 
-M.mappings = require("custom.mappings")
+M.mappings = require "custom.mappings"
 
 M.plugins = "custom.plugins"
 
 M.ui = {
-    theme = "everforest",
-    statusline = {
-        theme = "default", -- default/vscode/vscode_colored/minimal
-        -- default/round/block/arrow separators work only for default statusline theme
-        -- round and block will work for minimal theme only
-        separator_style = "block",
-        overriden_modules = nil,
-    },
+  theme = "everforest",
+  statusline = {
+    theme = "default", -- default/vscode/vscode_colored/minimal
+    -- default/round/block/arrow separators work only for default statusline theme
+    -- round and block will work for minimal theme only
+    separator_style = "block",
+    overriden_modules = nil,
+  },
 
-    transparency = true,
-    tabufline = {
-        enabled = false,
-    },
+  transparency = true,
+  tabufline = {
+    enabled = false,
+  },
 
-    hl_override = {
-        -- CursorLine = { bg = "darker_black" }
-        FloatBorder = { link = "LineNr" },
-        ToggleTerm1FloatBorder = { link = "LineNr" },
-        ToggleTerm1NormalFloat = { link = "LineNr" },
-    },
+  hl_override = {
+    -- CursorLine = { bg = "darker_black" }
+    FloatBorder = { link = "LineNr" },
+    ToggleTerm1FloatBorder = { link = "LineNr" },
+    ToggleTerm1NormalFloat = { link = "LineNr" },
+  },
 
-    hl_add = {
-        -- BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
-        FlashLabel = { fg = "black", bg = "red" },
-        DiagnosticUnderlineError = { undercurl = true, sp = "red" },
-        DiagnosticUnderlineHint = { undercurl = true, sp = "blue" },
-        DiagnosticUnderlineWarn = { undercurl = true, sp = "yellow" },
-    }
+  hl_add = {
+    -- BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
+    FlashLabel = { fg = "black", bg = "red" },
+    DiagnosticUnderlineError = { undercurl = true, sp = "red" },
+    DiagnosticUnderlineHint = { undercurl = true, sp = "blue" },
+    DiagnosticUnderlineWarn = { undercurl = true, sp = "yellow" },
+  },
 }
 
 M.lazy_nvim = vim.tbl_deep_extend("force", require "plugins.configs.lazy_nvim", require "custom.plugins_conf.lazy_nvim")
