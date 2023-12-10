@@ -94,6 +94,17 @@ M.general = {
     ["<A-o>"] = { "<cmd> !open %:p:h <CR>", opts = { noremap = true, silent = true } },
     ["<Space>"] = { "<Nop>" },
   },
+  i = {
+    ["<C-A>"] = { "<Home>" },
+    ["<C-E>"] = { "<End>" },
+    ["<C-F>"] = { "<Right>" },
+    ["<C-B>"] = { "<Left>" },
+  },
+  c = {
+    ["<C-A>"] = { "<Home>" },
+    ["<C-F>"] = { "<Right>" },
+    ["<C-B>"] = { "<Left>" },
+  },
 }
 
 M.bufferline = {
