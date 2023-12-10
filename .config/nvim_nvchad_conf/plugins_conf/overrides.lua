@@ -135,6 +135,12 @@ M.telescope = {
         preview = {
             timeout = 500,
         },
+        -- layout_strategy = "bottom_pane",
+        -- borderchars = {
+        --     prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+        --     results = { " " },
+        --     preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        -- },
     },
     pickers = {
         live_grep = {

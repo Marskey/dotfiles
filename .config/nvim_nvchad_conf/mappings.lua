@@ -134,6 +134,20 @@ M.lspconfig = {
 
         ["gd"] = {
             function()
+                local loading = vim.v["defer_fn_for_loading"]
+                if loading then
+                    pcall(function()
+                        loading:close()
+                    end)
+                end
+
+                loading = vim.defer_fn(function()
+                    local _, winid = vim.lsp.util.open_floating_preview({ "Loading..." }, "markdown", {
+                        border = "single",
+                        focus = false,
+                    })
+                    vim.w[winid].lsp_loading_win = 'def_req'
+                end, 1000)
                 vim.lsp.buf.definition()
             end,
             "lsp definition",
