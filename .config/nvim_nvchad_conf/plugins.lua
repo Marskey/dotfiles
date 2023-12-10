@@ -7,6 +7,7 @@ return {
 
     {
         "akinsho/toggleterm.nvim",
+        enabled = false,
         cmd = { "ToggleTerm" },
         keys = { "<c-\\>" },
         config = function()
@@ -95,15 +96,15 @@ return {
 
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            -- format & linting
-            {
-                "jose-elias-alvarez/null-ls.nvim",
-                config = function()
-                    require("custom.plugins_conf.null-ls")
-                end,
-            },
-        },
+        -- dependencies = {
+        --     -- format & linting
+        --     {
+        --         "jose-elias-alvarez/null-ls.nvim",
+        --         config = function()
+        --             require("custom.plugins_conf.null-ls")
+        --         end,
+        --     },
+        -- },
         config = function()
             require("custom.plugins_conf.lspconfig")
         end, -- Override to setup mason-lspconfig
