@@ -70,9 +70,27 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
   border = "single",
 })
 
+local loading = nil
+
+vim.keymap.set("n", "gd", function()
+  if loading then
+    pcall(function()
+      loading:close()
+    end)
+  end
+
+  loading = vim.defer_fn(function()
+    local _, winid = vim.lsp.util.open_floating_preview({ "Loading..." }, "markdown", {
+      border = "single",
+      focus = false,
+    })
+    vim.w[winid].lsp_loading_win = "def_req"
+  end, 500)
+  vim.lsp.buf.definition()
+end, { noremap = true, silent = true })
+
 local location_handler = vim.lsp.handlers["textDocument/definition"]
 vim.lsp.handlers["textDocument/definition"] = function(err, result, ctx, config)
-  local loading = vim.v["defer_fn_for_loading"]
   if loading then
     pcall(function()
       loading:close()
