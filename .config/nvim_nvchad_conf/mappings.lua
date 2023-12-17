@@ -109,7 +109,7 @@ M.general = {
 }
 
 M.bufferline = {
-  plugin = true,
+  plugin = false,
 
   n = {
     ["<c-l>"] = {
