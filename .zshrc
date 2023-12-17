@@ -100,11 +100,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias zshconfig="nvim ~/.zshrc"
+alias tmuxconfig="nvim ~/.tmux.conf"
 alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find * -type d | fzf); fi}'
 alias grepc="grep --color=always"
+alias gete='(){LC_CTYPE=C sed -n "/$1/,/^[^[:blank:]]/p" $2}'
+alias svndiff='(){svn diff -r PREV:HEAD $1 | delta}'
 
 # Using 256-colors mode
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 export XDG_CONFIG_HOME="$HOME/.config" 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
