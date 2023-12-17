@@ -144,6 +144,7 @@ return {
 
   {
     "akinsho/bufferline.nvim",
+    enabled = false,
     lazy = false,
     opts = overrides.bufferline,
     init = function()
