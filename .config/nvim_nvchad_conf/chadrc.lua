@@ -13,7 +13,34 @@ M.ui = {
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     separator_style = "block",
-    overriden_modules = nil,
+    overriden_modules = function (modules)
+            if not modules then
+                return
+            end
+
+            if not modules[2] then
+                return
+            end
+
+            modules[2] = (function()
+                local icon = " 󰈚 "
+                local path = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(vim.g.statusline_winid))
+                local name = (path == "" and "Empty ") or path:match "([^/\\]+)[/\\]*$"
+
+                if name ~= "Empty " then
+                    local devicons_present, devicons = pcall(require, "nvim-web-devicons")
+
+                    if devicons_present then
+                        local ft_icon = devicons.get_icon(name)
+                        icon = (ft_icon ~= nil and " " .. ft_icon) or icon
+                    end
+
+                    name = " " .. name .. " "
+                end
+
+                return "%#St_file_info#" .. icon .. name .. "%m" .. "%#St_file_sep#" .. '█'
+            end)()
+    end,
   },
 
   transparency = true,
