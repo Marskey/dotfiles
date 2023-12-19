@@ -79,14 +79,18 @@ vim.keymap.set("n", "gd", function()
     end)
   end
 
-  loading = vim.defer_fn(function()
-    local _, winid = vim.lsp.util.open_floating_preview({ "Loading..." }, "markdown", {
-      border = "single",
-      focus = false,
-    })
-    vim.w[winid].lsp_loading_win = "def_req"
-  end, 500)
   vim.lsp.buf.definition()
+
+  local clients = vim.lsp.buf_get_clients(0)
+  if not vim.tbl_isempty(clients) then
+    loading = vim.defer_fn(function()
+      local _, winid = vim.lsp.util.open_floating_preview({ "Loading..." }, "markdown", {
+        border = "single",
+        focus = false,
+      })
+      vim.w[winid].lsp_loading_win = "def_req"
+    end, 500)
+  end
 end, { noremap = true, silent = true })
 
 local location_handler = vim.lsp.handlers["textDocument/definition"]
