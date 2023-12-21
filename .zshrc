@@ -129,5 +129,6 @@ else
     alias nvim="nvim"
 fi
 
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
