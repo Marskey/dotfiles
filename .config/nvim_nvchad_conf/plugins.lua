@@ -26,6 +26,7 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
+    -- enabled = false,
     cmd = { "NeoTreeReveal", "NeoTreeFocusToggle", "NeoTreeShowToggle", "Neotree" },
     config = function()
       require "custom.plugins_conf.neo_tree"

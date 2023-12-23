@@ -52,6 +52,11 @@ neotree.setup {
         ["c"] = "copy",
         ["C"] = "copy_to_clipboard",
         ["zR"] = "expand_all_nodes",
+        ["zr"] = function(state)
+          local node = state.tree:get_node()
+          local filesystem_commands = require "neo-tree.sources.filesystem.commands"
+          filesystem_commands.expand_all_nodes(state, node)
+        end,
         ["zm"] = "close_node",
         ["zM"] = "close_all_nodes",
         ["z"] = "",
