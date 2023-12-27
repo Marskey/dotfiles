@@ -41,6 +41,14 @@ M.nvimtree = {
   git = {
     enable = true,
   },
+  view = {
+    centralize_selection = true,
+    number = true,
+    relativenumber = true,
+    side = "left",
+    width = { min = 30 },
+    preserve_window_proportions = true,
+  },
   renderer = {
     highlight_git = true,
     icons = {
@@ -49,6 +57,26 @@ M.nvimtree = {
       },
     },
   },
+  on_attach = function(bufnr)
+    local api = require "nvim-tree.api"
+    local function opts(desc)
+      return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    -- default mappings
+    api.config.mappings.default_on_attach(bufnr)
+
+    -- custom mappings
+    vim.keymap.set("n", "go", function()
+      local currentNode = api.tree.get_node_under_cursor()
+      local path = currentNode.absolute_path
+      if vim.fn.has "mac" == 1 or vim.fn.has "macunix" == 1 then
+        vim.api.nvim_command("silent !open -R " .. path)
+      elseif vim.fn.has "unix" == 1 then
+        vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
+      end
+    end, opts "reveal in finder")
+  end,
 }
 
 M.colorizer = {

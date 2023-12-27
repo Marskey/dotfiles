@@ -250,11 +250,11 @@ M.lspconfig = {
 }
 
 M.nvimtree = {
-  plugin = false,
+  plugin = true,
 
   n = {
     -- toggle
-    ["<C-n>"] = { "<cmd> NvimTreeShowToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true } },
+    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true } },
 
     -- focus
     ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree", opts = { noremap = true, silent = true } },

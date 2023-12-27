@@ -11,6 +11,10 @@ local function copy_to_clipboard(content)
 end
 
 neotree.setup {
+  -- log_level = "trace", -- "trace", "debug", "info", "warn", "error", "fatal"
+  -- log_to_file = true, -- true, false, "/path/to/file.log", use :NeoTreeLogs to show the file
+  -- enable_modified_markers = false, -- Show markers for files with unsaved changes.
+  -- enable_git_status = false,
   filesystem = {
     commands = {
       copy_file_name = function(state)
