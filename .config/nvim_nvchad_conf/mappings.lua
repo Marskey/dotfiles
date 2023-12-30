@@ -191,9 +191,7 @@ M.lspconfig = {
     },
 
     ["gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
+      "<Cmd>kR<Bar>lua vim.lsp.buf.references()<CR>",
       "lsp references",
     },
 
