@@ -265,4 +265,20 @@ return {
     event = "BufEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+
+  {
+    "kevinhwang91/nvim-bqf",
+    event = "VeryLazy",
+  },
+  {
+    "Wansmer/treesj",
+    -- enabled = false,
+    cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesj").setup {
+        use_default_keymaps = false,
+      }
+    end,
+  },
 }
