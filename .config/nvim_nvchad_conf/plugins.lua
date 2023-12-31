@@ -283,22 +283,18 @@ return {
   },
   {
     "utilyre/barbecue.nvim",
+    event = "BufEnter",
     name = "barbecue",
-    version = "*",
     dependencies = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     opts = {
       create_autocmd = false, -- prevent barbecue from updating itself automatically
+      show_dirname = false,
     },
     init = function()
       vim.opt.updatetime = 200
-
-      require("barbecue").setup {
-        create_autocmd = false, -- prevent barbecue from updating itself automatically
-      }
-
       vim.api.nvim_create_autocmd({
         "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
         "BufWinEnter",
@@ -313,6 +309,24 @@ return {
           require("barbecue.ui").update()
         end,
       })
+    end,
+  },
+
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "UIEnter" },
+    config = function()
+      require("hlchunk").setup {
+        line_num = {
+          enable = false,
+        },
+        blank = {
+          enable = false,
+        },
+        indent = {
+          enable = false,
+        },
+      }
     end,
   },
 }
