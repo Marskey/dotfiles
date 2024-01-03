@@ -4,7 +4,6 @@ return {
     "NvChad/nvterm",
     enabled = false,
   },
-
   {
     "akinsho/toggleterm.nvim",
     enabled = true,
@@ -17,14 +16,12 @@ return {
       require("core.utils").load_mappings "toggleterm"
     end,
   },
-
   -- misc plugins
   {
     "nvim-tree/nvim-tree.lua",
     enabled = true,
     opts = overrides.nvimtree,
   },
-
   {
     "nvim-neo-tree/neo-tree.nvim",
     enabled = false,
@@ -41,13 +38,11 @@ return {
       require("core.utils").load_mappings "neotree"
     end,
   },
-
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     opts = overrides.telescope,
   },
-
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
@@ -76,17 +71,14 @@ return {
       },
     },
   },
-
   {
     "tpope/vim-surround",
     lazy = false,
   },
-
   {
     "tommcdo/vim-exchange",
     lazy = false,
   },
-
   {
     "stevearc/stickybuf.nvim",
     enabled = true,
@@ -95,7 +87,6 @@ return {
       require("stickybuf").setup()
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     -- dependencies = {
@@ -111,7 +102,6 @@ return {
       require "custom.plugins_conf.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-
   -- {
   --     "ggandor/leap.nvim",
   --     lazy = false,
@@ -127,7 +117,6 @@ return {
       require("core.utils").load_mappings "flash"
     end,
   },
-
   {
     "nvim-telescope/telescope-live-grep-args.nvim",
     dependencies = "telescope.nvim",
@@ -135,7 +124,6 @@ return {
       require("core.utils").load_mappings "live_grep_args"
     end,
   },
-
   {
     "marskey/telescope-sg",
     dependencies = "telescope.nvim",
@@ -143,7 +131,6 @@ return {
       require("core.utils").load_mappings "telescope_sg"
     end,
   },
-
   {
     "akinsho/bufferline.nvim",
     enabled = false,
@@ -153,7 +140,6 @@ return {
       require("core.utils").load_mappings "bufferline"
     end,
   },
-
   {
     "tiagovla/scope.nvim",
     lazy = false,
@@ -161,7 +147,6 @@ return {
       require("scope").setup()
     end,
   },
-
   {
     "stevearc/aerial.nvim",
     dependencies = "telescope.nvim",
@@ -183,40 +168,33 @@ return {
       require("core.utils").load_mappings "aerial"
     end,
   },
-
   {
     "L3MON4D3/LuaSnip",
     build = "make install_jsregexp",
   },
-
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
     dependencies = "williamboman/mason-lspconfig.nvim",
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
-
   {
     "numToStr/Comment.nvim",
     lazy = false,
   },
-
   {
     "hrsh7th/nvim-cmp",
     opts = function()
       return require "custom.plugins_conf.cmp"
     end,
   },
-
   {
     "NvChad/nvim-colorizer.lua",
     opts = overrides.colorizer,
   },
-
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     event = "BufEnter",
@@ -225,13 +203,11 @@ return {
     end,
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
-
   {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
     opts = overrides.blankline,
   },
-
   {
     "github/copilot.vim",
     enabled = false,
@@ -248,27 +224,28 @@ return {
       vim.g.copilot_no_tab_map = true
     end,
   },
-
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },
-
   -- {
   --     'iamcco/markdown-preview.nvim',
   --     event = "VeryLazy",
   --     build = function() vim.fn["mkdp#util#install"]() end,
   -- }
-
   {
     "folke/trouble.nvim",
     event = "BufEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-
   {
     "kevinhwang91/nvim-bqf",
     event = "VeryLazy",
+    opts = {
+      func_map = {
+        split = "<C-s>",
+      },
+    },
   },
   {
     "Wansmer/treesj",
@@ -311,7 +288,6 @@ return {
       })
     end,
   },
-
   {
     "shellRaining/hlchunk.nvim",
     event = { "UIEnter" },
