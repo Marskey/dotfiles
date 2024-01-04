@@ -247,31 +247,40 @@ M.lspconfig = {
   },
 }
 
+local vim_win_gettype = vim.fn.win_gettype
 M.nvimtree = {
   plugin = true,
 
   n = {
     -- toggle
-    ["<C-n>"] = { function ()
-            local nvimtree_api
-            if not nvimtree_api then
-                nvimtree_api = require('nvim-tree.api')
-            end
-            if vim.fn.win_gettype() ~= "command" then
-                nvimtree_api.tree.toggle()
-            end
-    end, "toggle nvimtree", opts = { noremap = true, silent = true } },
+    ["<C-n>"] = {
+      function()
+        local nvimtree_api
+        if not nvimtree_api then
+          nvimtree_api = require "nvim-tree.api"
+        end
+        if vim_win_gettype() ~= "command" then
+          nvimtree_api.tree.toggle()
+        end
+      end,
+      "toggle nvimtree",
+      opts = { noremap = true, silent = true },
+    },
 
     -- focus
-    ["<leader>e"] = { function ()
-            local nvimtree_api
-            if not nvimtree_api then
-                nvimtree_api = require('nvim-tree.api')
-            end
-            if vim.fn.win_gettype() ~= "command" then
-            nvimtree_api.tree.focus()
-            end
-    end, "focus nvimtree", opts = { noremap = true, silent = true } },
+    ["<leader>e"] = {
+      function()
+        local nvimtree_api
+        if not nvimtree_api then
+          nvimtree_api = require "nvim-tree.api"
+        end
+        if vim_win_gettype() ~= "command" then
+          nvimtree_api.tree.focus()
+        end
+      end,
+      "focus nvimtree",
+      opts = { noremap = true, silent = true },
+    },
   },
 }
 
@@ -565,9 +574,9 @@ M.flash = {
   n = {
     ["s"] = {
       function()
-                if vim.fn.win_gettype() ~= "command" then
-                    require("flash").jump()
-                end
+        if vim_win_gettype() ~= "command" then
+          require("flash").jump()
+        end
       end,
       "Flash",
     },

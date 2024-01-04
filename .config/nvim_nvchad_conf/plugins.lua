@@ -41,7 +41,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    opts = overrides.telescope,
+    opts = require "custom.plugins_conf.telescope",
   },
   -- Only load whichkey after all the gui
   {
