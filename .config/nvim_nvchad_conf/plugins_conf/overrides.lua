@@ -185,20 +185,20 @@ M.telescope = {
       ignore_current_buffer = true,
       scroll_strategy = "limit",
     },
-    -- git_bcommits = {
-    --     git_command = {
-    --         "git",
-    --         "log",
-    --         "--pretty=format:%h <%an> %s (%cr)",
-    --         "--abbrev-commit",
-    --         "--follow",
-    --     },
-    -- },
+    git_bcommits = {
+        git_command = {
+            "git",
+            "log",
+            "--pretty=format:%h <%an> [%ch] %s",
+            "--abbrev-commit",
+            "--follow",
+        },
+    },
     git_commits = {
       git_command = {
         "git",
         "log",
-        "--pretty=%h <%an> %s (%cr)",
+        "--pretty=%h <%an> [%ch] %s",
         "--abbrev-commit",
         "--",
         ".",

@@ -252,10 +252,26 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree", opts = { noremap = true, silent = true } },
+    ["<C-n>"] = { function ()
+            local nvimtree_api
+            if not nvimtree_api then
+                nvimtree_api = require('nvim-tree.api')
+            end
+            if vim.fn.win_gettype() ~= "command" then
+                nvimtree_api.tree.toggle()
+            end
+    end, "toggle nvimtree", opts = { noremap = true, silent = true } },
 
     -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree", opts = { noremap = true, silent = true } },
+    ["<leader>e"] = { function ()
+            local nvimtree_api
+            if not nvimtree_api then
+                nvimtree_api = require('nvim-tree.api')
+            end
+            if vim.fn.win_gettype() ~= "command" then
+            nvimtree_api.tree.focus()
+            end
+    end, "focus nvimtree", opts = { noremap = true, silent = true } },
   },
 }
 
@@ -549,7 +565,9 @@ M.flash = {
   n = {
     ["s"] = {
       function()
-        require("flash").jump()
+                if vim.fn.win_gettype() ~= "command" then
+                    require("flash").jump()
+                end
       end,
       "Flash",
     },
