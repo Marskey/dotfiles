@@ -69,7 +69,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions z zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,6 +123,8 @@ if [ -n "$NVIM" ]; then
     alias nvim="nvr -l --remote"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 if [ -n "$NVIM" ]; then
     alias nvim="nvr -l --remote"
 else
@@ -132,3 +134,4 @@ fi
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(zoxide init zsh)"
