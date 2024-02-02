@@ -85,14 +85,13 @@ local options = {
     -- },
   },
   pickers = {
-    live_grep = {
-      entry_index = {
-        colend = function(t)
-          local prompt = vim.api.nvim_buf_get_lines(0, 0, -1, false)[1]
-          return t["col"] + string.len(prompt or "")
-        end,
-      },
-    },
+    -- live_grep = {
+    --   entry_index = {
+    --     colend = function(t)
+    --       return (t["submatches"][1]["end"] + 1) or nil
+    --     end,
+    --   },
+    -- },
     buffers = {
       sort_mru = true,
       ignore_current_buffer = true,
