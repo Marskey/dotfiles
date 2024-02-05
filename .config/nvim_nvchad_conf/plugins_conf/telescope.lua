@@ -45,6 +45,22 @@ local function gen_from_commit(opts)
   end
 end
 
+local action_state = require "telescope.actions.state"
+local utils = require "telescope.utils"
+local actions = require "telescope.actions"
+local git_copy_sha = function (prompt_bufnr)
+    local selection = action_state.get_selected_entry()
+    if selection == nil then
+        utils.__warn_no_selection "git_copy_sha"
+        return
+    end
+    actions.close(prompt_bufnr)
+    local content = selection.value
+    vim.fn.setreg("+", content)
+    vim.fn.setreg('"', content)
+    vim.notify(string.format("Copied SHA:%s to system clipboard!", content))
+end
+
 local options = {
   defaults = {
     -- vimgrep_arguments = {
@@ -106,6 +122,14 @@ local options = {
         "--follow",
       },
       entry_maker = gen_from_commit(),
+      mappings = {
+        i = {
+          ["<cr>"] = function(...)
+            git_copy_sha(...)
+          end,
+          ["<c-o>"] = "git_checkout_current_buffer"
+        },
+      },
     },
     git_commits = {
       current_previewer_index = 4,
