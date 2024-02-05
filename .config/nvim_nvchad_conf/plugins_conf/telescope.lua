@@ -1,6 +1,6 @@
 local entry_display = require "telescope.pickers.entry_display"
 
-local function gen_from_bcommit(opts)
+local function gen_from_commit(opts)
   opts = opts or {}
 
   local displayer = entry_display.create {
@@ -62,14 +62,14 @@ local options = {
       i = {
         ["<c-k>"] = "move_selection_previous",
         ["<c-j>"] = "move_selection_next",
-        ["<c-n>"] = "cycle_history_next",
-        ["<c-p>"] = "cycle_history_prev",
+        ["<c-n>"] = "cycle_previewers_next",
+        ["<c-p>"] = "cycle_previewers_prev",
         ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
         ["<c-s>"] = "select_horizontal",
       },
       n = {
-        ["<c-n>"] = "cycle_history_next",
-        ["<c-p>"] = "cycle_history_prev",
+        ["<c-n>"] = "cycle_previewers_next",
+        ["<c-p>"] = "cycle_previewers_prev",
         ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
         ["<c-s>"] = "select_horizontal",
       },
@@ -105,9 +105,10 @@ local options = {
         "--abbrev-commit",
         "--follow",
       },
-      entry_maker = gen_from_bcommit(),
+      entry_maker = gen_from_commit(),
     },
     git_commits = {
+      current_previewer_index = 4,
       git_command = {
         "git",
         "log",
@@ -116,6 +117,7 @@ local options = {
         "--",
         ".",
       },
+      entry_maker = gen_from_commit(),
     },
   },
   extensions_list = { "fzf", "themes", "terms", "live_grep_args", "aerial", "ast_grep" },
