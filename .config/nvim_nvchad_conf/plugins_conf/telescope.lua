@@ -139,6 +139,8 @@ local options = {
     },
     live_grep_args = {
       auto_quoting = true, -- enable/disable auto-quoting
+      entry_maker = require("telescope.make_entry").gen_from_vimgrep_json(),
+      vimgrep_arguments = {"rg", "--smart-case", "--json"},
       mappings = {
         i = {
           ["<c-i>"] = function(...)
