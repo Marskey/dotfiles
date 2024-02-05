@@ -6,9 +6,9 @@ local function gen_from_bcommit(opts)
   local displayer = entry_display.create {
     separator = " ",
     items = {
-      { width = 7 },
+      { width = 10 },
       { width = 4 },
-      { width = 8 },
+      { width = 11 },
       { remaining = true },
     },
   }

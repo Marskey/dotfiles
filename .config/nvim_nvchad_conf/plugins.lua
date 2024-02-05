@@ -40,6 +40,8 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
+    url = "https://github.com/Marskey/telescope.nvim.git",
+    branch = "experimental",
     cmd = "Telescope",
     opts = require "custom.plugins_conf.telescope",
   },
