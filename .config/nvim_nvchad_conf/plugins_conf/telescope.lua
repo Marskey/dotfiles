@@ -48,17 +48,17 @@ end
 local action_state = require "telescope.actions.state"
 local utils = require "telescope.utils"
 local actions = require "telescope.actions"
-local git_copy_sha = function (prompt_bufnr)
-    local selection = action_state.get_selected_entry()
-    if selection == nil then
-        utils.__warn_no_selection "git_copy_sha"
-        return
-    end
-    actions.close(prompt_bufnr)
-    local content = selection.value
-    vim.fn.setreg("+", content)
-    vim.fn.setreg('"', content)
-    vim.notify(string.format("Copied SHA:%s to system clipboard!", content))
+local git_copy_sha = function(prompt_bufnr)
+  local selection = action_state.get_selected_entry()
+  if selection == nil then
+    utils.__warn_no_selection "git_copy_sha"
+    return
+  end
+  actions.close(prompt_bufnr)
+  local content = selection.value
+  vim.fn.setreg("+", content)
+  vim.fn.setreg('"', content)
+  vim.notify(string.format("Copied SHA:%s to system clipboard!", content))
 end
 
 local options = {
@@ -127,7 +127,7 @@ local options = {
           ["<cr>"] = function(...)
             git_copy_sha(...)
           end,
-          ["<c-o>"] = "git_checkout_current_buffer"
+          ["<c-o>"] = "git_checkout_current_buffer",
         },
       },
     },
@@ -164,7 +164,7 @@ local options = {
     live_grep_args = {
       auto_quoting = true, -- enable/disable auto-quoting
       entry_maker = require("telescope.make_entry").gen_from_vimgrep_json(),
-      vimgrep_arguments = {"rg", "--smart-case", "--json"},
+      vimgrep_arguments = { "rg", "--smart-case", "--json" },
       mappings = {
         i = {
           ["<c-i>"] = function(...)
