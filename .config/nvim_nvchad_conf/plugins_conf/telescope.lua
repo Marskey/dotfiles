@@ -101,13 +101,12 @@ local options = {
     -- },
   },
   pickers = {
-    -- live_grep = {
-    --   entry_index = {
-    --     colend = function(t)
-    --       return (t["submatches"][1]["end"] + 1) or nil
-    --     end,
-    --   },
-    -- },
+    live_grep = {
+      attach_mappings = function(_, map)
+        map("i", "<c-f>", actions.to_fuzzy_refine)
+        return true
+      end,
+    },
     buffers = {
       sort_mru = true,
       ignore_current_buffer = true,
@@ -172,6 +171,12 @@ local options = {
           end,
         },
       },
+    },
+    ast_grep = {
+      attach_mappings = function(_, map)
+        map("i", "<c-f>", actions.to_fuzzy_refine)
+        return true
+      end,
     },
   },
 }
