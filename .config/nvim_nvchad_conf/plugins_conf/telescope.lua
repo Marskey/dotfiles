@@ -1,4 +1,8 @@
 local entry_display = require "telescope.pickers.entry_display"
+local make_entry = require "telescope.make_entry"
+local utils = require "telescope.utils"
+local action_state = require "telescope.actions.state"
+local actions = require "telescope.actions"
 
 local function gen_from_commit(opts)
   opts = opts or {}
@@ -45,9 +49,42 @@ local function gen_from_commit(opts)
   end
 end
 
-local action_state = require "telescope.actions.state"
-local utils = require "telescope.utils"
-local actions = require "telescope.actions"
+local function get_path_and_tail(filename)
+  local bufname_tail = utils.path_tail(filename)
+  local path_without_tail = require("plenary.strings").truncate(filename, #filename - #bufname_tail, "")
+  local path_to_display = utils.transform_path({
+    path_display = { "truncate" },
+  }, path_without_tail)
+
+  return bufname_tail, path_to_display
+end
+
+local entry_make = make_entry.gen_from_file()
+local gen_from_file = function(line)
+  local entry = entry_make(line)
+  local displayer = entry_display.create {
+    separator = " ",
+    items = {
+      { width = nil },
+      { width = nil },
+      { remaining = true },
+    },
+  }
+  entry.display = function(et)
+    -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
+    local tail_raw, path_to_display = get_path_and_tail(et.value)
+    local tail = tail_raw .. " "
+    local icon, iconhl = utils.get_devicons(tail_raw)
+
+    return displayer {
+      { icon, iconhl },
+      tail,
+      { path_to_display, "TelescopeResultsComment" },
+    }
+  end
+  return entry
+end
+
 local git_copy_sha = function(prompt_bufnr)
   local selection = action_state.get_selected_entry()
   if selection == nil then
@@ -69,7 +106,7 @@ local options = {
     --     "--smart-case",
     -- },
     prompt_prefix = "",
-    path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
+    -- path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
     history = false,
     cache_picker = {
       num_pickers = 5,
@@ -101,6 +138,9 @@ local options = {
     -- },
   },
   pickers = {
+    find_files = {
+      entry_maker = gen_from_file,
+    },
     live_grep = {
       attach_mappings = function(_, map)
         map("i", "<c-f>", actions.to_fuzzy_refine)
