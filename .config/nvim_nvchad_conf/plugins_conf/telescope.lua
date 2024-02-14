@@ -4,7 +4,8 @@ local utils = require "telescope.utils"
 local action_state = require "telescope.actions.state"
 local actions = require "telescope.actions"
 
-local function gen_from_commit(opts)
+local my_make_entry = {}
+my_make_entry.gen_from_commit = function(opts)
   opts = opts or {}
 
   local displayer = entry_display.create {
@@ -59,9 +60,8 @@ local function get_path_and_tail(filename)
   return bufname_tail, path_to_display
 end
 
-local entry_make = make_entry.gen_from_file()
-local gen_from_file = function(line)
-  local entry = entry_make(line)
+do
+  local file_entry_make = make_entry.gen_from_file()
   local displayer = entry_display.create {
     separator = " ",
     items = {
@@ -70,19 +70,76 @@ local gen_from_file = function(line)
       { remaining = true },
     },
   }
-  entry.display = function(et)
-    -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
-    local tail_raw, path_to_display = get_path_and_tail(et.value)
-    local tail = tail_raw .. " "
-    local icon, iconhl = utils.get_devicons(tail_raw)
 
-    return displayer {
-      { icon, iconhl },
-      tail,
-      { path_to_display, "TelescopeResultsComment" },
-    }
+  my_make_entry.gen_from_file = function(line)
+    local entry = file_entry_make(line)
+    entry.display = function(et)
+      -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
+      local tail_raw, path_to_display = get_path_and_tail(et.value)
+      local tail = tail_raw .. " "
+      local icon, iconhl = utils.get_devicons(tail_raw)
+
+      return displayer {
+        { icon, iconhl },
+        tail,
+        { path_to_display, "TelescopeResultsComment" },
+      }
+    end
+    return entry
   end
-  return entry
+end
+
+do
+  local live_grep_entry_make = make_entry.gen_from_vimgrep_json()
+  local displayer = entry_display.create {
+    separator = " ",
+    items = {
+      { width = nil },
+      { width = nil },
+      { width = nil },
+      { remaining = true },
+    },
+  }
+  my_make_entry.gen_from_vimgrep_json = function(line)
+    local entry = live_grep_entry_make(line)
+    if not entry then
+      return
+    end
+
+    entry.display = function(et)
+      -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
+      local tail_raw, path_to_display = get_path_and_tail(et.filename)
+      local icon, iconhl = utils.get_devicons(tail_raw)
+
+      local coordinates = ":"
+      if et.lnum then
+        if et.col then
+          coordinates = string.format(":%s:%s", et.lnum, et.col)
+        else
+          coordinates = string.format(":%s", et.lnum)
+        end
+      end
+      local tail = tail_raw .. coordinates
+
+      return displayer {
+        { icon, iconhl },
+        tail,
+        { path_to_display, "TelescopeResultsComment" },
+        {
+          et.text,
+          function()
+            local match_hi = "TelescopeMatching"
+            local highlights = {}
+            for _, submatch in ipairs(et.submatches) do
+              table.insert(highlights, { { submatch["start"], submatch["end"] }, match_hi })
+            end
+            return highlights
+          end,
+        },
+      }
+    end
+    return entry
+  end
 end
 
 local git_copy_sha = function(prompt_bufnr)
@@ -132,16 +189,17 @@ local options = {
     },
     -- layout_strategy = "bottom_pane",
     -- borderchars = {
-    --     prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-    --     results = { " " },
-    --     preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    --   prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+    --   results = { " " },
+    --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     -- },
   },
   pickers = {
     find_files = {
-      entry_maker = gen_from_file,
+      entry_maker = my_make_entry.gen_from_file(),
     },
     live_grep = {
+      entry_maker = gen_from_vimgrep_json,
       attach_mappings = function(_, map)
         map("i", "<c-f>", actions.to_fuzzy_refine)
         return true
@@ -160,7 +218,7 @@ local options = {
         "--abbrev-commit",
         "--follow",
       },
-      entry_maker = gen_from_commit(),
+      entry_maker = my_make_entry.gen_from_commit(),
       mappings = {
         i = {
           ["<cr>"] = function(...)
@@ -180,7 +238,7 @@ local options = {
         "--",
         ".",
       },
-      entry_maker = gen_from_commit(),
+      entry_maker = my_make_entry.gen_from_commit(),
     },
   },
   extensions_list = { "fzf", "themes", "terms", "live_grep_args", "aerial", "ast_grep" },
