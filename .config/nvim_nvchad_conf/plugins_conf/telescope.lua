@@ -196,10 +196,10 @@ local options = {
   },
   pickers = {
     find_files = {
-      entry_maker = my_make_entry.gen_from_file(),
+      entry_maker = my_make_entry.gen_from_file,
     },
     live_grep = {
-      entry_maker = gen_from_vimgrep_json,
+      entry_maker = my_make_entry.gen_from_vimgrep_json,
       attach_mappings = function(_, map)
         map("i", "<c-f>", actions.to_fuzzy_refine)
         return true
