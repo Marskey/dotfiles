@@ -3,6 +3,10 @@ local make_entry = require "telescope.make_entry"
 local utils = require "telescope.utils"
 local action_state = require "telescope.actions.state"
 local actions = require "telescope.actions"
+local plenaryStrings = require "plenary.strings"
+local devIcons = require "nvim-web-devicons"
+
+local fileTypeIconWidth = plenaryStrings.strdisplaywidth(devIcons.get_icon("fname", { default = true }))
 
 local my_make_entry = {}
 my_make_entry.gen_from_commit = function(opts)
@@ -59,18 +63,18 @@ local function get_path_and_tail(filename)
 end
 
 do
-  local file_entry_make = make_entry.gen_from_file()
+  local _entry_make = make_entry.gen_from_file()
   local displayer = entry_display.create {
     separator = " ",
     items = {
-      { width = nil },
+      { width = fileTypeIconWidth },
       { width = nil },
       { remaining = true },
     },
   }
 
   my_make_entry.gen_from_file = function(line)
-    local entry = file_entry_make(line)
+    local entry = _entry_make(line)
     entry.display = function(et)
       -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
       local tail_raw, path_to_display = get_path_and_tail(et.value)
@@ -88,18 +92,49 @@ do
 end
 
 do
-  local live_grep_entry_make = make_entry.gen_from_vimgrep_json()
+  local _entry_make = make_entry.gen_from_buffer()
   local displayer = entry_display.create {
     separator = " ",
     items = {
       { width = nil },
+      { width = 4 },
+      { width = fileTypeIconWidth },
+      { width = nil },
+      { remaining = true },
+    },
+  }
+
+  my_make_entry.gen_from_buffer = function(line)
+    local entry = _entry_make(line)
+    entry.display = function(et)
+      local tail_raw, path_to_display = get_path_and_tail(et.filename)
+      local tail = tail_raw
+      local icon, iconhl = utils.get_devicons(tail_raw)
+      return displayer {
+        { tostring(et.bufnr), "TelescopeResultsNumber" },
+        { et.indicator, "TelescopeResultsComment" },
+        { icon, iconhl },
+        tail,
+        { path_to_display, "TelescopeResultsComment" },
+      }
+    end
+    return entry
+  end
+end
+
+do
+  local _grep_entry_make = (make_entry["gen_from_vimgrep_json"] or make_entry["gen_from_vimgrep"])()
+  local displayer = entry_display.create {
+    separator = " ",
+    items = {
+      { width = fileTypeIconWidth },
       { width = nil },
       { width = nil },
       { remaining = true },
     },
   }
   my_make_entry.gen_from_vimgrep_json = function(line)
-    local entry = live_grep_entry_make(line)
+    local entry = _grep_entry_make(line)
     if not entry then
       return
     end
@@ -211,6 +246,9 @@ local options = {
     find_files = {
       entry_maker = my_make_entry.gen_from_file,
     },
+    oldfiles = {
+      entry_maker = my_make_entry.gen_from_file,
+    },
     live_grep = {
       entry_maker = my_make_entry.gen_from_vimgrep_json,
       attach_mappings = function(_, map)
@@ -222,6 +260,7 @@ local options = {
       sort_mru = true,
       ignore_current_buffer = true,
       scroll_strategy = "limit",
+      entry_maker = my_make_entry.gen_from_buffer,
     },
     git_bcommits = {
       git_command = {
@@ -273,7 +312,7 @@ local options = {
     },
     live_grep_args = {
       auto_quoting = true, -- enable/disable auto-quoting
-      entry_maker = require("telescope.make_entry").gen_from_vimgrep_json(),
+      entry_maker = my_make_entry.gen_from_vimgrep_json,
       vimgrep_arguments = { "rg", "--smart-case", "--json" },
       mappings = {
         i = {
