@@ -53,9 +53,7 @@ end
 local function get_path_and_tail(filename)
   local bufname_tail = utils.path_tail(filename)
   local path_without_tail = require("plenary.strings").truncate(filename, #filename - #bufname_tail, "")
-  local path_to_display = utils.transform_path({
-    path_display = { "truncate" },
-  }, path_without_tail)
+  local path_to_display = utils.transform_path({}, path_without_tail)
 
   return bufname_tail, path_to_display
 end
@@ -164,6 +162,7 @@ local options = {
     -- },
     prompt_prefix = "",
     -- path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
+    path_display = { "absolute" },
     history = false,
     cache_picker = {
       num_pickers = 5,
@@ -186,6 +185,20 @@ local options = {
     },
     preview = {
       timeout = 500,
+    },
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.45,
+        results_width = 0.8,
+      },
+      vertical = {
+        mirror = false,
+      },
+      width = 0.87,
+      height = 0.80,
+      preview_cutoff = 120,
     },
     -- layout_strategy = "bottom_pane",
     -- borderchars = {
