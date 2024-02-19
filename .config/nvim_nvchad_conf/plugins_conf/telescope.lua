@@ -3,10 +3,6 @@ local make_entry = require "telescope.make_entry"
 local utils = require "telescope.utils"
 local action_state = require "telescope.actions.state"
 local actions = require "telescope.actions"
-local plenaryStrings = require "plenary.strings"
-local devIcons = require "nvim-web-devicons"
-
-local fileTypeIconWidth = plenaryStrings.strdisplaywidth(devIcons.get_icon("fname", { default = true }))
 
 local my_make_entry = {}
 my_make_entry.gen_from_commit = function(opts)
@@ -67,7 +63,7 @@ do
   local displayer = entry_display.create {
     separator = " ",
     items = {
-      { width = fileTypeIconWidth },
+      { width = nil },
       { width = nil },
       { remaining = true },
     },
@@ -98,7 +94,7 @@ do
     items = {
       { width = nil },
       { width = 4 },
-      { width = fileTypeIconWidth },
+      { width = nil },
       { width = nil },
       { remaining = true },
     },
@@ -127,7 +123,7 @@ do
   local displayer = entry_display.create {
     separator = " ",
     items = {
-      { width = fileTypeIconWidth },
+      { width = nil },
       { width = nil },
       { width = nil },
       { remaining = true },
