@@ -150,17 +150,20 @@ do
       end
       local tail = tail_raw .. coordinates
 
+      local trimedText = et.text:gsub("^%s*", "")
+      local offset = #et.text - #trimedText
+
       return displayer {
         { icon, iconhl },
         tail,
         { path_to_display, "TelescopeResultsComment" },
         {
-          et.text,
+          trimedText,
           function()
             local match_hi = "TelescopeMatching"
             local highlights = {}
             for _, submatch in ipairs(et.submatches) do
-              table.insert(highlights, { { submatch["start"], submatch["end"] }, match_hi })
+              table.insert(highlights, { { submatch["start"] - offset, submatch["end"] - offset }, match_hi })
             end
             return highlights
           end,

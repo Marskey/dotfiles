@@ -135,6 +135,7 @@ return {
   {
     "marskey/telescope-sg",
     dependencies = "telescope.nvim",
+    branch = "pretty_display",
     init = function()
       require("core.utils").load_mappings "telescope_sg"
     end,
