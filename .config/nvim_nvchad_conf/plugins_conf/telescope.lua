@@ -52,7 +52,7 @@ end
 
 local function get_path_and_tail(filename)
   local bufname_tail = utils.path_tail(filename)
-  local path_without_tail = require("plenary.strings").truncate(filename, #filename - #bufname_tail, "")
+  local path_without_tail = require("plenary.strings").truncate(filename, #filename - #bufname_tail - 1, "")
   local path_to_display = utils.transform_path({}, path_without_tail)
 
   return bufname_tail, path_to_display
@@ -74,7 +74,7 @@ do
     entry.display = function(et)
       -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
       local tail_raw, path_to_display = get_path_and_tail(et.value)
-      local tail = tail_raw .. " "
+      local tail = tail_raw
       local icon, iconhl = utils.get_devicons(tail_raw)
 
       return displayer {
@@ -92,7 +92,6 @@ do
   local displayer = entry_display.create {
     separator = " ",
     items = {
-      { width = nil },
       { width = 4 },
       { width = nil },
       { width = nil },
@@ -107,7 +106,6 @@ do
       local tail = tail_raw
       local icon, iconhl = utils.get_devicons(tail_raw)
       return displayer {
-        { tostring(et.bufnr), "TelescopeResultsNumber" },
         { et.indicator, "TelescopeResultsComment" },
         { icon, iconhl },
         tail,
@@ -119,58 +117,60 @@ do
 end
 
 do
-  local _grep_entry_make = (make_entry["gen_from_vimgrep_json"] or make_entry["gen_from_vimgrep"])()
-  local displayer = entry_display.create {
-    separator = " ",
-    items = {
-      { width = nil },
-      { width = nil },
-      { width = nil },
-      { remaining = true },
-    },
-  }
-  my_make_entry.gen_from_vimgrep_json = function(line)
-    local entry = _grep_entry_make(line)
-    if not entry then
-      return
-    end
-
-    entry.display = function(et)
-      -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
-      local tail_raw, path_to_display = get_path_and_tail(et.filename)
-      local icon, iconhl = utils.get_devicons(tail_raw)
-
-      local coordinates = ":"
-      if et.lnum then
-        if et.col then
-          coordinates = string.format(":%s:%s", et.lnum, et.col)
-        else
-          coordinates = string.format(":%s", et.lnum)
-        end
+  if make_entry.gen_from_vimgrep_json then
+    local _grep_entry_make = make_entry.gen_from_vimgrep_json()
+    local displayer = entry_display.create {
+      separator = " ",
+      items = {
+        { width = nil },
+        { width = nil },
+        { width = nil },
+        { remaining = true },
+      },
+    }
+    my_make_entry.gen_from_vimgrep_json = function(line)
+      local entry = _grep_entry_make(line)
+      if not entry then
+        return
       end
-      local tail = tail_raw .. coordinates
 
-      local trimedText = et.text:gsub("^%s*", "")
-      local offset = #et.text - #trimedText
+      entry.display = function(et)
+        -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
+        local tail_raw, path_to_display = get_path_and_tail(et.filename)
+        local icon, iconhl = utils.get_devicons(tail_raw)
 
-      return displayer {
-        { icon, iconhl },
-        tail,
-        { path_to_display, "TelescopeResultsComment" },
-        {
-          trimedText,
-          function()
-            local match_hi = "TelescopeMatching"
-            local highlights = {}
-            for _, submatch in ipairs(et.submatches) do
-              table.insert(highlights, { { submatch["start"] - offset, submatch["end"] - offset }, match_hi })
-            end
-            return highlights
-          end,
-        },
-      }
+        local coordinates = ":"
+        if et.lnum then
+          if et.col then
+            coordinates = string.format(":%s:%s", et.lnum, et.col)
+          else
+            coordinates = string.format(":%s", et.lnum)
+          end
+        end
+        local tail = tail_raw .. coordinates
+
+        local trimedText = et.text:gsub("^%s*", "")
+        local offset = #et.text - #trimedText
+
+        return displayer {
+          { icon, iconhl },
+          tail,
+          { path_to_display, "TelescopeResultsComment" },
+          {
+            trimedText,
+            function()
+              local match_hi = "TelescopeMatching"
+              local highlights = {}
+              for _, submatch in ipairs(et.submatches) do
+                table.insert(highlights, { { submatch["start"] - offset, submatch["end"] - offset }, match_hi })
+              end
+              return highlights
+            end,
+          },
+        }
+      end
+      return entry
     end
-    return entry
   end
 end
 
