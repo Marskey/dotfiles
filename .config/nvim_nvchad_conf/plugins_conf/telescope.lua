@@ -246,6 +246,7 @@ local options = {
       entry_maker = my_make_entry.gen_from_file,
     },
     oldfiles = {
+      cwd_only = true,
       entry_maker = my_make_entry.gen_from_file,
     },
     live_grep = {
