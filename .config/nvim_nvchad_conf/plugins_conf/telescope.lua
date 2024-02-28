@@ -199,7 +199,7 @@ local options = {
     path_display = { "absolute" },
     history = false,
     cache_picker = {
-      num_pickers = 5,
+      num_pickers = 10,
     },
     mappings = {
       i = {

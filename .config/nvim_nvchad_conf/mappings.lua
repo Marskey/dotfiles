@@ -112,18 +112,6 @@ M.bufferline = {
   plugin = false,
 
   n = {
-    ["<c-l>"] = {
-      "<cmd> bnext <CR>",
-      "goto next buffer",
-      opts = { noremap = true, silent = true },
-    },
-
-    ["<c-h>"] = {
-      "<cmd> bprev <CR>",
-      "goto prev buffer",
-      opts = { noremap = true, silent = true },
-    },
-
     ["<leader>x"] = {
       "<cmd> bp<bar>sp<bar>bn<bar>bd <CR>",
       "close buffer without closing window",
