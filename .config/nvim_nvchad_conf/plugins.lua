@@ -45,6 +45,16 @@ return {
     cmd = "Telescope",
     opts = require "custom.plugins_conf.telescope",
   },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup { "max-perf" }
+    end,
+  },
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
