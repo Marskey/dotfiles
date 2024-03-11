@@ -119,7 +119,7 @@ M.ts_textobj = {
         ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
         ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
       },
-      include_surrounding_whitespace = true,
+      include_surrounding_whitespace = false,
     },
   },
 }
