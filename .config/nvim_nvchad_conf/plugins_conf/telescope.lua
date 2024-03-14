@@ -244,6 +244,7 @@ local options = {
   pickers = {
     find_files = {
       entry_maker = my_make_entry.gen_from_file,
+      follow = true,
     },
     oldfiles = {
       cwd_only = true,
