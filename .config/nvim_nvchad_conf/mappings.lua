@@ -304,12 +304,19 @@ local function getVisualSelection()
   end
 end
 
+M.fzflua = {
+    plugin = true,
+    n = {
+        ["<leader>ff"] = { "<cmd> FzfLua files <CR>", "find files" },
+    }
+}
+
 M.telescope = {
   plugin = true,
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
+    -- ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },

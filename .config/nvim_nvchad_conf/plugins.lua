@@ -50,9 +50,21 @@ return {
     -- optional for icon support
     event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    init = function ()
+        require("core.utils").load_mappings "fzflua"
+    end,
     config = function()
       -- calling `setup` is optional for customization
-      require("fzf-lua").setup { "max-perf" }
+      require("fzf-lua").setup {
+                "max-perf",
+                winopts = {
+                    height=0.80,
+                    width=0.87,
+                    preview = {
+                        wrap = "wrap"
+                    }
+                }
+            }
     end,
   },
   -- Only load whichkey after all the gui
