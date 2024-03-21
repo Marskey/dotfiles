@@ -308,6 +308,18 @@ M.fzflua = {
     plugin = true,
     n = {
         ["<leader>ff"] = { "<cmd> FzfLua files <CR>", "find files" },
+    },
+    v = {
+        ["<leader>ff"] = {
+            function()
+                require('fzf-lua').files({
+                   fzf_opts = {
+                        ['-q'] = getVisualSelection()
+                    }
+                })
+            end,
+            "find files",
+        },
     }
 }
 
@@ -317,7 +329,7 @@ M.telescope = {
   n = {
     -- find
     -- ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+    -- ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles only_cwd=true <CR>", "find oldfiles" },
@@ -341,14 +353,14 @@ M.telescope = {
   },
 
   v = {
-    ["<leader>ff"] = {
-      function()
-        require("telescope.builtin").find_files {
-          default_text = getVisualSelection(),
-        }
-      end,
-      "find files",
-    },
+    -- ["<leader>ff"] = {
+    --   function()
+    --     require("telescope.builtin").find_files {
+    --       default_text = getVisualSelection(),
+    --     }
+    --   end,
+    --   "find files",
+    -- },
     ["<leader>ft"] = {
       function()
         require("telescope.builtin").live_grep {

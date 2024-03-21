@@ -48,7 +48,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
-    event = "VeryLazy",
+    cmd = "FzfLua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     init = function ()
         require("core.utils").load_mappings "fzflua"
@@ -56,12 +56,14 @@ return {
     config = function()
       -- calling `setup` is optional for customization
       require("fzf-lua").setup {
-                "max-perf",
+                -- "max-perf",
                 winopts = {
                     height=0.80,
                     width=0.87,
                     preview = {
-                        wrap = "wrap"
+                        wrap = "wrap",
+                        layout = 'horizontal',          -- horizontal|vertical|flex
+                        horizontal = 'right:50%',     -- right|left:size
                     }
                 }
             }
