@@ -53,6 +53,7 @@ M.ui = {
     FloatBorder = { link = "LineNr" },
     ToggleTerm1FloatBorder = { link = "LineNr" },
     ToggleTerm1NormalFloat = { link = "LineNr" },
+    CursorLine = { bg = "black2" }
   },
 
   hl_add = {
