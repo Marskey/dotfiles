@@ -41,20 +41,16 @@ local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
 if status_ok then
   local lspconf = require "lspconfig"
 
-  local opts = {
-    on_attach = M.on_attach,
-    capabilities = M.capabilities,
-  }
-
   mason_lsp.setup_handlers {
     function(server_name)
+      local opts = {
+        on_attach = M.on_attach,
+        capabilities = M.capabilities,
+      }
+
       local has_custom_opts, server_custom_opts = pcall(require, "custom.plugins_conf.lspconfig." .. server_name)
       if has_custom_opts then
         opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
-      end
-
-      if server_name == "lua_ls" then
-        opts.root_dir = lspconf.util.root_pattern(".luarc.json", ".git")
       end
 
       lspconf[server_name].setup(opts)
