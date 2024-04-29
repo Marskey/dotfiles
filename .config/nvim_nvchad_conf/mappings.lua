@@ -306,22 +306,22 @@ local function getVisualSelection()
 end
 
 M.fzflua = {
-    plugin = true,
-    n = {
-        ["<leader>ff"] = { "<cmd> FzfLua files <CR>", "find files" },
+  plugin = true,
+  n = {
+    ["<leader>ff"] = { "<cmd> FzfLua files <CR>", "find files" },
+  },
+  v = {
+    ["<leader>ff"] = {
+      function()
+        require("fzf-lua").files {
+          fzf_opts = {
+            ["-q"] = getVisualSelection(),
+          },
+        }
+      end,
+      "find files",
     },
-    v = {
-        ["<leader>ff"] = {
-            function()
-                require('fzf-lua').files({
-                   fzf_opts = {
-                        ['-q'] = getVisualSelection()
-                    }
-                })
-            end,
-            "find files",
-        },
-    }
+  },
 }
 
 M.telescope = {

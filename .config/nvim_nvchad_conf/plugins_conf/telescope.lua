@@ -209,14 +209,14 @@ local options = {
         ["<c-p>"] = "cycle_previewers_prev",
         ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
         ["<c-s>"] = "select_horizontal",
-        ["<c-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist
+        ["<c-q>"] = require("telescope.actions").smart_send_to_loclist + require("telescope.actions").open_loclist,
       },
       n = {
         ["<c-n>"] = "cycle_previewers_next",
         ["<c-p>"] = "cycle_previewers_prev",
         ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
         ["<c-s>"] = "select_horizontal",
-        ["<c-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist
+        ["<c-q>"] = require("telescope.actions").smart_send_to_loclist + require("telescope.actions").open_loclist,
       },
     },
     preview = {
