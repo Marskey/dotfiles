@@ -135,3 +135,20 @@ export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval "$(zoxide init zsh)"
+
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+gshow() {
+    is_in_git_repo || return
+    git log --color=always \
+        --format="%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s" "$@" |
+    fzf --height 100% --ansi --no-sort --reverse --tiebreak=index \
+        --bind=ctrl-s:toggle-sort \
+        --bind "ctrl-m:execute:
+    (grep -o '[a-f0-9]\{7\}' | head -1 |
+    xargs -I % zsh -c 'git show % --color=always | less -R') << 'FZF-EOF'
+    {}
+    FZF-EOF"
+}
