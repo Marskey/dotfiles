@@ -15,6 +15,7 @@ neotree.setup {
   -- log_to_file = true, -- true, false, "/path/to/file.log", use :NeoTreeLogs to show the file
   -- enable_modified_markers = false, -- Show markers for files with unsaved changes.
   -- enable_git_status = false,
+  use_libuv_file_watcher = true,
   filesystem = {
     commands = {
       copy_file_name = function(state)
@@ -83,6 +84,24 @@ neotree.setup {
           end
         end,
       },
+    },
+  },
+  event_handlers = {
+    {
+      event = "neo_tree_popup_input_ready",
+      handler = function()
+        -- enter input popup with normal mode by default.
+        vim.cmd "stopinsert"
+      end,
+    },
+    {
+      event = "neo_tree_popup_input_ready",
+      ---@param args { bufnr: integer, winid: integer }
+      handler = function(args)
+        -- map <esc> to enter normal mode (by default closes prompt)
+        -- don't forget `opts.buffer` to specify the buffer of the popup.
+        vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
+      end,
     },
   },
 }
