@@ -636,4 +636,18 @@ M.flash = {
   },
 }
 
+M.hlchunk = {
+  plugin = true,
+
+  n = {
+    ["<leader>cc"] = {
+      function()
+        require("barbecue.ui").navigate(-1)
+      end,
+
+      "Jump to current_context",
+    },
+  },
+}
+
 return M

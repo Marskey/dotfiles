@@ -238,7 +238,7 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
+    enabled = true,
     opts = overrides.blankline,
   },
   {
@@ -324,6 +324,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
+    enabled = false,
     event = { "UIEnter" },
     config = function()
       require("hlchunk").setup {
@@ -337,6 +338,9 @@ return {
           enable = false,
         },
       }
+    end,
+    init = function()
+      require("core.utils").load_mappings "hlchunk"
     end,
   },
 }
