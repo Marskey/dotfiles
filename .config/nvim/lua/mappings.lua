@@ -67,10 +67,6 @@ end, { desc = "lsp declaration" })
 -- I puted it in lspconfig for loading preview feature
 -- map("n", "gd",
 
-map("n", "gh", function()
-  vim.lsp.buf.hover()
-end, { desc = "lsp hover" })
-
 map("n", "gi", function()
   vim.lsp.buf.implementation()
 end, { desc = "lsp implementation" })

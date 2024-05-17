@@ -24,13 +24,13 @@ if status_ok then
   }
 end
 
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
---   border = "single",
--- })
---
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
---   border = "single",
--- })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "single",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "single",
+})
 
 local loading = nil
 
@@ -47,7 +47,7 @@ vim.keymap.set("n", "gd", function()
   if not vim.tbl_isempty(clients) then
     loading = vim.defer_fn(function()
       local _, winid = vim.lsp.util.open_floating_preview({ "Loading..." }, "markdown", {
-        -- border = "single",
+        border = "single",
         focus = false,
       })
       vim.w[winid].lsp_loading_win = "def_req"
@@ -77,7 +77,7 @@ vim.lsp.handlers["textDocument/definition"] = function(err, result, ctx, config)
   then
     if result == nil or vim.tbl_isempty(result) then
       vim.lsp.util.open_floating_preview({ "No location found!" }, "markdown", {
-        -- border = "single",
+        border = "single",
         focus = false,
       })
     else
