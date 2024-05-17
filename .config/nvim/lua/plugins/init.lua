@@ -254,6 +254,9 @@ return {
     "folke/trouble.nvim",
     event = "BufEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      multiline = false,
+    },
   },
   {
     "kevinhwang91/nvim-bqf",
