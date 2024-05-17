@@ -103,7 +103,7 @@ map("n", "<leader>q", function()
 end, { desc = "diagnostic setloclist" })
 
 map({ "n", "v" }, "<leader>lf", function()
-  vim.lsp.buf.format { async = true }
+  require("conform").format { lsp_fallback = true }
 end, { desc = "lsp formatting" })
 
 -- }
