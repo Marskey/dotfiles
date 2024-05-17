@@ -286,7 +286,7 @@ return {
     opts = {
       create_autocmd = false, -- prevent barbecue from updating itself automatically
       show_dirname = false,
-      -- show_modified = true,
+      show_modified = true,
     },
     init = function()
       vim.opt.updatetime = 200
