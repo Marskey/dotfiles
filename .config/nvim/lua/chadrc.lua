@@ -21,10 +21,11 @@ M.ui = {
     -- TabLine = { link = "NonText" }, -- xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
     -- TabLineFill = { link = "WinBar" }, --    xxx cterm=reverse gui=reverse
   },
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+  hl_override = {
+    CursorLine = { bg = "black2" },
+    -- 	Comment = { italic = true },
+    -- 	["@comment"] = { italic = true },
+  },
 }
 
 return M

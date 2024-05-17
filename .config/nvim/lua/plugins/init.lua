@@ -220,11 +220,11 @@ return {
     end,
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   enabled = false,
-  --   opts = overrides.blankline,
-  -- },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    enabled = true,
+    opts = overrides.blankline,
+  },
   {
     "github/copilot.vim",
     enabled = false,

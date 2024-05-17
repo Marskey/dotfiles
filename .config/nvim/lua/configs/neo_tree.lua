@@ -17,6 +17,11 @@ neotree.setup {
   -- enable_git_status = false,
   use_libuv_file_watcher = true,
   filesystem = {
+    filtered_items = {
+      visible = false, -- when true, they will just be displayed differently than normal items
+      hide_gitignored = false,
+      hide_hidden = true, -- only works on Windows for hidden files/directories
+    },
     commands = {
       copy_file_name = function(state)
         local node = state.tree:get_node()
