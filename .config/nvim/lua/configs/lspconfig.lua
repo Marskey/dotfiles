@@ -1,18 +1,10 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-
 local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
 if status_ok then
   local lspconf = require "lspconfig"
 
   mason_lsp.setup_handlers {
     function(server_name)
-      local opts = {
-        on_attach = on_attach,
-        on_init = on_init,
-        capabilities = capabilities,
-      }
+      local opts = {}
 
       local has_custom_opts, server_custom_opts = pcall(require, "configs.lspconfig." .. server_name)
       if has_custom_opts then
