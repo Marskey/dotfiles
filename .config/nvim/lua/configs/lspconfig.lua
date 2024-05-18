@@ -14,7 +14,7 @@ if status_ok then
         capabilities = capabilities,
       }
 
-      local has_custom_opts, server_custom_opts = pcall(require, "custom.plugins_conf.lspconfig." .. server_name)
+      local has_custom_opts, server_custom_opts = pcall(require, "configs.lspconfig." .. server_name)
       if has_custom_opts then
         opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
       end

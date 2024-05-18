@@ -2,6 +2,10 @@ local lspconf = require "lspconfig"
 return {
   settings = {
     Lua = {
+      hint = {
+        enable = true,
+        setType = true,
+      },
       format = {
         enable = true,
         -- Put format options here
