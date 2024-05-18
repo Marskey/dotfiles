@@ -202,12 +202,14 @@ return {
     "numToStr/Comment.nvim",
     lazy = false,
   },
-  -- {
-  -- 	"hrsh7th/nvim-cmp",
-  -- 	opts = function()
-  -- 		return require("configs.cmp")
-  -- 	end,
-  -- },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      completion = {
+        completeopt = "menuone,noselect",
+      },
+    },
+  },
   {
     "NvChad/nvim-colorizer.lua",
     opts = overrides.colorizer,
