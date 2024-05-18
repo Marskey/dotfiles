@@ -33,7 +33,7 @@ opt.shortmess:append "sI"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
-opt.termguicolors = true
+-- opt.termguicolors = true
 opt.timeoutlen = 1000
 opt.undofile = true
 opt.wrap = true -- display lines as one long line

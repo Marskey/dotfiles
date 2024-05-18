@@ -75,6 +75,10 @@ map("n", "<leader>lh", function()
   vim.lsp.buf.signature_help()
 end, { desc = "lsp signature_help" })
 
+map("n", "<leader>li", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "lsp toggle inlay hint" })
+
 map("n", "<leader>D", function()
   vim.lsp.buf.type_definition()
 end, { desc = "lsp definition type" })
