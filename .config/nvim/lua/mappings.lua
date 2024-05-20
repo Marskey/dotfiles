@@ -56,6 +56,7 @@ unmap("v", "<leader>/")
 map("n", "*", ":keepjumps normal! mi*`i<CR>")
 map("n", "<A-o>", "<cmd> !open %:p:h <CR>")
 map("n", "<Space>", "<Nop>")
+map("n", "<leader>x", "<cmd> bp<bar>sp<bar>bn<bar>bd <CR>", { desc = "close buffer without closing window" })
 
 -- M.lspconfig = {
 
