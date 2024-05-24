@@ -149,4 +149,17 @@ M.flash = {
   },
 }
 
+local cmp = require "cmp"
+M.cmp = {
+  completion = {
+    completeopt = "menu,menuone,noselect",
+  },
+  mapping = {
+    ["<CR>"] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = false,
+    },
+  },
+}
+
 return M

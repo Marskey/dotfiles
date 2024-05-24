@@ -204,11 +204,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    opts = {
-      completion = {
-        completeopt = "menuone,noselect",
-      },
-    },
+    opts = overrides.cmp
   },
   {
     "NvChad/nvim-colorizer.lua",
