@@ -117,8 +117,8 @@ do
 end
 
 do
-  if make_entry.gen_from_vimgrep_json then
-    local _grep_entry_make = make_entry.gen_from_vimgrep_json()
+  if make_entry.gen_from_vimgrep then
+    local _grep_entry_make = make_entry.gen_from_vimgrep()
     local displayer = entry_display.create {
       separator = " ",
       items = {
@@ -128,7 +128,7 @@ do
         { remaining = true },
       },
     }
-    my_make_entry.gen_from_vimgrep_json = function(line)
+    my_make_entry.gen_from_vimgrep = function(line)
       local entry = _grep_entry_make(line)
       if not entry then
         return
@@ -148,25 +148,12 @@ do
           end
         end
         local tail = tail_raw .. coordinates
-
         local trimedText = et.text:gsub("^%s*", "")
-        local offset = #et.text - #trimedText
-
         return displayer {
           { icon, iconhl },
           tail,
           { path_to_display, "TelescopeResultsComment" },
-          {
-            trimedText,
-            function()
-              local match_hi = "TelescopeMatching"
-              local highlights = {}
-              for _, submatch in ipairs(et.submatches) do
-                table.insert(highlights, { { submatch["start"] - offset, submatch["end"] - offset }, match_hi })
-              end
-              return highlights
-            end,
-          },
+          trimedText,
         }
       end
       return entry
@@ -253,7 +240,7 @@ local options = {
       entry_maker = my_make_entry.gen_from_file,
     },
     live_grep = {
-      entry_maker = my_make_entry.gen_from_vimgrep_json,
+      entry_maker = my_make_entry.gen_from_vimgrep,
       attach_mappings = function(_, map)
         map("i", "<c-f>", actions.to_fuzzy_refine)
         return true
@@ -296,7 +283,13 @@ local options = {
       entry_maker = my_make_entry.gen_from_commit(),
     },
   },
-  extensions_list = { "fzf", "themes", "terms", "live_grep_args", "aerial", "ast_grep" },
+  extensions_list = {
+    "fzf",
+    "themes",
+    "terms", --[[ "live_grep_args", ]]
+    "aerial",
+    "ast_grep",
+  },
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
@@ -311,18 +304,6 @@ local options = {
         ["_"] = false, -- This key will be the default
         json = true, -- You can set the option for specific filetypes
         yaml = true,
-      },
-    },
-    live_grep_args = {
-      auto_quoting = true, -- enable/disable auto-quoting
-      entry_maker = my_make_entry.gen_from_vimgrep_json,
-      vimgrep_arguments = { "rg", "--smart-case", "--json" },
-      mappings = {
-        i = {
-          ["<c-i>"] = function(...)
-            require("telescope-live-grep-args.actions").quote_prompt()(...)
-          end,
-        },
       },
     },
     ast_grep = {
