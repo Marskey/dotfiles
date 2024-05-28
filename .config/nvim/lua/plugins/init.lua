@@ -55,7 +55,8 @@ return {
     config = function()
       -- calling `setup` is optional for customization
       require("fzf-lua").setup {
-        -- "max-perf",
+        "telescope",
+        defaults = { formatter = "path.filename_first" },
         winopts = {
           height = 0.80,
           width = 0.87,
@@ -65,7 +66,14 @@ return {
             horizontal = "right:50%", -- right|left:size
           },
         },
+        fzf_opts = { ["--layout"] = "reverse", ["--marker"] = "+" },
+        fzf_colors = {
+          ["gutter"] = "-1",
+        },
       }
+    end,
+    init = function()
+      dofile(vim.g.base46_cache .. "telescope")
     end,
   },
   -- Only load whichkey after all the gui
@@ -204,7 +212,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    opts = overrides.cmp
+    opts = overrides.cmp,
   },
   {
     "NvChad/nvim-colorizer.lua",
