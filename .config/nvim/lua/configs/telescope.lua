@@ -1,5 +1,4 @@
 local entry_display = require "telescope.pickers.entry_display"
-local make_entry = require "telescope.make_entry"
 local utils = require "telescope.utils"
 local action_state = require "telescope.actions.state"
 local actions = require "telescope.actions"
@@ -50,117 +49,6 @@ my_make_entry.gen_from_commit = function(opts)
   end
 end
 
-local function get_path_and_tail(filename)
-  local bufname_tail = utils.path_tail(filename)
-  local path_without_tail = require("plenary.strings").truncate(filename, #filename - #bufname_tail - 1, "")
-  local path_to_display = utils.transform_path({}, path_without_tail)
-
-  return bufname_tail, path_to_display
-end
-
-do
-  local _entry_make = make_entry.gen_from_file()
-  local displayer = entry_display.create {
-    separator = " ",
-    items = {
-      { width = nil },
-      { width = nil },
-      { remaining = true },
-    },
-  }
-
-  my_make_entry.gen_from_file = function(line)
-    local entry = _entry_make(line)
-    entry.display = function(et)
-      -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
-      local tail_raw, path_to_display = get_path_and_tail(et.value)
-      local tail = tail_raw
-      local icon, iconhl = utils.get_devicons(tail_raw)
-
-      return displayer {
-        { icon, iconhl },
-        tail,
-        { path_to_display, "TelescopeResultsComment" },
-      }
-    end
-    return entry
-  end
-end
-
-do
-  local _entry_make = make_entry.gen_from_buffer()
-  local displayer = entry_display.create {
-    separator = " ",
-    items = {
-      { width = 4 },
-      { width = nil },
-      { width = nil },
-      { remaining = true },
-    },
-  }
-
-  my_make_entry.gen_from_buffer = function(line)
-    local entry = _entry_make(line)
-    entry.display = function(et)
-      local tail_raw, path_to_display = get_path_and_tail(et.filename)
-      local tail = tail_raw
-      local icon, iconhl = utils.get_devicons(tail_raw)
-      return displayer {
-        { et.indicator, "TelescopeResultsComment" },
-        { icon, iconhl },
-        tail,
-        { path_to_display, "TelescopeResultsComment" },
-      }
-    end
-    return entry
-  end
-end
-
-do
-  if make_entry.gen_from_vimgrep then
-    local _grep_entry_make = make_entry.gen_from_vimgrep()
-    local displayer = entry_display.create {
-      separator = " ",
-      items = {
-        { width = nil },
-        { width = nil },
-        { width = nil },
-        { remaining = true },
-      },
-    }
-    my_make_entry.gen_from_vimgrep = function(line)
-      local entry = _grep_entry_make(line)
-      if not entry then
-        return
-      end
-
-      entry.display = function(et)
-        -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/make_entry.lua
-        local tail_raw, path_to_display = get_path_and_tail(et.filename)
-        local icon, iconhl = utils.get_devicons(tail_raw)
-
-        local coordinates = ":"
-        if et.lnum then
-          if et.col then
-            coordinates = string.format(":%s:%s", et.lnum, et.col)
-          else
-            coordinates = string.format(":%s", et.lnum)
-          end
-        end
-        local tail = tail_raw .. coordinates
-        local trimedText = et.text:gsub("^%s*", "")
-        return displayer {
-          { icon, iconhl },
-          tail,
-          { path_to_display, "TelescopeResultsComment" },
-          trimedText,
-        }
-      end
-      return entry
-    end
-  end
-end
-
 local git_copy_sha = function(prompt_bufnr)
   local selection = action_state.get_selected_entry()
   if selection == nil then
@@ -183,7 +71,7 @@ local options = {
     -- },
     prompt_prefix = "",
     -- path_display = { shorten = { len = 3, exclude = { 1, 2, -2, -1 } } },
-    path_display = { "absolute" },
+    path_display = { "filename_first" },
     history = false,
     cache_picker = {
       num_pickers = 10,
@@ -232,15 +120,12 @@ local options = {
   },
   pickers = {
     find_files = {
-      entry_maker = my_make_entry.gen_from_file,
       follow = true,
     },
     oldfiles = {
       cwd_only = true,
-      entry_maker = my_make_entry.gen_from_file,
     },
     live_grep = {
-      entry_maker = my_make_entry.gen_from_vimgrep,
       attach_mappings = function(_, map)
         map("i", "<c-f>", actions.to_fuzzy_refine)
         return true
@@ -250,7 +135,6 @@ local options = {
       sort_mru = true,
       ignore_current_buffer = true,
       scroll_strategy = "limit",
-      entry_maker = my_make_entry.gen_from_buffer,
     },
     git_bcommits = {
       git_command = {
