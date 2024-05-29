@@ -126,6 +126,12 @@ map("v", "<leader>ff", function()
     },
   }
 end, { desc = "find files" })
+map("n", "<leader>ft", "<cmd> FzfLua live_grep <CR>", { desc = "live grep" })
+map("v", "<leader>ft", function()
+  require("fzf-lua").live_grep {
+    search = getVisualSelection(),
+  }
+end, { desc = "Find Text" })
 -- }
 
 -- M.telescope = {
@@ -140,7 +146,7 @@ map("n", "<leader>fj", "<cmd> Telescope jumplist <CR>", { desc = "jumplist" })
 map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "document symbols" })
 map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last find" })
 map("n", "<leader>fl", "<cmd> Telescope pickers <CR>", { desc = "find pickers cache" })
-map("n", "<leader>ft", "<cmd> Telescope live_grep <CR>", { desc = "live grep" })
+-- map("n", "<leader>ft", "<cmd> Telescope live_grep <CR>", { desc = "live grep" })
 
 -- git
 map("n", "<leader>gf", "<cmd> Telescope git_bcommits <CR>", { desc = "git buffer commits" })
@@ -161,15 +167,15 @@ map("n", "<leader>ph", "<cmd> Telescope themes <CR>", { desc = "nvchad themes" }
 --   end,
 --   "find files",
 -- },
-map("v", "<leader>ft", function()
-  require("telescope.builtin").live_grep {
-    default_text = getVisualSelection(),
-    only_sort_text = true,
-    additional_args = function()
-      return { "--pcre2" }
-    end,
-  }
-end, { desc = "Find Text" })
+-- map("v", "<leader>ft", function()
+--   require("telescope.builtin").live_grep {
+--     default_text = getVisualSelection(),
+--     only_sort_text = true,
+--     additional_args = function()
+--       return { "--pcre2" }
+--     end,
+--   }
+-- end, { desc = "Find Text" })
 -- }
 
 local lazygit = nil

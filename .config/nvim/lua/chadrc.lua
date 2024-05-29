@@ -22,7 +22,7 @@ M.ui = {
     -- TabLineFill = { link = "WinBar" }, --    xxx cterm=reverse gui=reverse
   },
   hl_override = {
-    -- CursorLine = { bg = "black2" },
+    CursorLine = { bg = "black2" },
     -- 	Comment = { italic = true },
     -- 	["@comment"] = { italic = true },
   },

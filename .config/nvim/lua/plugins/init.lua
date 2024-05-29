@@ -52,53 +52,8 @@ return {
     -- optional for icon support
     cmd = "FzfLua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup {
-        "telescope",
-        defaults = { formatter = "path.filename_first" },
-        winopts = {
-          height = 0.80,
-          width = 0.87,
-          preview = {
-            wrap = "wrap",
-            layout = "horizontal", -- horizontal|vertical|flex
-            horizontal = "right:50%", -- right|left:size
-          },
-        },
-        fzf_opts = { ["--layout"] = "reverse", ["--marker"] = "+" },
-        fzf_colors = {
-          ["gutter"] = "-1",
-        },
-        keymap = {
-          builtin = {
-            ["<F1>"] = "toggle-help",
-            ["<c-n>"] = "toggle-fullscreen",
-            -- Only valid with the 'builtin' previewer
-            ["<F3>"] = "toggle-preview-wrap",
-            ["<c-p>"] = "toggle-preview",
-            ["<F5>"] = "toggle-preview-ccw",
-            ["<F6>"] = "toggle-preview-cw",
-            ["<C-d>"] = "preview-page-down",
-            ["<C-u>"] = "preview-page-up",
-            ["<S-left>"] = "preview-page-reset",
-          },
-          fzf = {
-            ["ctrl-z"] = "abort",
-            ["ctrl-f"] = "page-down",
-            ["ctrl-b"] = "page-up",
-            ["ctrl-a"] = "beginning-of-line",
-            ["ctrl-e"] = "end-of-line",
-            ["alt-a"] = "toggle-all",
-            -- Only valid with fzf previewers (bat/cat/git/etc)
-            ["f3"] = "toggle-preview-wrap",
-            ["f4"] = "toggle-preview",
-            ["ctrl-d"] = "preview-page-down",
-            ["ctrl-u"] = "preview-page-up",
-            ["ctrl-q"] = "select-all+accept",
-          },
-        },
-      }
+    config = function ()
+        require "configs.fzf_lua"
     end,
     init = function()
       dofile(vim.g.base46_cache .. "telescope")
