@@ -85,8 +85,8 @@ return {
           },
           fzf = {
             ["ctrl-z"] = "abort",
-            ["ctrl-f"] = "half-page-down",
-            ["ctrl-b"] = "half-page-up",
+            ["ctrl-f"] = "page-down",
+            ["ctrl-b"] = "page-up",
             ["ctrl-a"] = "beginning-of-line",
             ["ctrl-e"] = "end-of-line",
             ["alt-a"] = "toggle-all",
