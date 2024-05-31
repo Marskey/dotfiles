@@ -34,8 +34,8 @@ require("fzf-lua").setup {
     },
     fzf = {
       ["ctrl-z"] = "abort",
-      ["ctrl-f"] = "page-down",
-      ["ctrl-b"] = "page-up",
+      ["ctrl-f"] = "forward-char",
+      ["ctrl-b"] = "backward-char",
       ["ctrl-a"] = "beginning-of-line",
       ["ctrl-e"] = "end-of-line",
       ["alt-a"] = "toggle-all",
