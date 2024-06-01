@@ -19,6 +19,9 @@ require("fzf-lua").setup {
     cursorline = "CursorLine",
     cursorlinenr = "CursorLineNr",
   },
+  grep = {
+    rg_opts = "--column --line-number --no-heading --color=always -L --smart-case --max-columns=4096 -e",
+  },
   keymap = {
     builtin = {
       ["<F1>"] = "toggle-help",
