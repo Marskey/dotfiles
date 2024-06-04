@@ -52,8 +52,8 @@ return {
     -- optional for icon support
     cmd = "FzfLua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function ()
-        require "configs.fzf_lua"
+    config = function()
+      require "configs.fzf_lua"
     end,
     init = function()
       dofile(vim.g.base46_cache .. "telescope")
@@ -253,6 +253,7 @@ return {
     opts = {
       func_map = {
         split = "<C-s>",
+        filterr = "zd",
       },
     },
   },
