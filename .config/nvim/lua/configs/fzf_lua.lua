@@ -3,12 +3,13 @@ require("fzf-lua").setup {
   "telescope",
   defaults = { formatter = "path.filename_first" },
   winopts = {
-    height = 0.80,
-    width = 0.87,
+    height = 0.90,
+    width = 0.77,
     preview = {
       wrap = "wrap",
-      layout = "horizontal", -- horizontal|vertical|flex
-      horizontal = "right:50%", -- right|left:size
+      layout = "vertical", -- horizontal|vertical|flex
+      vertical = "down:50%", -- right|left:size
+      hidden = "hidden", -- hidden|nohidden
     },
   },
   fzf_opts = { ["--layout"] = "reverse", ["--marker"] = "+" },
