@@ -298,3 +298,12 @@ map("c", "<c-s>", function()
   require("flash").toggle()
 end, { desc = "Toggle Flash Search" })
 -- }
+
+-- M.trouble {
+map(
+  "n",
+  "<leader>tc",
+  "<cmd> Trouble diagnostics toggle focus=false filter.buf=0 <CR>",
+  { desc = "Toggle diagnostics for the current buffer" }
+)
+-- }

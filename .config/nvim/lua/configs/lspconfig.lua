@@ -1,6 +1,7 @@
 local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
 if status_ok then
   local lspconf = require "lspconfig"
+  require("lspconfig.ui.windows").default_options.border = "single"
 
   mason_lsp.setup_handlers {
     function(server_name)
