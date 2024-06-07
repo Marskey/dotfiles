@@ -36,7 +36,7 @@ vim.keymap.set("n", "gd", function()
 
   vim.lsp.buf.definition()
 
-  local clients = vim.lsp.buf_get_clients(0)
+  local clients = vim.lsp.get_clients { { bufnr = 0 } }
   if not vim.tbl_isempty(clients) then
     loading = vim.defer_fn(function()
       local _, winid = vim.lsp.util.open_floating_preview({ "Loading..." }, "markdown", {

@@ -7,7 +7,7 @@ return {
         setType = true,
       },
       format = {
-        enable = true,
+        enable = false,
         -- Put format options here
         -- NOTE: the value should be STRING!!
         defaultConfig = {
