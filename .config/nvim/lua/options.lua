@@ -49,7 +49,8 @@ opt.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
-opt.guifont = "Hack Nerd Font:h14"
+opt.guifont = "MesloLGL Nerd Font:h15"
+opt.linespace = -6
 
 g.mapleader = " "
 g.vscode_snippets_path = "./lua/configs/my_snippets"
