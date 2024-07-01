@@ -15,9 +15,9 @@ M.ui = {
   hl_add = {
     -- BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
     FlashLabel = { fg = "black", bg = "red" },
-    -- DiagnosticUnderlineError = { undercurl = true, sp = "red" },
-    -- DiagnosticUnderlineHint = { undercurl = true, sp = "blue" },
-    -- DiagnosticUnderlineWarn = { undercurl = true, sp = "yellow" },
+    DiagnosticUnderlineError = { undercurl = true, sp = "red" },
+    DiagnosticUnderlineHint = { undercurl = true, sp = "blue" },
+    DiagnosticUnderlineWarn = { undercurl = true, sp = "yellow" },
     -- TabLine = { link = "NonText" }, -- xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
     -- TabLineFill = { link = "WinBar" }, --    xxx cterm=reverse gui=reverse
   },
