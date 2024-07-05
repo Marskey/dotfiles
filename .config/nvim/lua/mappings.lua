@@ -132,15 +132,17 @@ map("v", "<leader>ft", function()
     search = getVisualSelection(),
   }
 end, { desc = "Find Text" })
+map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
+map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=true <CR>", { desc = "find oldfiles" })
 -- }
 
 -- M.telescope = {
 
 -- find
 -- ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "find buffers" })
+-- map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "find buffers" })
 map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "help page" })
-map("n", "<leader>fo", "<cmd> Telescope oldfiles only_cwd=true <CR>", { desc = "find oldfiles" })
+-- map("n", "<leader>fo", "<cmd> Telescope oldfiles only_cwd=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "show keys" })
 map("n", "<leader>fj", "<cmd> Telescope jumplist <CR>", { desc = "jumplist" })
 map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "document symbols" })
