@@ -10,7 +10,7 @@ opt.cursorlineopt = "both" -- to enable cursorline!
 -- opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 
 -- Indenting
-opt.expandtab = false
+opt.expandtab = true
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.softtabstop = 4
