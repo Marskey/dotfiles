@@ -10,20 +10,18 @@
 [core]
     excludesfile = /Users/marskey/.gitignore_global
     autocrlf = input
-    pager = delta --diff-so-fancy --max-line-length=0
+    ; pager = delta --diff-so-fancy --max-line-length=0
+    pager = diffr | less -R
     quotepath = false
 [interactive]
-    diffFilter = delta --diff-so-fancy --color-only --features=interactive --max-line-length=0
+    ; diffFilter = delta --diff-so-fancy --color-only --features=interactive --max-line-length=0
+    diffFilter = diffr
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
 [diff]
-    tool = difftastic
-[difftool]
-    prompt = false
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-    difftool = true
+    colorMoved = default
+[merge]
+    conflictstyle = diff3

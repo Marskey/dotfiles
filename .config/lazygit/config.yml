@@ -9,7 +9,8 @@ os:
 git:
   paging:
     colorArg: always
-    pager: delta --paging=never --diff-so-fancy --max-line-length=0
+    # pager: delta --paging=never --diff-so-fancy --max-line-length=0
+    pager: diffr
 
 confirmOnQuit: true
 showCommandLog: true
