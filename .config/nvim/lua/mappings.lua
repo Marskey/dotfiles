@@ -134,6 +134,7 @@ map("v", "<leader>ft", function()
 end, { desc = "Find Text" })
 map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
 map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=true <CR>", { desc = "find oldfiles" })
+map("n", "<leader>fr", "<cmd> FzfLua resume <CR>", { desc = "Resume last find" })
 -- }
 
 -- M.telescope = {
@@ -146,7 +147,7 @@ map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "help page" })
 map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "show keys" })
 map("n", "<leader>fj", "<cmd> Telescope jumplist <CR>", { desc = "jumplist" })
 map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "document symbols" })
-map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last find" })
+-- map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last find" })
 map("n", "<leader>fl", "<cmd> Telescope pickers <CR>", { desc = "find pickers cache" })
 -- map("n", "<leader>ft", "<cmd> Telescope live_grep <CR>", { desc = "live grep" })
 

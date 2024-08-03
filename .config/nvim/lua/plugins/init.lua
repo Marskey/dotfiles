@@ -62,7 +62,9 @@ return {
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
+    dependencies = "echasnovski/mini.icons",
     opts = {
+      delay = 200,
       plugins = {
         marks = false, -- shows a list of your marks on ' and `
         registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -82,7 +84,7 @@ return {
           g = true, -- bindings for prefixed with g
         },
       },
-      window = {
+      win = {
         border = "single",
       },
     },

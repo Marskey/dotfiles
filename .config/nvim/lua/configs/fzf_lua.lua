@@ -25,6 +25,7 @@ require("fzf-lua").setup {
   },
   keymap = {
     builtin = {
+      ["<Esc>"] = "hide",
       ["<F1>"] = "toggle-help",
       ["<c-n>"] = "toggle-fullscreen",
       -- Only valid with the 'builtin' previewer
