@@ -135,7 +135,21 @@ end, { desc = "Find Text" })
 map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
 map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fr", "<cmd> FzfLua resume <CR>", { desc = "Resume last find" })
+map("n", "<leader>fs", "<cmd> FzfLua lsp_document_symbols <CR>", { desc = "document symbols" })
+map("n", "<leader>fw", "<cmd> FzfLua lsp_workspace_symbols <CR>", { desc = "workspace symbols" })
+map("v", "<leader>fw", function()
+  require("fzf-lua").lsp_workspace_symbols {
+    query = getVisualSelection(),
+  }
+end, { desc = "workspace symbols" })
+map("v", "<leader>fs", function ()
+  require("fzf-lua").lsp_document_symbols {
+    query = getVisualSelection(),
+  }
+end, { desc = "document symbols" })
 -- }
+
+map("n", "<leader>gc", "<cmd> FzfLua git_bcommits <CR>", { desc = "git buffer commits" })
 
 -- M.telescope = {
 
@@ -146,15 +160,15 @@ map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "help page" })
 -- map("n", "<leader>fo", "<cmd> Telescope oldfiles only_cwd=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "show keys" })
 map("n", "<leader>fj", "<cmd> Telescope jumplist <CR>", { desc = "jumplist" })
-map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "document symbols" })
+-- map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "document symbols" })
 -- map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last find" })
 map("n", "<leader>fl", "<cmd> Telescope pickers <CR>", { desc = "find pickers cache" })
 -- map("n", "<leader>ft", "<cmd> Telescope live_grep <CR>", { desc = "live grep" })
 
 -- git
-map("n", "<leader>gf", "<cmd> Telescope git_bcommits <CR>", { desc = "git buffer commits" })
-map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "git buffer commits" })
-map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "git status" })
+-- map("n", "<leader>gf", "<cmd> Telescope git_bcommits <CR>", { desc = "git buffer commits" })
+-- map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "git buffer commits" })
+-- map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "git status" })
 
 -- pick a hidden term
 map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "pick hidden term" })

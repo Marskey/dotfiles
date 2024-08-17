@@ -20,6 +20,7 @@ opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
+opt.mousemodel = "extend"
 
 -- Numbers
 opt.number = true
