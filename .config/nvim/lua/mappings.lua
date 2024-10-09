@@ -142,7 +142,7 @@ map("v", "<leader>fw", function()
     query = getVisualSelection(),
   }
 end, { desc = "workspace symbols" })
-map("v", "<leader>fs", function ()
+map("v", "<leader>fs", function()
   require("fzf-lua").lsp_document_symbols {
     query = getVisualSelection(),
   }

@@ -5,13 +5,20 @@
 local M = {}
 
 M.ui = {
-  theme = "everforest",
+  -- theme = "everforest",
+  cmp = {
+    lspkind_text = true,
+    style = "atom", -- default/flat_light/flat_dark/atom/atom_colored
+    format_colors = {
+      tailwind = false,
+    },
+  },
 
   tabufline = {
     enabled = false,
   },
 
-  transparency = true,
+  -- transparency = true,
   hl_add = {
     -- BufferLineIndicatorSelected = { link = "BufferLineSeparator" }
     FlashLabel = { fg = "black", bg = "red" },
@@ -27,5 +34,4 @@ M.ui = {
     -- 	["@comment"] = { italic = true },
   },
 }
-
 return M
