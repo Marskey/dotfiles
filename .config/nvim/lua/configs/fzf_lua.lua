@@ -1,4 +1,31 @@
 local actions = require("fzf-lua").actions
+
+local function yank_filename(selected, opts)
+  local ret = selected[1]:match "(%w+%.%w+)"
+  if vim.o.clipboard == "unnamed" then
+    vim.fn.setreg([[*]], ret)
+  elseif vim.o.clipboard == "unnamedplus" then
+    vim.fn.setreg([[+]], ret)
+  else
+    vim.fn.setreg([["]], ret)
+  end
+  -- copy to the yank register regardless
+  vim.fn.setreg([[0]], ret)
+end
+
+local function yank_buff_filename(selected, opts)
+  local ret = selected[1]:match "(%w+%.%w+)"
+  if vim.o.clipboard == "unnamed" then
+    vim.fn.setreg([[*]], ret)
+  elseif vim.o.clipboard == "unnamedplus" then
+    vim.fn.setreg([[+]], ret)
+  else
+    vim.fn.setreg([["]], ret)
+  end
+  -- copy to the yank register regardless
+  vim.fn.setreg([[0]], ret)
+end
+
 require("fzf-lua").setup {
   "telescope",
   defaults = { formatter = "path.filename_first" },
@@ -52,12 +79,17 @@ require("fzf-lua").setup {
     },
   },
 
-  actions = {
-    files = {
-      ["default"] = actions.file_edit_or_qf,
+  files = {
+    actions = {
       ["ctrl-s"] = actions.file_split,
-      ["ctrl-v"] = actions.file_vsplit,
-      ["ctrl-t"] = actions.file_tabedit,
+      ["ctrl-y"] = yank_filename,
+    },
+  },
+
+  buffers = {
+    actions = {
+      ["ctrl-s"] = actions.file_split,
+      ["ctrl-y"] = yank_buff_filename,
     },
   },
 }

@@ -282,7 +282,7 @@ end, { desc = "Toggle deleted" })
 
 -- M.aerial = {
 map("n", "<leader>lo", "<cmd>AerialToggle<cr>", { desc = "Open outline" })
-map("n", "<leader>ls", "<cmd> Telescope aerial default_selection_index=1 <CR>", { desc = "document functions" })
+-- map("n", "<leader>ls", "<cmd> Telescope aerial default_selection_index=1 <CR>", { desc = "document functions" })
 -- }
 
 map("n", "<leader>fg", "<cmd> Telescope ast_grep<CR>", { desc = "Structural search" })
