@@ -86,6 +86,13 @@ require("fzf-lua").setup {
     },
   },
 
+  oldfiles = {
+    actions = {
+      ["ctrl-s"] = actions.file_split,
+      ["ctrl-y"] = yank_filename,
+    },
+  },
+
   buffers = {
     actions = {
       ["ctrl-s"] = actions.file_split,
