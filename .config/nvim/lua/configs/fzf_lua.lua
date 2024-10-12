@@ -1,7 +1,7 @@
 local actions = require("fzf-lua").actions
 
 local function yank_filename(selected, opts)
-  local ret = selected[1]:match "(%w+%.%w+)"
+  local ret = selected[1]:match "([%w-_]+%.%w+)"
   if vim.o.clipboard == "unnamed" then
     vim.fn.setreg([[*]], ret)
   elseif vim.o.clipboard == "unnamedplus" then
@@ -14,7 +14,7 @@ local function yank_filename(selected, opts)
 end
 
 local function yank_buff_filename(selected, opts)
-  local ret = selected[1]:match "(%w+%.%w+)"
+  local ret = selected[1]:match "([%w-_]+%.%w+)"
   if vim.o.clipboard == "unnamed" then
     vim.fn.setreg([[*]], ret)
   elseif vim.o.clipboard == "unnamedplus" then
