@@ -156,13 +156,13 @@ map("n", "<leader>gc", "<cmd> FzfLua git_bcommits <CR>", { desc = "git buffer co
 -- find
 -- ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
 -- map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "find buffers" })
-map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "help page" })
+-- map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "help page" })
 -- map("n", "<leader>fo", "<cmd> Telescope oldfiles only_cwd=true <CR>", { desc = "find oldfiles" })
-map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "show keys" })
-map("n", "<leader>fj", "<cmd> Telescope jumplist <CR>", { desc = "jumplist" })
+-- map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "show keys" })
+-- map("n", "<leader>fj", "<cmd> Telescope jumplist <CR>", { desc = "jumplist" })
 -- map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "document symbols" })
 -- map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last find" })
-map("n", "<leader>fl", "<cmd> Telescope pickers <CR>", { desc = "find pickers cache" })
+-- map("n", "<leader>fl", "<cmd> Telescope pickers <CR>", { desc = "find pickers cache" })
 -- map("n", "<leader>ft", "<cmd> Telescope live_grep <CR>", { desc = "live grep" })
 
 -- git
@@ -171,7 +171,7 @@ map("n", "<leader>fl", "<cmd> Telescope pickers <CR>", { desc = "find pickers ca
 -- map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "git status" })
 
 -- pick a hidden term
-map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "pick hidden term" })
+-- map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "pick hidden term" })
 
 -- theme switcher
 map("n", "<leader>ph", "<cmd> Telescope themes <CR>", { desc = "nvchad themes" })
