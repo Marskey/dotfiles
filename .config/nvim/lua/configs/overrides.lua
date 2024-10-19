@@ -144,9 +144,17 @@ M.flash = {
     char = {
       multi_line = false,
       jump_labels = true,
-      highlight = { backdrop = false },
+      highlight = { backdrop = true },
+      jump = {
+        -- when using jump labels, set to 'true' to automatically jump
+        -- or execute a motion when there is only one match
+        autojump = false,
+      },
     },
   },
+  label = {
+    style = "inline", ---@type "eol" | "overlay" | "right_align" | "inline"
+  }
 }
 
 local cmp = require "cmp"

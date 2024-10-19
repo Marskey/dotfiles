@@ -38,7 +38,10 @@ opt.splitright = true
 opt.timeoutlen = 1000
 opt.undofile = true
 opt.wrap = true -- display lines as one long line
-opt.foldmethod = "indent"
+-- opt.foldmethod = "indent"
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 opt.foldlevelstart = 99
 
 opt.list = true
