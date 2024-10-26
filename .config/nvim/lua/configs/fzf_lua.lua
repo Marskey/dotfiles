@@ -49,6 +49,9 @@ require("fzf-lua").setup {
   },
   grep = {
     rg_opts = "--column --line-number --no-heading --color=always -L --smart-case --max-columns=4096 -e",
+    actions = {
+      ["ctrl-s"] = actions.file_split,
+    }
   },
   keymap = {
     builtin = {

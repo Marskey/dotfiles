@@ -136,9 +136,9 @@ map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
 map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fr", "<cmd> FzfLua resume <CR>", { desc = "Resume last find" })
 map("n", "<leader>fs", "<cmd> FzfLua lsp_document_symbols <CR>", { desc = "document symbols" })
-map("n", "<leader>fw", "<cmd> FzfLua lsp_workspace_symbols <CR>", { desc = "workspace symbols" })
+map("n", "<leader>fw", "<cmd> FzfLua lsp_live_workspace_symbols <CR>", { desc = "workspace symbols" })
 map("v", "<leader>fw", function()
-  require("fzf-lua").lsp_workspace_symbols {
+  require("fzf-lua").lsp_live_workspace_symbols {
     query = getVisualSelection(),
   }
 end, { desc = "workspace symbols" })
