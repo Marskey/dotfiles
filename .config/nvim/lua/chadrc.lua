@@ -21,6 +21,7 @@ M.ui = {
 }
 
 M.base46 = {
+  theme = "catppuccin",
   hl_override = {
     CursorLine = { bg = "black2" },
     -- 	Comment = { italic = true },
