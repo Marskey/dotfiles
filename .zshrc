@@ -152,3 +152,8 @@ gshow() {
     {}
     FZF-EOF"
 }
+gdiff() {
+    is_in_git_repo || return
+    cp $(git diff --name-only HEAD $2) $1
+    cd $1
+}
