@@ -39,9 +39,10 @@ require("fzf-lua").setup {
       hidden = "hidden", -- hidden|nohidden
     },
   },
-  fzf_opts = { ["--layout"] = "reverse", ["--marker"] = "+" },
+  fzf_opts = { ["--layout"] = "reverse", ["--marker"] = "+ " },
   fzf_colors = {
     ["gutter"] = "-1",
+    ["marker"] = { "fg", "TelescopePromptPrefix" },
   },
   hls = {
     cursorline = "CursorLine",
