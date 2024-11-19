@@ -282,9 +282,6 @@ return {
       create_autocmd = false, -- prevent barbecue from updating itself automatically
       show_dirname = false,
       show_modified = true,
-      symbols = {
-        separator = ">",
-      }
     },
     init = function()
       vim.opt.updatetime = 200
