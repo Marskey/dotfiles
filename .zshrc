@@ -157,3 +157,10 @@ gdiff() {
     cp $(git diff --name-only HEAD $2) $1
     cd $1
 }
+
+gdiffgr() {
+    is_in_git_repo || return
+    cp $(git log --grep=$2 --name-only --pretty=format: | sort | uniq) $1
+    cd $1
+}
+
