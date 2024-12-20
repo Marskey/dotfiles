@@ -218,18 +218,17 @@ return {
   },
   {
     "github/copilot.vim",
-    enabled = false,
-    event = "BufEnter",
+    -- enabled = false,
+    event = "VeryLazy",
     config = function()
       vim.g.copilot_no_tab_map = true
+      vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("\\<CR>")', { replace_keycodes = false, expr = true })
       vim.g.copilot_filetypes = {
-        ["TelescopePrompt"] = false,
-        ["Neo-tree"] = false,
+        ["*"] = false,
+        ["lua"] = true,
+        -- ["TelescopePrompt"] = false,
+        -- ["Neo-tree"] = false,
       }
-    end,
-    init = function()
-      vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-      vim.g.copilot_no_tab_map = true
     end,
   },
   {
