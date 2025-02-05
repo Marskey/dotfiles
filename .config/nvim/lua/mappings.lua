@@ -276,8 +276,8 @@ map("n", "<leader>gd", function()
 end, { desc = "Diff this" })
 
 map("n", "<leader>gb", function()
-  require("gitsigns").toggle_deleted()
-end, { desc = "Toggle deleted" })
+  require("gitsigns").blame()
+end, { desc = "Toggle blame" })
 -- }
 
 -- M.aerial = {
