@@ -217,20 +217,47 @@ return {
     opts = overrides.blankline,
   },
   {
-    "github/copilot.vim",
-    -- enabled = false,
-    event = "VeryLazy",
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
-      vim.g.copilot_no_tab_map = true
-      vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("\\<CR>")', { replace_keycodes = false, expr = true })
-      vim.g.copilot_filetypes = {
-        ["*"] = false,
-        ["lua"] = true,
-        -- ["TelescopePrompt"] = false,
-        -- ["Neo-tree"] = false,
+      require("copilot").setup {
+        suggestion = {
+          enabled = true,
+          auto_trigger = false,
+          hide_during_completion = true,
+          debounce = 75,
+          keymap = {
+            accept = "<C-J>",
+            accept_word = false,
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+        filetypes = {
+          ["*"] = false,
+          ["lua"] = true,
+        },
       }
     end,
   },
+  -- {
+  --   "github/copilot.vim",
+  --   enabled = true,
+  --   event = "VeryLazy",
+  --   config = function()
+  --     vim.g.copilot_no_tab_map = true
+  --     vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("\\<CR>")', { replace_keycodes = false, expr = true })
+  --     vim.g.copilot_filetypes = {
+  --       ["*"] = false,
+  --       ["lua"] = true,
+  --       -- ["TelescopePrompt"] = false,
+  --       -- ["Neo-tree"] = false,
+  --     }
+  --   end,
+  -- },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -300,4 +327,72 @@ return {
       })
     end,
   },
+  {
+    "yetone/avante.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    lazy = false,
+    version = false, -- set this if you want to always pull the latest change
+    opts = {
+      provider = "deepseek",
+      auto_suggestions_provider = "claude",
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-sonnet-20241022",
+        temperature = 0,
+        max_tokens = 4096,
+      },
+      vendors = {
+        deepseek = {
+          __inherited_from = "openai",
+          api_key_name = "DEEPSEEK_API_KEY",
+          -- endpoint = "https://api.deepseek.com",
+          endpoint = "https://openrouter.ai/api/v1",
+          -- model = "deepseek-coder",
+          model = "deepseek/deepseek-r1:free",
+        },
+      },
+      behaviour = {
+        auto_suggestions = true,
+      },
+    },
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
 }
+
