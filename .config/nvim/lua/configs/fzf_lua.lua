@@ -52,7 +52,7 @@ require("fzf-lua").setup {
     rg_opts = "--column --line-number --no-heading --color=always -L --smart-case --max-columns=4096 -e",
     actions = {
       ["ctrl-s"] = actions.file_split,
-    }
+    },
   },
   keymap = {
     builtin = {
@@ -87,6 +87,9 @@ require("fzf-lua").setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
+      ["ctrl-g"] = actions.toggle_ignore,
+      ["ctrl-h"] = actions.toggle_hidden,
+      ["ctrl-f"] = actions.toggle_follow,
     },
   },
 
