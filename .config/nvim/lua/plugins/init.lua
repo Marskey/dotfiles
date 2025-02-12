@@ -319,9 +319,9 @@ return {
           adapter = "deepseek",
         },
       },
-      opts = {
-        log_level = "DEBUG", -- or "TRACE"
-      },
+      -- opts = {
+      --   log_level = "DEBUG", -- or "TRACE"
+      -- },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -329,4 +329,12 @@ return {
     },
   },
   { "echasnovski/mini.diff", version = false },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    event = "VeryLazy",
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
 }
