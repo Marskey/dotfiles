@@ -330,11 +330,12 @@ return {
   },
   { "echasnovski/mini.diff", version = false },
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    event = "VeryLazy",
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
-    opts = {},
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    opts = {
+      preview = {
+        filetypes = { "markdown", "codecompanion" },
+      }
+    }
   },
 }
