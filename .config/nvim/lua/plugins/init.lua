@@ -318,16 +318,19 @@ return {
   { "echasnovski/mini.diff", version = false },
   {
     "OXY2DEV/markview.nvim",
-    enabled = false,
-    lazy = false,
+    enabled = true,
+    ft = { "markdown", "codecompanion" },
+    lazy = true,
     opts = {
       preview = {
         filetypes = { "markdown", "codecompanion" },
+        ignore_buftypes = {},
       },
     },
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    enabled = false,
     event = "VeryLazy",
     ft = { "markdown", "codecompanion" },
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
