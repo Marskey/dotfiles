@@ -309,20 +309,7 @@ return {
     "olimorris/codecompanion.nvim",
     enabled = true,
     event = "VeryLazy",
-    opts = {
-      strategies = {
-        -- Change the default chat adapter
-        chat = {
-          adapter = "deepseek",
-        },
-        inline = {
-          adapter = "deepseek",
-        },
-      },
-      -- opts = {
-      --   log_level = "DEBUG", -- or "TRACE"
-      -- },
-    },
+    opts = overrides.codecompanion,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -331,11 +318,21 @@ return {
   { "echasnovski/mini.diff", version = false },
   {
     "OXY2DEV/markview.nvim",
+    enabled = false,
     lazy = false,
     opts = {
       preview = {
         filetypes = { "markdown", "codecompanion" },
-      }
-    }
+      },
+    },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    event = "VeryLazy",
+    ft = { "markdown", "codecompanion" },
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
 }
