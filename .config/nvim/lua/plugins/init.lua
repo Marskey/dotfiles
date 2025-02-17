@@ -62,6 +62,7 @@ return {
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
+    enabled = false,
     dependencies = "echasnovski/mini.icons",
     opts = {
       delay = 200,

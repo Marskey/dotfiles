@@ -48,7 +48,12 @@ unmap("n", "<A-v>")
 unmap("n", "<leader>h")
 unmap("n", "<leader>v")
 unmap("n", "<leader>fa")
-unmap("v", "<leader>/")
+unmap("n", "<leader>fb")
+unmap("n", "<leader>fh")
+unmap("n", "<leader>ma")
+unmap("n", "<leader>fz")
+unmap("n", "<leader>gt")
+unmap("n", "<leader>pt")
 
 --Remap space as leader key
 -- vim.api.nvim_set_keymap("", "<SPACE>", "<Nop>", { noremap = true, silent = true })
@@ -151,49 +156,8 @@ end, { desc = "document symbols" })
 
 map("n", "<leader>gc", "<cmd> FzfLua git_bcommits <CR>", { desc = "git buffer commits" })
 
--- M.telescope = {
-
--- find
--- ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
--- map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "find buffers" })
--- map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "help page" })
--- map("n", "<leader>fo", "<cmd> Telescope oldfiles only_cwd=true <CR>", { desc = "find oldfiles" })
--- map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "show keys" })
--- map("n", "<leader>fj", "<cmd> Telescope jumplist <CR>", { desc = "jumplist" })
--- map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "document symbols" })
--- map("n", "<leader>fr", "<cmd> Telescope resume <CR>", { desc = "Resume last find" })
--- map("n", "<leader>fl", "<cmd> Telescope pickers <CR>", { desc = "find pickers cache" })
--- map("n", "<leader>ft", "<cmd> Telescope live_grep <CR>", { desc = "live grep" })
-
--- git
--- map("n", "<leader>gf", "<cmd> Telescope git_bcommits <CR>", { desc = "git buffer commits" })
--- map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "git buffer commits" })
--- map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "git status" })
-
--- pick a hidden term
--- map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "pick hidden term" })
-
 -- theme switcher
 map("n", "<leader>ph", "<cmd> Telescope themes <CR>", { desc = "nvchad themes" })
-
--- ["<leader>ff"] = {
---   function()
---     require("telescope.builtin").find_files {
---       default_text = getVisualSelection(),
---     }
---   end,
---   "find files",
--- },
--- map("v", "<leader>ft", function()
---   require("telescope.builtin").live_grep {
---     default_text = getVisualSelection(),
---     only_sort_text = true,
---     additional_args = function()
---       return { "--pcre2" }
---     end,
---   }
--- end, { desc = "Find Text" })
--- }
 
 local lazygit = nil
 -- M.toggleterm = {
