@@ -230,6 +230,9 @@ return {
     "kevinhwang91/nvim-bqf",
     event = "VeryLazy",
     opts = {
+      preview = {
+        winblend = 0,
+      },
       func_map = {
         split = "<C-s>",
         filterr = "zd",
@@ -334,7 +337,7 @@ return {
     enabled = false,
     event = "VeryLazy",
     ft = { "markdown", "codecompanion" },
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
