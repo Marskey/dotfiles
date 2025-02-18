@@ -1,9 +1,4 @@
-require "nvchad.mappings"
-
--- add yours here
-
 local map = vim.keymap.set
-local unmap = vim.keymap.del
 local vim_win_gettype = vim.fn.win_gettype
 local function getVisualSelection()
   vim.cmd 'noau normal! "vy"'
@@ -17,43 +12,6 @@ local function getVisualSelection()
     return ""
   end
 end
-
-unmap("i", "<C-b>")
-unmap("i", "<C-e>")
-unmap("i", "<C-h>")
-unmap("i", "<C-l>")
-unmap("i", "<C-j>")
-unmap("i", "<C-k>")
-
-unmap("n", "<TAB>")
-unmap("n", "<S-Tab>")
-unmap("n", "<Esc>")
-unmap("n", "<C-h>")
-unmap("n", "<C-l>")
-unmap("n", "<C-j>")
-unmap("n", "<C-k>")
-unmap("n", "<C-s>")
-unmap("n", "<C-c>")
-unmap("n", "<leader>n")
-unmap("n", "<leader>b")
-unmap("n", "<leader>x")
-unmap("n", "<leader>/")
-unmap("n", "<leader>fm")
-unmap("n", "<leader>cm")
-unmap("n", "<leader>th")
-unmap("n", "<leader>fw")
-unmap("n", "<A-i>")
-unmap("n", "<A-h>")
-unmap("n", "<A-v>")
-unmap("n", "<leader>h")
-unmap("n", "<leader>v")
-unmap("n", "<leader>fa")
-unmap("n", "<leader>fb")
-unmap("n", "<leader>fh")
-unmap("n", "<leader>ma")
-unmap("n", "<leader>fz")
-unmap("n", "<leader>gt")
-unmap("n", "<leader>pt")
 
 --Remap space as leader key
 -- vim.api.nvim_set_keymap("", "<SPACE>", "<Nop>", { noremap = true, silent = true })
