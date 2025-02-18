@@ -246,3 +246,8 @@ map(
   { desc = "Toggle diagnostics for the current buffer" }
 )
 -- }
+
+map("n", "<A-l>", "<C-W>>")
+map("n", "<A-h>", "<C-W><")
+map("n", "<A-k>", "<C-W>+")
+map("n", "<A-j>", "<C-W>-")
