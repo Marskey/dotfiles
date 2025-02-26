@@ -331,9 +331,11 @@ return {
         filetypes = { "markdown", "codecompanion" },
         ignore_buftypes = {},
       },
-      headings = {
-        heading_1 = { sign = "" },
-        heading_2 = { sign = "" },
+      markdown = {
+        headings = {
+          heading_1 = { sign = "" },
+          heading_2 = { sign = "" },
+        },
       },
       code_blocks = { sign = false },
     },
