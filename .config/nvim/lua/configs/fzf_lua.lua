@@ -81,20 +81,21 @@ require("fzf-lua").setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["alt-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
-      ["alt-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
-      ["alt-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
+      ["ctrl-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["ctrl-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
+      ["ctrl-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
     },
   },
 
   grep = {
     rg_opts = "--column --line-number --no-heading --color=always -L --smart-case --max-columns=4096 -e",
+    silent = true,
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["alt-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
-      ["alt-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
-      ["alt-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
+      ["ctrl-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["ctrl-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
+      ["ctrl-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
     },
   },
 
