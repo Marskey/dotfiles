@@ -81,9 +81,9 @@ require("fzf-lua").setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["ctrl-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
-      ["ctrl-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
-      ["ctrl-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
+      ["ctrl-g"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["alt-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
+      ["alt-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
     },
   },
 
@@ -93,9 +93,9 @@ require("fzf-lua").setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["ctrl-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
-      ["ctrl-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
-      ["ctrl-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
+      ["alt-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["alt-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
+      ["alt-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
     },
   },
 
