@@ -44,6 +44,8 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 opt.foldlevelstart = 99
+opt.foldlevel = 99
+-- opt.foldcolumn = '1'
 
 opt.list = true
 opt.listchars:append "space:⋅,trail:⋅,tab:→ ,eol:↵"
