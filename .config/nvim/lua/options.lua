@@ -45,6 +45,7 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 opt.foldlevelstart = 99
 opt.foldlevel = 99
+opt.foldopen:remove{"hor"}
 -- opt.foldcolumn = '1'
 
 opt.list = true
