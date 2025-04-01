@@ -320,7 +320,11 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
-  { "echasnovski/mini.diff", version = false },
+  {
+    "echasnovski/mini.diff",
+    enabled = false,
+    version = false
+  },
   {
     "OXY2DEV/markview.nvim",
     enabled = true,
@@ -351,13 +355,14 @@ return {
     opts = {},
   },
   {
-    'kevinhwang91/nvim-ufo',
-    event = 'BufEnter',
-    dependencies = 'kevinhwang91/promise-async',
-    config = function ()
-      require('ufo').setup()
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-    end
-  }
+    "kevinhwang91/nvim-ufo",
+    enabled = false,
+    event = "BufEnter",
+    dependencies = "kevinhwang91/promise-async",
+    config = function()
+      require("ufo").setup()
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+    end,
+  },
 }

@@ -40,13 +40,31 @@ opt.timeoutlen = 1000
 opt.undofile = true
 opt.wrap = true -- display lines as one long line
 -- opt.foldmethod = "indent"
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-opt.foldlevelstart = 99
+opt.foldenable = true
 opt.foldlevel = 99
-opt.foldopen:remove{"hor"}
--- opt.foldcolumn = '1'
+opt.foldmethod = "expr"
+opt.foldtext = ""
+opt.foldcolumn = "0"
+-- vim.opt.fillchars:append({fold = ">"})
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- Prefer LSP folding if client supports it
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+         local client = vim.lsp.get_client_by_id(args.data.client_id)
+         if client:supports_method('textDocument/foldingRange') then
+             local win = vim.api.nvim_get_current_win()
+             vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        end
+    end,
+ })
+
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+--
+-- opt.foldlevelstart = 99
+-- opt.foldlevel = 99
+-- opt.foldopen:remove{"hor"}
 
 opt.list = true
 opt.listchars:append "space:⋅,trail:⋅,tab:→ ,eol:↵"
