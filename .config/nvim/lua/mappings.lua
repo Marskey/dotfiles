@@ -190,7 +190,7 @@ map("n", "<leader>gp", function()
 end, { desc = "Preview hunk" })
 
 map("n", "<leader>gl", function()
-  package.loaded.gitsigns.blame_line()
+  require("gitsigns").blame_line()
 end, { desc = "Blame line" })
 
 map("n", "<leader>gd", function()
