@@ -32,9 +32,6 @@ M.mason = {
     "json-lsp",
     "bash",
   },
-  ui = {
-    border = "single",
-  },
 }
 
 -- git support in nvimtree
@@ -164,12 +161,6 @@ M.ts_textobj = {
 M.blankline = {
   scope = {
     enabled = false,
-  },
-}
-
-M.lazy = {
-  ui = {
-    border = "single",
   },
 }
 

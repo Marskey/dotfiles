@@ -85,9 +85,6 @@ return {
           g = true, -- bindings for prefixed with g
         },
       },
-      win = {
-        border = "single",
-      },
     },
   },
   {

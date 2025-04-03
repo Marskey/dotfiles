@@ -1,8 +1,6 @@
 local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
 if status_ok then
   local lspconf = require "lspconfig"
-  require("lspconfig.ui.windows").default_options.border = "single"
-
   mason_lsp.setup_handlers {
     function(server_name)
       local opts = {}
@@ -17,14 +15,13 @@ if status_ok then
   }
 end
 
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
---   border = "single",
--- })
---
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
---   border = "single",
--- })
---
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or "single"
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- local loading = nil
 --
 -- vim.keymap.set("n", "gd", function()
