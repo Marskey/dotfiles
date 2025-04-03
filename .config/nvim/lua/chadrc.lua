@@ -47,7 +47,7 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "catppuccin",
+  theme = "everforest",
   hl_override = {
     -- CursorLine = { bg = "black2" },
     St_cwd_sep = { fg = "#e29da2" },

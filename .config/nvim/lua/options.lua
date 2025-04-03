@@ -75,7 +75,7 @@ opt.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
-opt.guifont = "MesloLGL Nerd Font:h15"
+-- opt.guifont = "MesloLGS NF:h15"
 opt.linespace = -6
 
 g.mapleader = " "

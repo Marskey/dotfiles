@@ -29,7 +29,7 @@ map("n", "gD", function()
 end, { desc = "lsp declaration" })
 
 -- I puted it in lspconfig for loading preview feature
--- map("n", "gd",
+map("n", "gd", function() vim.lsp.buf.definition() end)
 
 map("n", "gi", function()
   vim.lsp.buf.implementation()
