@@ -281,6 +281,10 @@ M.blinkcmp = {
   -- C-k: Toggle signature help (if signature.enabled = true)
   --
   -- See :h blink-cmp-config-keymap for defining your own keymap
+  enabled = function()
+    return not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype)
+  end,
+
   keymap = {
     preset = "enter",
     ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
@@ -305,7 +309,7 @@ M.blinkcmp = {
     list = {
       selection = {
         preselect = false,
-      }
+      },
     },
   },
 
@@ -328,7 +332,24 @@ M.blinkcmp = {
   -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
   --
   -- See the fuzzy documentation for more information
-  fuzzy = { implementation = "prefer_rust_with_warning" },
+  fuzzy = {
+    implementation = "rust",
+    sorts = {
+      "exact",
+      "score",
+      "sort_text",
+    },
+  },
+
+  cmdline = {
+    completion = {
+      list = {
+        selection = {
+          preselect = false,
+        },
+      },
+    },
+  },
 }
 
 return M
