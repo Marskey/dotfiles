@@ -281,10 +281,6 @@ M.blinkcmp = {
   -- C-k: Toggle signature help (if signature.enabled = true)
   --
   -- See :h blink-cmp-config-keymap for defining your own keymap
-  enabled = function()
-    return not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype)
-  end,
-
   keymap = {
     preset = "enter",
     ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
