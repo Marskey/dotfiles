@@ -39,7 +39,8 @@ require("fzf-lua").setup {
       hidden = "hidden", -- hidden|nohidden
     },
   },
-  fzf_opts = { ['--cycle'] = true, ["--layout"] = "reverse", ["--marker"] = "+ " },
+  fzf_args = "--bind=change:first",
+  fzf_opts = { ["--cycle"] = true, ["--layout"] = "reverse", ["--marker"] = "+ " },
   fzf_colors = {
     ["gutter"] = "-1",
     ["marker"] = { "fg", "TelescopePromptPrefix" },
@@ -81,9 +82,9 @@ require("fzf-lua").setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["ctrl-g"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
-      ["alt-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
-      ["alt-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
+      ["ctrl-g"] = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["alt-h"] = { fn = actions.toggle_hidden, reuse = true, header = false },
+      ["alt-f"] = { fn = actions.toggle_follow, reuse = true, header = false },
     },
   },
 
@@ -93,9 +94,9 @@ require("fzf-lua").setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["alt-i"]  = { fn = actions.toggle_ignore, reuse = true, header = false },
-      ["alt-h"]  = { fn = actions.toggle_hidden, reuse = true, header = false },
-      ["alt-f"]  = { fn = actions.toggle_follow, reuse = true, header = false },
+      ["alt-i"] = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["alt-h"] = { fn = actions.toggle_hidden, reuse = true, header = false },
+      ["alt-f"] = { fn = actions.toggle_follow, reuse = true, header = false },
     },
   },
 
