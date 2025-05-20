@@ -294,9 +294,9 @@ M.blinkcmp = {
   --
   -- See :h blink-cmp-config-keymap for defining your own keymap
   keymap = {
-    preset = "enter",
-    ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-    ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+    preset = "default",
+    -- ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+    -- ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
     ["<C-space>"] = {},
     ["<C-k>"] = {
       "show",
@@ -317,7 +317,8 @@ M.blinkcmp = {
     documentation = { auto_show = false },
     list = {
       selection = {
-        preselect = false,
+        preselect = true,
+        auto_insert = false,
       },
     },
   },
@@ -330,7 +331,7 @@ M.blinkcmp = {
       copilot = {
         name = "copilot",
         module = "blink-cmp-copilot",
-        score_offset = 100,
+        -- score_offset = 100,
         async = true,
       },
     },
