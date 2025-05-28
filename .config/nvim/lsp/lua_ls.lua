@@ -1,4 +1,3 @@
-local lspconf = require "lspconfig"
 return {
   settings = {
     Lua = {
@@ -47,5 +46,4 @@ return {
       },
     },
   },
-  root_dir = lspconf.util.root_pattern(".luarc.json", ".git"),
 }

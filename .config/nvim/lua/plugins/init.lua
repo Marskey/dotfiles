@@ -173,9 +173,13 @@ return {
     build = "make install_jsregexp",
   },
   {
-    "williamboman/mason.nvim",
-    opts = overrides.mason,
-    dependencies = "williamboman/mason-lspconfig.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    event = "VeryLazy",
+    opts = overrides.mason_lsp,
+    dependencies = {
+      {"williamboman/mason.nvim", opts = {}},
+      "neovim/nvim-lspconfig",
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",

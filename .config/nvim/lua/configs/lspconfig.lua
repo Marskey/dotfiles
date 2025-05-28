@@ -1,20 +1,3 @@
-local status_ok, mason_lsp = pcall(require, "mason-lspconfig")
-if status_ok then
-  local lspconf = require "lspconfig"
-  mason_lsp.setup_handlers {
-    function(server_name)
-      local opts = {}
-
-      local has_custom_opts, server_custom_opts = pcall(require, "configs.lspconfig." .. server_name)
-      if has_custom_opts then
-        opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
-      end
-
-      lspconf[server_name].setup(opts)
-    end,
-  }
-end
-
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}

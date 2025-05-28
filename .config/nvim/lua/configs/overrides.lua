@@ -20,17 +20,18 @@ M.treesitter = {
   },
 }
 
-M.mason = {
+M.mason_lsp = {
   ensure_installed = {
     -- lua stuff
-    "lua-language-server",
-    "stylua",
+    "lua_ls",
+    -- "stylua",
     "clangd",
-    "jsonls",
-    "python-lsp-server",
-    "jq",
-    "json-lsp",
-    "bash",
+    -- "jsonls",
+    -- "python-lsp-server",
+    -- "jq",
+    -- "json-lsp",
+    -- "bash",
+    "pyright"
   },
 }
 
@@ -313,7 +314,7 @@ M.blinkcmp = {
 
   -- (Default) Only show the documentation popup when manually triggered
   completion = {
-    keyword = { range = 'full' },
+    keyword = { range = "full" },
     documentation = { auto_show = false },
     list = {
       selection = {
