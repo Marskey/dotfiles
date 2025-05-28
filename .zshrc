@@ -152,6 +152,7 @@ gshow() {
     {}
     FZF-EOF"
 }
+
 gdiff() {
     is_in_git_repo || return
     cp $(git diff --name-only HEAD $2) $1
@@ -160,7 +161,7 @@ gdiff() {
 
 gdiffgr() {
     is_in_git_repo || return
-    cp $(git log --grep=$2 --name-only --pretty=format: | sort | uniq) $1
+    cp $(git log --name-only --pretty=format: -E --grep="$2" | sort | uniq) $1
     cd $1
 }
 

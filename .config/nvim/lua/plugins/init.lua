@@ -368,7 +368,7 @@ return {
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
     end,
   },
-
+  { import = "nvchad.blink.lazyspec" },
   {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
