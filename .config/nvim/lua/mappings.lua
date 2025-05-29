@@ -81,7 +81,7 @@ map("n", "<leader>e", "<cmd> Neotree filesystem reveal <CR>", { desc = "focus fi
 -- }
 
 -- M.fzflua = {
-map("n", "<leader>ff", "<cmd> FzfLua files <CR>", { desc = "find files" })
+map("n", "<leader>ff", "<cmd> FzfLua files line_query=true <CR>", { desc = "find files" })
 map("v", "<leader>ff", function()
   require("fzf-lua").files {
     fzf_opts = {
@@ -96,7 +96,7 @@ map("v", "<leader>ft", function()
   }
 end, { desc = "Find Text" })
 map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
-map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=true <CR>", { desc = "find oldfiles" })
+map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=true line_query=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fr", "<cmd> FzfLua resume <CR>", { desc = "Resume last find" })
 map("n", "<leader>fs", "<cmd> FzfLua lsp_document_symbols <CR>", { desc = "document symbols" })
 map("n", "<leader>fw", "<cmd> FzfLua lsp_live_workspace_symbols <CR>", { desc = "workspace symbols" })

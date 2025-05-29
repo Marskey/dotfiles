@@ -39,7 +39,7 @@ require("fzf-lua").setup {
       hidden = "hidden", -- hidden|nohidden
     },
   },
-  fzf_args = "--bind=change:first",
+  -- fzf_args = "--bind=change:first", -- reset cursor to first entry on key change
   fzf_opts = { ["--cycle"] = true, ["--layout"] = "reverse", ["--marker"] = "+ " },
   fzf_colors = {
     ["gutter"] = "-1",
@@ -75,6 +75,7 @@ require("fzf-lua").setup {
       ["f4"] = "toggle-preview",
       ["ctrl-d"] = "preview-page-down",
       ["ctrl-u"] = "preview-page-up",
+      ["change"] = "first"
     },
   },
 
