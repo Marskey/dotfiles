@@ -368,7 +368,6 @@ return {
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
     end,
   },
-  { import = "nvchad.blink.lazyspec" },
   {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
@@ -383,6 +382,9 @@ return {
 
     opts = overrides.blinkcmp,
     opts_extend = { "sources.default" },
+    init = function ()
+      dofile(vim.g.base46_cache .. "blink")
+    end
   },
   {
     "aaronik/treewalker.nvim",
