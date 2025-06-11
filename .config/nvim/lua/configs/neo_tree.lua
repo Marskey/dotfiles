@@ -16,7 +16,11 @@ neotree.setup {
   -- enable_modified_markers = false, -- Show markers for files with unsaved changes.
   -- enable_git_status = false,
   use_libuv_file_watcher = true,
+  default_component_configs = {
+    symlink_target = { enabled = true },
+  },
   filesystem = {
+    bind_to_cwd = false,
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
       hide_gitignored = false,

@@ -29,7 +29,9 @@ map("n", "gD", function()
 end, { desc = "lsp declaration" })
 
 -- I puted it in lspconfig for loading preview feature
-map("n", "gd", function() vim.lsp.buf.definition() end)
+map("n", "gd", function()
+  vim.lsp.buf.definition()
+end)
 
 map("n", "gi", function()
   vim.lsp.buf.implementation()
@@ -81,12 +83,14 @@ map("n", "<leader>e", "<cmd> Neotree filesystem reveal <CR>", { desc = "focus fi
 -- }
 
 -- M.fzflua = {
-map("n", "<leader>ff", "<cmd> FzfLua files line_query=true <CR>", { desc = "find files" })
+map("n", "<leader>ff", "<cmd> FzfLua files line_query=true follow=true <CR>", { desc = "find files" })
 map("v", "<leader>ff", function()
   require("fzf-lua").files {
     fzf_opts = {
       ["-q"] = getVisualSelection(),
     },
+    line_query = true,
+    follow = true
   }
 end, { desc = "find files" })
 map("n", "<leader>ft", "<cmd> FzfLua live_grep <CR>", { desc = "live grep" })
@@ -96,7 +100,7 @@ map("v", "<leader>ft", function()
   }
 end, { desc = "Find Text" })
 map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
-map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=true line_query=true <CR>", { desc = "find oldfiles" })
+map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=false line_query=true follow=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fr", "<cmd> FzfLua resume <CR>", { desc = "Resume last find" })
 map("n", "<leader>fs", "<cmd> FzfLua lsp_document_symbols <CR>", { desc = "document symbols" })
 map("n", "<leader>fw", "<cmd> FzfLua lsp_live_workspace_symbols <CR>", { desc = "workspace symbols" })
@@ -121,27 +125,27 @@ local lazygit = nil
 -- M.toggleterm = {
 
 map("n", "<leader>gg", function()
-  if not lazygit then
-    local Terminal = require("toggleterm.terminal").Terminal
-    lazygit = Terminal:new {
-      cmd = "lazygit",
-      direction = "float",
-      -- function to run on opening the terminal
-      on_open = function(term)
-        vim.cmd "startinsert!"
-        vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-      end,
-      -- function to run on closing the terminal
-      on_close = function(term)
-        vim.cmd "startinsert!"
-        vim.cmd "checktime"
-      end,
+  -- if not lazygit then
+  local Terminal = require("toggleterm.terminal").Terminal
+  lazygit = Terminal:new {
+    cmd = "cd " .. vim.fn.expand "%:p:h" .. "&& lazygit",
+    direction = "float",
+    -- function to run on opening the terminal
+    on_open = function(term)
+      vim.cmd "startinsert!"
+      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    end,
+    -- function to run on closing the terminal
+    on_close = function(term)
+      vim.cmd "startinsert!"
+      vim.cmd "checktime"
+    end,
 
-      on_exit = function(term)
-        lazygit = nil
-      end,
-    }
-  end
+    on_exit = function(term)
+      lazygit = nil
+    end,
+  }
+  -- end
   lazygit:toggle()
 end, { desc = "term lazygit" })
 -- }
@@ -213,7 +217,6 @@ map("v", "<leader>fg", function()
     default_text = getVisualSelection(),
   }
 end, { desc = "Structural search" })
--- }
 
 -- M.flash = {
 map("n", "s", function()
