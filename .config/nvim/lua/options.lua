@@ -47,17 +47,17 @@ opt.foldmethod = "expr"
 opt.foldtext = ""
 opt.foldcolumn = "0"
 -- vim.opt.fillchars:append({fold = ">"})
-opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- Prefer LSP folding if client supports it
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-         local client = vim.lsp.get_client_by_id(args.data.client_id)
-         if client:supports_method('textDocument/foldingRange') then
-             local win = vim.api.nvim_get_current_win()
-             vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
-        end
-    end,
- })
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client:supports_method "textDocument/foldingRange" then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+  end,
+})
 
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -121,3 +121,15 @@ autocmd("VimEnter", {
 autocmd("VimLeavePre", {
   command = ":silent !kitty @ set-spacing padding=20 margin=10",
 })
+
+vim.api.nvim_create_user_command("Json2lua", function(args)
+  local line1 = args.line1
+  local line2 = args.line2
+  local cur_buffer = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(cur_buffer, line1 - 1, line2, false)
+  local content = table.concat(lines)
+  local ret = vim.json.decode(content, { luanil = { object = true, array = true } })
+  local stringData = vim.inspect(ret)
+  stringData = string.gsub(stringData, "vim.empty_dict%(%)", "{}")
+  vim.api.nvim_buf_set_lines(cur_buffer, line1 - 1, line2, false, vim.split(stringData, "\n"))
+end, { range = true })

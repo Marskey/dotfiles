@@ -24,12 +24,12 @@ return {
   -- misc plugins
   {
     "nvim-tree/nvim-tree.lua",
-    enabled = false,
+    enabled = true,
     opts = overrides.nvimtree,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    enabled = true,
+    enabled = false,
     cmd = { "NeoTreeReveal", "NeoTreeFocusToggle", "NeoTreeShowToggle", "Neotree" },
     config = function()
       require "configs.neo_tree"
@@ -177,7 +177,7 @@ return {
     event = "VeryLazy",
     opts = overrides.mason_lsp,
     dependencies = {
-      {"williamboman/mason.nvim", opts = {}},
+      { "williamboman/mason.nvim", opts = {} },
       "neovim/nvim-lspconfig",
     },
   },
@@ -382,9 +382,9 @@ return {
 
     opts = overrides.blinkcmp,
     opts_extend = { "sources.default" },
-    init = function ()
+    init = function()
       dofile(vim.g.base46_cache .. "blink")
-    end
+    end,
   },
   {
     "aaronik/treewalker.nvim",
@@ -413,4 +413,15 @@ return {
       jumplist = true,
     },
   },
+  -- {
+  --   "notjedi/nvim-rooter.lua",
+  --   event = "BufEnter",
+  --   opts = {
+  --     rooter_patterns = { ".git" },
+  --     trigger_patterns = { "*" },
+  --     manual = false,
+  --     fallback_to_parent = false,
+  --     cd_scope = "global",
+  --   },
+  -- },
 }

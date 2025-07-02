@@ -76,10 +76,12 @@ end, { desc = "lsp formatting" })
 
 -- M.neotree = {
 -- toggle
-map("n", "<C-n>", "<cmd> Neotree filesystem focus toggle <CR>", { desc = "toggle filetree" })
+-- map("n", "<C-n>", "<cmd> Neotree filesystem focus toggle <CR>", { desc = "toggle filetree" })
+map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "toggle filetree" })
 
 -- focus
-map("n", "<leader>e", "<cmd> Neotree filesystem reveal <CR>", { desc = "focus filetree" })
+-- map("n", "<leader>e", "<cmd> Neotree filesystem reveal <CR>", { desc = "focus filetree" })
+map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "focus filetree" })
 -- }
 
 -- M.fzflua = {
@@ -100,7 +102,7 @@ map("v", "<leader>ft", function()
   }
 end, { desc = "Find Text" })
 map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
-map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=false line_query=true follow=true <CR>", { desc = "find oldfiles" })
+map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=false line_query=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fr", "<cmd> FzfLua resume <CR>", { desc = "Resume last find" })
 map("n", "<leader>fs", "<cmd> FzfLua lsp_document_symbols <CR>", { desc = "document symbols" })
 map("n", "<leader>fw", "<cmd> FzfLua lsp_live_workspace_symbols <CR>", { desc = "workspace symbols" })
@@ -254,3 +256,12 @@ map("n", "<A-l>", "<C-W>>")
 map("n", "<A-h>", "<C-W><")
 map("n", "<A-k>", "<C-W>+")
 map("n", "<A-j>", "<C-W>-")
+
+map("n", "gs", function ()
+  -- vim.cmd 'vsplit'
+  -- vim.lsp.buf.definition()
+  local fzf_lua = require("fzf-lua")
+  fzf_lua.lsp_definitions({
+    jump1_action = fzf_lua.actions.file_vsplit
+  })
+end)

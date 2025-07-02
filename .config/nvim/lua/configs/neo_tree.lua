@@ -20,7 +20,7 @@ neotree.setup {
     symlink_target = { enabled = true },
   },
   filesystem = {
-    bind_to_cwd = false,
+    bind_to_cwd = true,
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
       hide_gitignored = false,

@@ -31,12 +31,16 @@ M.mason_lsp = {
     -- "jq",
     -- "json-lsp",
     -- "bash",
-    "pyright"
+    "pyright",
   },
 }
 
 -- git support in nvimtree
 M.nvimtree = {
+  filters = {
+    dotfiles = false,
+    git_ignored = false,
+  },
   git = {
     enable = true,
   },
@@ -50,9 +54,26 @@ M.nvimtree = {
   },
   renderer = {
     highlight_git = true,
+    symlink_destination = false,
     icons = {
-      show = {
-        git = true,
+      glyphs = {
+        default = "󰈚",
+        folder = {
+          default = "",
+          empty = "",
+          empty_open = "",
+          open = "",
+          symlink = "",
+        },
+        git = {
+          unstaged = "󰘥",
+          staged = "",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
       },
     },
   },
