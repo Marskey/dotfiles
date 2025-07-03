@@ -23,9 +23,9 @@ customCommands:
         title: 'What kind of push is it?'
         key: 'pushType'
         options:
-          - value: 'git push'
-            name: 'HEAD'
-            description: 'push head to remote'
           - value: 'git push origin {{.SelectedCommit.Hash}}:{{.CheckedOutBranch.Name }}'
             name: 'commit'
             description: 'push commit {{.SelectedCommit.Hash}} and below to remote'
+          - value: 'git push'
+            name: 'HEAD'
+            description: 'push head to remote'
