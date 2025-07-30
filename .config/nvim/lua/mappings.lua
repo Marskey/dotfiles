@@ -98,7 +98,7 @@ end, { desc = "find files" })
 map("n", "<leader>ft", "<cmd> FzfLua live_grep <CR>", { desc = "live grep" })
 map("v", "<leader>ft", function()
   require("fzf-lua").live_grep {
-    search = getVisualSelection(),
+    search = getVisualSelection()
   }
 end, { desc = "Find Text" })
 map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })

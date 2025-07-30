@@ -128,8 +128,12 @@ vim.api.nvim_create_user_command("Json2lua", function(args)
   local cur_buffer = vim.api.nvim_get_current_buf()
   local lines = vim.api.nvim_buf_get_lines(cur_buffer, line1 - 1, line2, false)
   local content = table.concat(lines)
+  if content:find('\\"') or content:find("\\\\") or content:find("\\n") or content:find("\\t") then
+    content = load("return " .. content)()
+  end
   local ret = vim.json.decode(content, { luanil = { object = true, array = true } })
   local stringData = vim.inspect(ret)
   stringData = string.gsub(stringData, "vim.empty_dict%(%)", "{}")
   vim.api.nvim_buf_set_lines(cur_buffer, line1 - 1, line2, false, vim.split(stringData, "\n"))
 end, { range = true })
+

@@ -245,17 +245,17 @@ M.codecompanion = {
       },
     },
   },
-  adapters = {
-    deepseek = function()
-      return require("codecompanion.adapters").extend("deepseek", {
-        schema = {
-          model = {
-            default = "deepseek-chat",
-          },
-        },
-      })
-    end,
-  },
+  -- adapters = {
+  --   deepseek = function()
+  --     return require("codecompanion.adapters").extend("deepseek", {
+  --       schema = {
+  --         model = {
+  --           default = "deepseek-chat",
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   strategies = {
     -- Change the default chat adapter
     chat = {
