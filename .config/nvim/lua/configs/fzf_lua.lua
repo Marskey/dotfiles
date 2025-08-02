@@ -1,4 +1,5 @@
 local actions = require("fzf-lua").actions
+local utils = require("fzf-lua").utils
 
 local function yank_filename(selected, opts)
   local ret = selected[1]:match "([%w-_]+%.%w+)"
@@ -26,8 +27,11 @@ local function yank_buff_filename(selected, opts)
   vim.fn.setreg([[0]], ret)
 end
 
+local function hl_validate(hl)
+  return not utils.is_hl_cleared(hl) and hl or nil
+end
+
 require("fzf-lua").setup {
-  "telescope",
   defaults = { formatter = "path.filename_first" },
   winopts = {
     height = 0.90,
@@ -37,6 +41,10 @@ require("fzf-lua").setup {
       layout = "vertical", -- horizontal|vertical|flex
       vertical = "down:50%", -- right|left:size
       hidden = "hidden", -- hidden|nohidden
+      horizontal = "right:50%",
+      flip_columns = 120,
+      delay = 10,
+      winopts = { number = false },
     },
   },
   fzf_args = "--bind=change:+first", -- reset cursor to first entry on key change
@@ -44,23 +52,47 @@ require("fzf-lua").setup {
   fzf_colors = {
     ["gutter"] = "-1",
     ["marker"] = { "fg", "TelescopePromptPrefix" },
+    ["fg"] = { "fg", "TelescopeNormal" },
+    ["bg"] = { "bg", "TelescopeNormal" },
+    ["hl"] = { "fg", "TelescopeMatching" },
+    ["fg+"] = { "fg", "TelescopeSelection" },
+    ["bg+"] = { "bg", "TelescopeSelection" },
+    ["hl+"] = { "fg", "TelescopeMatching" },
+    ["info"] = { "fg", "TelescopeMultiSelection" },
+    ["border"] = { "fg", "TelescopeBorder" },
+    ["query"] = { "fg", "TelescopePromptNormal" },
+    ["prompt"] = { "fg", "TelescopePromptPrefix" },
+    ["pointer"] = { "fg", "TelescopeSelectionCaret" },
+    ["header"] = { "fg", "TelescopeTitle" },
   },
   hls = {
+    normal = hl_validate "TelescopeNormal",
+    border = hl_validate "TelescopeBorder",
+    title = hl_validate "TelescopePromptTitle",
+    help_normal = hl_validate "TelescopeNormal",
+    help_border = hl_validate "TelescopeBorder",
+    preview_normal = hl_validate "TelescopeNormal",
+    preview_border = hl_validate "TelescopeBorder",
+    preview_title = hl_validate "TelescopePreviewTitle",
+    -- builtin preview only
+    cursor = hl_validate "Cursor",
     cursorline = "CursorLine",
     cursorlinenr = "CursorLineNr",
+    search = hl_validate "IncSearch",
   },
   keymap = {
     builtin = {
       ["<Esc>"] = "hide",
       ["<F1>"] = "toggle-help",
-      ["<c-n>"] = "toggle-fullscreen",
+
+      ["<c-j>"] = "preview-page-down",
+      ["<c-k>"] = "preview-page-up",
       -- Only valid with the 'builtin' previewer
       ["<F3>"] = "toggle-preview-wrap",
-      ["<c-p>"] = "toggle-preview",
       ["<F5>"] = "toggle-preview-ccw",
       ["<F6>"] = "toggle-preview-cw",
-      ["<C-d>"] = "preview-page-down",
-      ["<C-u>"] = "preview-page-up",
+      -- ["<C-d>"] = "preview-page-down",
+      -- ["<C-u>"] = "preview-page-up",
       ["<S-left>"] = "preview-page-reset",
     },
     fzf = {
@@ -73,8 +105,17 @@ require("fzf-lua").setup {
       -- Only valid with fzf previewers (bat/cat/git/etc)
       ["f3"] = "toggle-preview-wrap",
       ["f4"] = "toggle-preview",
-      ["ctrl-d"] = "preview-page-down",
-      ["ctrl-u"] = "preview-page-up",
+      ["ctrl-q"] = "select-all+accept",
+    },
+  },
+
+  actions = {
+    files = {
+      ["enter"] = actions.file_edit_or_qf,
+      ["ctrl-x"] = actions.file_split,
+      ["ctrl-v"] = actions.file_vsplit,
+      ["ctrl-t"] = actions.file_tabedit,
+      ["alt-q"] = actions.file_sel_to_qf,
     },
   },
 
@@ -108,9 +149,12 @@ require("fzf-lua").setup {
   },
 
   buffers = {
+    keymap = { builtin = { ["<C-d>"] = false } },
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_buff_filename,
+      ["ctrl-x"] = false,
+      ["ctrl-d"] = { actions.buf_del, actions.resume },
     },
   },
 }
