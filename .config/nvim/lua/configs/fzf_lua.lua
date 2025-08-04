@@ -93,6 +93,7 @@ require("fzf-lua").setup {
       ["<F6>"] = "toggle-preview-cw",
       -- ["<C-d>"] = "preview-page-down",
       -- ["<C-u>"] = "preview-page-up",
+      ["<c-h>"] = "toggle-preview",
       ["<S-left>"] = "preview-page-reset",
     },
     fzf = {
@@ -103,8 +104,6 @@ require("fzf-lua").setup {
       ["ctrl-e"] = "end-of-line",
       ["alt-a"] = "toggle-all",
       -- Only valid with fzf previewers (bat/cat/git/etc)
-      ["f3"] = "toggle-preview-wrap",
-      ["f4"] = "toggle-preview",
       ["ctrl-q"] = "select-all+accept",
     },
   },
