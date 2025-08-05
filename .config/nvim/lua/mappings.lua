@@ -252,10 +252,10 @@ map(
 )
 -- }
 
-map("n", "<A-l>", "<C-W>>")
-map("n", "<A-h>", "<C-W><")
-map("n", "<A-k>", "<C-W>+")
-map("n", "<A-j>", "<C-W>-")
+map("n", "<A-right>", "<C-W>>")
+map("n", "<A-left>", "<C-W><")
+map("n", "<A-up>", "<C-W>+")
+map("n", "<A-down>", "<C-W>-")
 
 map("n", "gs", function ()
   -- vim.cmd 'vsplit'
