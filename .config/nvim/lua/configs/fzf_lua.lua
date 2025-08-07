@@ -141,6 +141,7 @@ require("fzf-lua").setup {
   },
 
   oldfiles = {
+    include_current_session = true,
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
