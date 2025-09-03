@@ -124,10 +124,12 @@ return {
   --     end,
   -- },
   {
-    "folke/flash.nvim",
+    "Marskey/flash.nvim",
     event = "VeryLazy",
+    branch = "register_fix",
     opts = overrides.flash,
   },
+
   {
     "nvim-telescope/telescope-live-grep-args.nvim",
     dependencies = "telescope.nvim",
@@ -267,7 +269,7 @@ return {
       show_modified = true,
     },
     init = function()
-      vim.opt.updatetime = 200
+      vim.opt.updatetime = 50
       vim.api.nvim_create_autocmd({
         "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
         "BufWinEnter",
@@ -286,7 +288,7 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
-    enabled = true,
+    enabled = false,
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
@@ -312,6 +314,17 @@ return {
         },
       }
     end,
+  },
+  {
+    'Exafunction/windsurf.vim',
+    event = 'BufEnter',
+    config = function ()
+      -- Change '<C-g>' here to any keycode you like.
+      -- vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+    end
   },
   {
     "olimorris/codecompanion.nvim",
@@ -371,7 +384,8 @@ return {
   {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
-    dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
+    -- dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
+    dependencies = { "rafamadriz/friendly-snippets" },
 
     -- use a release tag to download pre-built binaries
     version = "1.*",

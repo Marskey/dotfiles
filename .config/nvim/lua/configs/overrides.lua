@@ -170,12 +170,12 @@ M.ts_textobj = {
       -- Below will go to either the start or the end, whichever is closer.
       -- Use if you want more granular movements
       -- Make it even more gradual by adding multiple queries and regex.
-      goto_next = {
-        ["]d"] = "@conditional.outer",
-      },
-      goto_previous = {
-        ["[d"] = "@conditional.outer",
-      },
+      -- goto_next = {
+      --   ["]d"] = "@conditional.outer",
+      -- },
+      -- goto_previous = {
+      --   ["[d"] = "@conditional.outer",
+      -- },
     },
   },
 }
@@ -348,7 +348,8 @@ M.blinkcmp = {
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { "lsp", "path", "snippets", "buffer", "copilot" },
+    -- default = { "lsp", "path", "snippets", "buffer", "copilot" },
+    default = { "lsp", "path", "snippets", "buffer" },
     providers = {
       copilot = {
         name = "copilot",

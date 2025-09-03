@@ -44,7 +44,7 @@ require("fzf-lua").setup {
       horizontal = "right:50%",
       flip_columns = 120,
       delay = 10,
-      winopts = { number = false },
+      winopts = { number = true },
     },
   },
   fzf_args = "--bind=change:+first", -- reset cursor to first entry on key change
@@ -85,8 +85,8 @@ require("fzf-lua").setup {
       ["<Esc>"] = "hide",
       ["<F1>"] = "toggle-help",
 
-      ["<c-j>"] = "preview-page-down",
-      ["<c-k>"] = "preview-page-up",
+      ["<c-j>"] = "preview-down",
+      ["<c-k>"] = "preview-up",
       -- Only valid with the 'builtin' previewer
       ["<F3>"] = "toggle-preview-wrap",
       ["<F5>"] = "toggle-preview-ccw",
@@ -94,7 +94,7 @@ require("fzf-lua").setup {
       -- ["<C-d>"] = "preview-page-down",
       -- ["<C-u>"] = "preview-page-up",
       ["<c-h>"] = "toggle-preview",
-      ["<S-left>"] = "preview-page-reset",
+      ["<c-l>"] = "preview-page-reset",
     },
     fzf = {
       ["ctrl-z"] = "abort",
