@@ -114,7 +114,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 #
 # zle_highlight+=(paste:none)
-# export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client@8.4/bin/mysql:$PATH"
 bindkey '^j' autosuggest-accept
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
