@@ -65,7 +65,7 @@ map("n", "gl", function()
 end, { desc = "floating diagnostic" })
 
 map("n", "<leader>q", function()
-  vim.diagnostic.setloclist()
+  vim.diagnostic.setqflist()
 end, { desc = "diagnostic setloclist" })
 
 map({ "n", "v" }, "<leader>lf", function()

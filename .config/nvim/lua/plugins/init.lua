@@ -225,6 +225,7 @@ return {
   -- }
   {
     "folke/trouble.nvim",
+    enabled = false,
     event = "BufEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
