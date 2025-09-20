@@ -65,7 +65,7 @@ map("n", "gl", function()
 end, { desc = "floating diagnostic" })
 
 map("n", "<leader>q", function()
-  vim.diagnostic.setqflist()
+  vim.diagnostic.setloclist()
 end, { desc = "diagnostic setloclist" })
 
 map({ "n", "v" }, "<leader>lf", function()
@@ -209,7 +209,8 @@ end, { desc = "Toggle blame" })
 -- }
 
 -- M.aerial = {
-map("n", "<leader>lo", "<cmd>AerialToggle<cr>", { desc = "Open outline" })
+map("n", "<leader>lo", "<cmd>AerialOpen<cr>", { desc = "Open outline" })
+map("n", "<leader>lo", "<cmd>AerialClose<cr>", { desc = "Close outline" })
 -- map("n", "<leader>ls", "<cmd> Telescope aerial default_selection_index=1 <CR>", { desc = "document functions" })
 -- }
 

@@ -104,7 +104,7 @@ return {
   },
   {
     "stevearc/stickybuf.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     config = function()
       require("stickybuf").setup()
@@ -147,6 +147,7 @@ return {
   },
   {
     "tiagovla/scope.nvim",
+    enabled = false,
     lazy = false,
     config = function()
       require("scope").setup()
