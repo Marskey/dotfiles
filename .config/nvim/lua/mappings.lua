@@ -210,7 +210,7 @@ end, { desc = "Toggle blame" })
 
 -- M.aerial = {
 map("n", "<leader>lo", "<cmd>AerialOpen<cr>", { desc = "Open outline" })
-map("n", "<leader>lo", "<cmd>AerialClose<cr>", { desc = "Close outline" })
+map("n", "<leader>lx", "<cmd>AerialClose<cr>", { desc = "Close outline" })
 -- map("n", "<leader>ls", "<cmd> Telescope aerial default_selection_index=1 <CR>", { desc = "document functions" })
 -- }
 
