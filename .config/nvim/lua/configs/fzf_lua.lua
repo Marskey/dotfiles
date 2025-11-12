@@ -130,6 +130,7 @@ require("fzf-lua").setup {
 
   grep = {
     rg_opts = "--column --line-number --no-heading --color=always -L --smart-case --max-columns=4096 -e",
+    rg_glob = true,
     silent = true,
     actions = {
       ["ctrl-s"] = actions.file_split,
@@ -138,6 +139,16 @@ require("fzf-lua").setup {
       ["alt-h"] = { fn = actions.toggle_hidden, reuse = true, header = false },
       ["alt-f"] = { fn = actions.toggle_follow, reuse = true, header = false },
     },
+  },
+
+  lgrep_quickfix = {
+      rg_opts = "--column --line-number --no-heading --color=always -L --max-columns=4096 -e",
+      rg_glob = true,
+      ["ctrl-s"] = actions.file_split,
+      ["ctrl-y"] = yank_filename,
+      ["alt-i"] = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["alt-h"] = { fn = actions.toggle_hidden, reuse = true, header = false },
+      ["alt-f"] = { fn = actions.toggle_follow, reuse = true, header = false },
   },
 
   oldfiles = {
