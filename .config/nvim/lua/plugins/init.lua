@@ -367,12 +367,49 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     opts = overrides.codecompanion,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+    },
+  },
+  {
+    "yetone/avante.nvim",
+    -- 如果您想从源代码构建，请执行 `make BUILD_FROM_SOURCE=true`
+    build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
+    event = "VeryLazy",
+    version = false, -- 永远不要将此值设置为 "*"！永远不要！
+    ---@module 'avante'
+    ---@type avante.Config
+    opts = {
+      -- 在此处添加任何选项
+      -- provider = "deepseek",
+      provider = "gemini",
+      providers = {
+        deepseek = {
+          __inherited_from = "openai",
+          api_key_name = "cmd:security find-generic-password -s \"deepseek_api_key\" -w",
+          endpoint = "https://api.deepseek.com",
+          model = "deepseek-coder",
+        },
+        gemini = {
+          api_key_name = 'cmd:security find-generic-password -s "gemini_api_key" -w',
+          model = "gemini-2.5-flash",
+          temperature = 0,
+          max_tokens = 4096,
+        },
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- 以下依赖项是可选的，
+      "ibhagwan/fzf-lua", -- 用于文件选择器提供者 fzf
+      "nvim-tree/nvim-web-devicons", -- 或 echasnovski/mini.icons
+      "MeanderingProgrammer/render-markdown.nvim",
     },
   },
   {
@@ -403,11 +440,13 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     enabled = false,
     event = "VeryLazy",
-    ft = { "markdown", "codecompanion" },
+    ft = { "markdown", "Avante" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
-    opts = {},
+    opts = {
+      file_types = { "markdown", "Avante" },
+    },
   },
   {
     "kevinhwang91/nvim-ufo",
@@ -422,6 +461,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    event = "BufEnter",
     -- optional: provides snippets for the snippet source
     -- dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
     dependencies = { "rafamadriz/friendly-snippets" },

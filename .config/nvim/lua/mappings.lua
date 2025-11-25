@@ -130,7 +130,8 @@ map("n", "<leader>gg", function()
   -- if not lazygit then
   local Terminal = require("toggleterm.terminal").Terminal
   lazygit = Terminal:new {
-    cmd = "cd " .. vim.fn.expand "%:p:h" .. "&& lazygit",
+    -- cmd = "cd " .. vim.fn.expand "%:p:h" .. "&& lazygit",
+    cmd = "lazygit",
     direction = "float",
     -- function to run on opening the terminal
     on_open = function(term)
