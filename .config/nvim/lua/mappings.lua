@@ -215,12 +215,12 @@ map("n", "<leader>lx", "<cmd>AerialClose<cr>", { desc = "Close outline" })
 -- map("n", "<leader>ls", "<cmd> Telescope aerial default_selection_index=1 <CR>", { desc = "document functions" })
 -- }
 
-map("n", "<leader>fg", "<cmd> Telescope ast_grep<CR>", { desc = "Structural search" })
-map("v", "<leader>fg", function()
-  require("telescope").extensions.ast_grep.ast_grep {
-    default_text = getVisualSelection(),
-  }
-end, { desc = "Structural search" })
+-- map("n", "<leader>fg", "<cmd> Telescope ast_grep<CR>", { desc = "Structural search" })
+-- map("v", "<leader>fg", function()
+--   require("telescope").extensions.ast_grep.ast_grep {
+--     default_text = getVisualSelection(),
+--   }
+-- end, { desc = "Structural search" })
 
 -- M.flash = {
 map("n", "s", function()
