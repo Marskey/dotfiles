@@ -94,7 +94,7 @@ require("fzf-lua").setup {
       -- ["<C-d>"] = "preview-page-down",
       -- ["<C-u>"] = "preview-page-up",
       ["<c-h>"] = "toggle-preview",
-      ["<c-l>"] = "preview-page-reset",
+      ["<c-l>"] = "preview-reset",
     },
     fzf = {
       ["ctrl-z"] = "abort",

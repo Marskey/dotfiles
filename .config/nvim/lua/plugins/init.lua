@@ -386,14 +386,14 @@ return {
     ---@type avante.Config
     opts = {
       -- 在此处添加任何选项
-      -- provider = "deepseek",
-      provider = "gemini",
+      provider = "deepseek",
+      -- provider = "gemini",
       providers = {
         deepseek = {
           __inherited_from = "openai",
           api_key_name = "cmd:security find-generic-password -s \"deepseek_api_key\" -w",
           endpoint = "https://api.deepseek.com",
-          model = "deepseek-coder",
+          model = "deepseek-chat",
         },
         gemini = {
           api_key_name = 'cmd:security find-generic-password -s "gemini_api_key" -w',
@@ -402,6 +402,9 @@ return {
           max_tokens = 4096,
         },
       },
+      selection = {
+        hint_display = "none",
+      }
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
