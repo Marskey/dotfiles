@@ -1,3 +1,8 @@
+local present = pcall(require, "telescope")
+if not present then
+  return
+end
+
 local entry_display = require "telescope.pickers.entry_display"
 local utils = require "telescope.utils"
 local action_state = require "telescope.actions.state"

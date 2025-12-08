@@ -43,8 +43,44 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     enabled = false,
+    -- url = "https://github.com/Marskey/telescope.nvim.git",
+    -- branch = "experimental",
     cmd = "Telescope",
     opts = require "configs.telescope",
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    enabled = false,
+    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+  },
+  {
+    "nvim-telescope/telescope-live-grep-args.nvim",
+    enabled = false,
+    dependencies = "telescope.nvim",
+  },
+  {
+    "marskey/telescope-sg",
+    enabled = false,
+    dependencies = "telescope.nvim",
+    branch = "pretty_display",
+  },
+  {
+    "stevearc/aerial.nvim",
+    -- dependencies = "telescope.nvim",
+    cmd = {
+      "AerialToggle",
+      "AerialOpen",
+      "AerialOpenAll",
+      "AerialClose",
+      "AerialCloseAll",
+      "AerialNext",
+      "AerialPrev",
+      "AerialGo",
+      "AerialInfo",
+    },
+    config = function()
+      require "configs.aerial"
+    end,
   },
   {
     "ibhagwan/fzf-lua",
@@ -130,15 +166,6 @@ return {
   },
 
   {
-    "nvim-telescope/telescope-live-grep-args.nvim",
-    dependencies = "telescope.nvim",
-  },
-  {
-    "marskey/telescope-sg",
-    dependencies = "telescope.nvim",
-    branch = "pretty_display",
-  },
-  {
     "akinsho/bufferline.nvim",
     enabled = false,
     lazy = false,
@@ -150,24 +177,6 @@ return {
     lazy = false,
     config = function()
       require("scope").setup()
-    end,
-  },
-  {
-    "stevearc/aerial.nvim",
-    dependencies = "telescope.nvim",
-    cmd = {
-      "AerialToggle",
-      "AerialOpen",
-      "AerialOpenAll",
-      "AerialClose",
-      "AerialCloseAll",
-      "AerialNext",
-      "AerialPrev",
-      "AerialGo",
-      "AerialInfo",
-    },
-    config = function()
-      require "configs.aerial"
     end,
   },
   {
@@ -213,10 +222,6 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     enabled = true,
     opts = overrides.blankline,
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },
   -- {
   --     'iamcco/markdown-preview.nvim',
