@@ -247,7 +247,7 @@ return {
   },
   {
     "Wansmer/treesj",
-    -- enabled = false,
+    enabled = true,
     cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
@@ -422,11 +422,11 @@ return {
   {
     "OXY2DEV/markview.nvim",
     enabled = true,
-    ft = { "markdown", "codecompanion" },
+    ft = { "markdown", "Avante" },
     lazy = true,
     opts = {
       preview = {
-        filetypes = { "markdown", "codecompanion" },
+        filetypes = { "markdown", "Avante" },
         ignore_buftypes = {},
       },
       markdown = {
