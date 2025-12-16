@@ -49,12 +49,13 @@ M.nvimtree = {
     number = true,
     relativenumber = true,
     side = "left",
-    width = { min = 30 },
+    width = { min = 30, max = 30 },
     preserve_window_proportions = true,
   },
   renderer = {
     highlight_git = true,
     symlink_destination = false,
+    full_name = true,
     icons = {
       glyphs = {
         default = "󰈚",
