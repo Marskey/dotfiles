@@ -389,6 +389,7 @@ return {
     ---@module 'avante'
     ---@type avante.Config
     opts = {
+      instructions_file = "avante.md",
       -- 在此处添加任何选项
       provider = "deepseek",
       -- provider = "gemini",

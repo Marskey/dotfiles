@@ -22,6 +22,7 @@ opt.smartcase = true
 opt.mouse = "a"
 opt.mousemodel = "extend"
 opt.jumpoptions = "stack"
+opt.laststatus = 3
 
 -- Numbers
 opt.number = true

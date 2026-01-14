@@ -5,13 +5,11 @@ os:
   editAtLine: '[ -n "$NVIM" ] && nvr -l --remote +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
   editAtLineAndWait: '[ -n "$NVIM" ] && nvr -l --remote-tab-wait +{{line}} {{filename}} || nvim +{{line}} {{filename}}'
   editInTerminal: true
-
 git:
-  paging:
-    colorArg: always
-    # pager: delta --paging=never --diff-so-fancy --max-line-length=0
-    pager: diffr
-
+  pagers:
+    - colorArg: always
+      # pager: delta --paging=never --diff-so-fancy --max-line-length=0
+      pager: diffr
 confirmOnQuit: true
 showCommandLog: true
 customCommands:
