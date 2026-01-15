@@ -1,0 +1,28 @@
+# custom-shader=shader/blaze_sparks.glsl
+# custom-shader=shader/cursor_blaze.glsl
+# custom-shader=shader/cursor_blaze_no_trail.glsl
+# custom-shader=shader/cursor_blaze_tapered.glsl
+# custom-shader=shader/cursor_border_1.glsl
+# custom-shader=shader/cursor_frozen.glsl
+# custom-shader=shader/cursor_smear.glsl
+# custom-shader=shader/cursor_smear_fade.glsl
+# custom-shader=shader/cursor_smear_fade_original.glsl
+custom-shader=shader/cursor_smear_gradient.glsl
+# custom-shader=shader/cursor_smear_gradient_original.glsl
+# custom-shader=shader/cursor_smear_original.glsl
+# custom-shader=shader/cursor_smear_rainbow.glsl
+# custom-shader=shader/cursor_smear_rainbow_original.glsl
+# custom-shader=shader/debug_cursor_animated.glsl
+# custom-shader=shader/debug_cursor_static.glsl
+# custom-shader=shader/last_letter_zoom.glsl
+# custom-shader=shader/manga_slash.glsl
+# custom-shader=shader/party_sparks.glsl
+# custom-shader=shader/shake.glsl
+# custom-shader=shader/sparks.glsl
+# custom-shader=shader/test.glsl
+# custom-shader=shader/WIP.glsl
+# custom-shader=shader/zoom_and_aberration.glsl
+
+font-size=15.0
+mouse-hide-while-typing=true
+
