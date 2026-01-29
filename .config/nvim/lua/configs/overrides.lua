@@ -11,7 +11,6 @@ M.treesitter = {
     "bash",
     "python",
   },
-  additional_vim_regex_highlighting = false,
   indent = {
     enable = true,
     disabltruee = {
