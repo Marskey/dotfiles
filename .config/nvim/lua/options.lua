@@ -101,6 +101,7 @@ vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
 vim.cmd [[ autocmd VimEnter * :clearjumps ]]
 
 local autocmd = vim.api.nvim_create_autocmd
+-- restore cursor position
 autocmd("BufReadPost", {
   pattern = "*",
   callback = function()
