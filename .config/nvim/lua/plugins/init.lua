@@ -514,15 +514,4 @@ return {
       jumplist = true,
     },
   },
-  -- {
-  --   "notjedi/nvim-rooter.lua",
-  --   event = "BufEnter",
-  --   opts = {
-  --     rooter_patterns = { ".git" },
-  --     trigger_patterns = { "*" },
-  --     manual = false,
-  --     fallback_to_parent = false,
-  --     cd_scope = "global",
-  --   },
-  -- },
 }
