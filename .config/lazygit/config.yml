@@ -7,9 +7,11 @@ os:
   editInTerminal: true
 git:
   pagers:
-    - colorArg: always
+    - colorArg: never
+    # - colorArg: always
       # pager: delta --paging=never --diff-so-fancy --max-line-length=0
-      pager: diffr
+      pager: ydiff -p cat -s --wrap --width={{columnWidth}}
+      # pager: diffr
 confirmOnQuit: true
 showCommandLog: true
 customCommands:

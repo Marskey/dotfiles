@@ -381,6 +381,7 @@ return {
   },
   {
     "yetone/avante.nvim",
+    enabled = false,
     -- 如果您想从源代码构建，请执行 `make BUILD_FROM_SOURCE=true`
     build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",

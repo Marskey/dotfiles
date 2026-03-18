@@ -10,11 +10,12 @@
 [core]
     excludesfile = /Users/marskey/.gitignore_global
     autocrlf = input
-    pager = delta --diff-so-fancy --max-line-length=0
-    ; pager = diffr | less -R
+    ; pager = delta
+    ; pager = ydiff
+    pager = diffr | less -R
     quotepath = false
 [interactive]
-    diffFilter = delta --diff-so-fancy --color-only --features=interactive --max-line-length=0
+    ; diffFilter = delta --diff-so-fancy --color-only --features=interactive --max-line-length=0
     ; diffFilter = diffr
 [filter "lfs"]
     clean = git-lfs clean -- %f
@@ -23,8 +24,12 @@
     required = true
 [diff]
     colorMoved = default
+	algorithm = histogram
 [merge]
     ; conflictstyle = diff3
     conflictstyle = zdiff3
-[delta]
-    navigate = true
+; [delta]
+;     ; navigate = true
+    ; side-by-side = true
+    ; wrap-max-lines = 1000
+    ; max-line-length = 0

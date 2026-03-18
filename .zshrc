@@ -1,3 +1,5 @@
+source ~/.zshrc.work
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -114,14 +116,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 #
 # zle_highlight+=(paste:none)
-export PATH="/opt/homebrew/opt/mysql-client@8.4/bin/:$PATH"
 bindkey '^j' autosuggest-accept
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export FZF_COMPLETION_OPTS='--border --info=inline'
-if [ -n "$NVIM" ]; then
-    alias nvim="nvr -l --remote"
-fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -165,3 +164,32 @@ gdiffgr() {
     cd $1
 }
 
+svnget() {
+  local input="$1"
+  local out
+  local url
+
+  if [ -z "$input" ]; then
+    echo "Usage: svnget <svn-url-or-path> [output]"
+    return 1
+  fi
+
+  # 把反斜杠 \ 转成 /
+  input="${input//\\//}"
+
+  # 如果是相对路径，拼接 SVN_BASE_URL
+  if [[ "$input" != svn://* ]]; then
+    if [ -z "${SVN_BASE_URL:-}" ]; then
+      echo "Error: SVN_BASE_URL is not set"
+      return 1
+    fi
+    url="${SVN_BASE_URL%/}/$input"
+  else
+    url="$input"
+  fi
+
+  # 输出文件名
+  out="${2:-$(basename "$url")}"
+
+  svn cat "$url" > "$out"
+}
