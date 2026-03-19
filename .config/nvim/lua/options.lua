@@ -140,6 +140,37 @@ vim.api.nvim_create_user_command("Json2lua", function(args)
   vim.api.nvim_buf_set_lines(cur_buffer, line1 - 1, line2, false, vim.split(stringData, "\n"))
 end, { range = true })
 
+
+vim.api.nvim_create_user_command("Lua2json", function(args)
+  local line1 = args.line1
+  local line2 = args.line2
+  local cur_buffer = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(cur_buffer, line1 - 1, line2, false)
+  local content = table.concat(lines, "\n")
+
+  local ok, ret = pcall(function()
+    return load("return " .. content)()
+  end)
+
+  if not ok then
+    vim.notify("Lua2json error: invalid lua table", vim.log.levels.ERROR)
+    return
+  end
+
+  local ok2, json = pcall(vim.json.encode, ret)
+  if not ok2 then
+    vim.notify("Lua2json error: failed to encode json", vim.log.levels.ERROR)
+    return
+  end
+
+  local formatted = vim.fn.system("jq .", json)
+  if vim.v.shell_error ~= 0 then
+    formatted = json
+  end
+
+  vim.api.nvim_buf_set_lines(cur_buffer, line1 - 1, line2, false, vim.split(formatted, "\n", { plain = true }))
+end, { range = true })
+
 vim.api.nvim_create_user_command("Unescape", function(args)
   local line1 = args.line1
   local line2 = args.line2
