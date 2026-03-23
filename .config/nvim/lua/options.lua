@@ -83,8 +83,8 @@ opt.linespace = -6
 g.mapleader = " "
 g.vscode_snippets_path = "./lua/configs/my_snippets"
 
-opt.guicursor =
-  "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
+-- opt.guicursor =
+--   "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 if vim.fn.has "nvim" and vim.fn.executable "nvr" then
   vim.env.GIT_EDITOR = "nvr -l --remote"
