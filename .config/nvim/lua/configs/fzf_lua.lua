@@ -131,6 +131,10 @@ require("fzf-lua").setup {
   grep = {
     rg_opts = "--column --line-number --no-heading --color=always -L --smart-case --max-columns=4096 -e",
     rg_glob = true,
+    rg_glob_fn = function(query, opts)
+      local regex, flags = query:match("^(.-)%s%-%-(.*)$")
+      return (regex or query), flags
+    end,
     silent = true,
     actions = {
       ["ctrl-s"] = actions.file_split,
@@ -144,6 +148,10 @@ require("fzf-lua").setup {
   lgrep_quickfix = {
       rg_opts = "--column --line-number --no-heading --color=always -L --max-columns=4096 -e",
       rg_glob = true,
+      rg_glob_fn = function(query, opts)
+        local regex, flags = query:match("^(.-)%s%-%-(.*)$")
+        return (regex or query), flags
+      end,
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
       ["alt-i"] = { fn = actions.toggle_ignore, reuse = true, header = false },

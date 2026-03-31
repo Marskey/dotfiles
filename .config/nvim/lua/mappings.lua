@@ -85,6 +85,8 @@ map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "focus filetree" })
 -- }
 
 -- M.fzflua = {
+map({ "n", "v", "i" }, "<C-x><C-f>", "<cmd> FzfLua complete_path <CR>", { silent = true, desc = "Fuzzy complete path" })
+
 map("n", "<leader>ff", "<cmd> FzfLua files line_query=true follow=true <CR>", { desc = "find files" })
 map("v", "<leader>ff", function()
   require("fzf-lua").files {
@@ -267,3 +269,4 @@ map("n", "gs", function ()
     jump1_action = fzf_lua.actions.file_vsplit
   })
 end)
+
