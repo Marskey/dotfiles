@@ -12,9 +12,15 @@
     autocrlf = input
     ; pager = delta
     ; pager = ydiff
-    pager = diffr | less -R
+    ; pager =   diffr \
+    ; --colors refine-added:none:background:0x1f,0x70,0x2c:bold \
+    ; --colors added:none:background:0x0c,0x36,0x18 \
+    ; --colors refine-removed:none:background:0x8a,0x1f,0x28:bold \
+    ; --colors removed:none:background:0x3a,0x10,0x14 \
+    ; --line-numbers | less -R
     quotepath = false
 [interactive]
+	diffFilter = riff --color=on
     ; diffFilter = delta --diff-so-fancy --color-only --features=interactive --max-line-length=0
     ; diffFilter = diffr
 [filter "lfs"]
@@ -29,7 +35,12 @@
     ; conflictstyle = diff3
     conflictstyle = zdiff3
 ; [delta]
-;     ; navigate = true
+    ; navigate = true
     ; side-by-side = true
     ; wrap-max-lines = 1000
     ; max-line-length = 0
+    ; syntax-theme = Monokai Extended
+[pager]
+	diff = riff
+	show = riff
+	log = riff

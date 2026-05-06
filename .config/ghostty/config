@@ -41,3 +41,6 @@ keybind = cmd+shift+e=equalize_splits
 keybind = cmd+shift+f=toggle_split_zoom
 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+keybind = cmd+l=prompt_tab_title
+keybind = cmd+v=paste_from_clipboard

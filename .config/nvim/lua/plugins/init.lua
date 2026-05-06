@@ -194,6 +194,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     opts = overrides.treesitter,
   },
   {
@@ -212,9 +213,10 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     event = "BufEnter",
     config = function()
-      require("nvim-treesitter.configs").setup(overrides.ts_textobj)
+      require("nvim-treesitter-textobjects").setup(overrides.ts_textobj)
     end,
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
