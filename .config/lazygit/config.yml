@@ -10,8 +10,9 @@ git:
     - colorArg: never
     # - colorArg: always
       # pager: delta --paging=never --diff-so-fancy --max-line-length=0
-      pager: ydiff -p cat -s --wrap --width={{columnWidth}}
+      # pager: ydiff -p cat -s --wrap --width={{columnWidth}}
       # pager: diffr
+      pager: riff --no-pager
 confirmOnQuit: true
 showCommandLog: true
 customCommands:
