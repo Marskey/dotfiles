@@ -48,7 +48,7 @@ require("fzf-lua").setup {
     },
   },
   fzf_args = "--bind=change:+first", -- reset cursor to first entry on key change
-  fzf_opts = { ["--cycle"] = true, ["--layout"] = "reverse", ["--marker"] = "+ " },
+  fzf_opts = { ["--cycle"] = true, ["--layout"] = "reverse", ["--marker"] = "+ ", ['--history'] = vim.fn.stdpath("data") .. '/fzf-lua-history', },
   fzf_colors = {
     ["gutter"] = "-1",
     ["marker"] = { "fg", "TelescopePromptPrefix" },
