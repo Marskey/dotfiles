@@ -105,6 +105,10 @@ require("fzf-lua").setup {
       ["alt-a"] = "toggle-all",
       -- Only valid with fzf previewers (bat/cat/git/etc)
       ["ctrl-q"] = "select-all+accept",
+      ["down"] = "next-history",
+      ["up"] = "prev-history",
+      ["ctrl-n"] = "down",
+      ["ctrl-p"] = "up",
     },
   },
 
@@ -119,6 +123,9 @@ require("fzf-lua").setup {
   },
 
   files = {
+    fzf_opts = {
+      ["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-files-history",
+    },
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
@@ -136,6 +143,9 @@ require("fzf-lua").setup {
       return (regex or query), flags
     end,
     silent = true,
+    fzf_opts = {
+      ["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-grep-history",
+    },
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
