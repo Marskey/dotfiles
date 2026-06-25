@@ -44,3 +44,5 @@ keybind = global:ctrl+grave_accent=toggle_quick_terminal
 
 keybind = cmd+l=prompt_tab_title
 keybind = cmd+v=paste_from_clipboard
+shell-integration-features = no-cursor
+cursor-style = block
