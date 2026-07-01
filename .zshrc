@@ -177,19 +177,19 @@ svnget() {
   # 把反斜杠 \ 转成 /
   input="${input//\\//}"
 
-  # 如果是相对路径，拼接 SVN_BASE_URL
+  # 如果不是完整 svn:// URL，就拼接 SVN_BASE_URL
   if [[ "$input" != svn://* ]]; then
     if [ -z "${SVN_BASE_URL:-}" ]; then
       echo "Error: SVN_BASE_URL is not set"
       return 1
     fi
-    url="${SVN_BASE_URL%/}/$input"
+    url="${SVN_BASE_URL%/}/${input#/}"
   else
     url="$input"
   fi
 
-  # 输出文件名
+  # 输出路径，默认用远程路径最后一级名字
   out="${2:-$(basename "$url")}"
 
-  svn cat "$url" > "$out"
+  svn export "$url" "$out"
 }
