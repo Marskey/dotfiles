@@ -2,7 +2,11 @@ local fzf_lua = require "fzf-lua"
 local actions = fzf_lua.actions
 local utils = fzf_lua.utils
 
-local fzf_lua_ignore_opts = "--ignore-file .fzf-lua-ignore"
+-- Fall back to an empty ignore file so fd/rg do not fail in projects that do
+-- not provide .fzf-lua-ignore. The shell expression is evaluated in the
+-- picker's cwd, so it also works after changing directories.
+local fzf_lua_ignore_opts =
+  '--ignore-file "$(test -f .fzf-lua-ignore && printf %s .fzf-lua-ignore || printf %s /dev/null)"'
 
 local function with_ignore_file(opts)
   return opts .. " " .. fzf_lua_ignore_opts
@@ -16,6 +20,16 @@ local function with_rg_ignore_file(opts)
   end
 
   return with_ignore_file(opts)
+end
+
+local function toggle_ignore(_, opts)
+  local call_opts = vim.tbl_deep_extend("keep", {
+    cmd = utils.toggle_cmd_flag(assert(opts._cmd or opts.cmd), fzf_lua_ignore_opts),
+    no_ignore = not opts.no_ignore,
+    resume = true,
+  }, opts.__call_opts or {})
+
+  opts.__call_fn(call_opts)
 end
 
 local function with_follow_symlinks(opts)
@@ -162,7 +176,7 @@ fzf_lua.setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["ctrl-g"] = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["ctrl-g"] = { fn = toggle_ignore, reuse = true, header = false },
       ["alt-h"] = { fn = actions.toggle_hidden, reuse = true, header = false },
       ["alt-f"] = { fn = actions.toggle_follow, reuse = true, header = false },
     },
@@ -182,7 +196,7 @@ fzf_lua.setup {
     actions = {
       ["ctrl-s"] = actions.file_split,
       ["ctrl-y"] = yank_filename,
-      ["alt-i"] = { fn = actions.toggle_ignore, reuse = true, header = false },
+      ["alt-i"] = { fn = toggle_ignore, reuse = true, header = false },
       ["alt-h"] = { fn = actions.toggle_hidden, reuse = true, header = false },
       ["alt-f"] = { fn = actions.toggle_follow, reuse = true, header = false },
     },
@@ -197,7 +211,7 @@ fzf_lua.setup {
     end,
     ["ctrl-s"] = actions.file_split,
     ["ctrl-y"] = yank_filename,
-    ["alt-i"] = { fn = actions.toggle_ignore, reuse = true, header = false },
+    ["alt-i"] = { fn = toggle_ignore, reuse = true, header = false },
     ["alt-h"] = { fn = actions.toggle_hidden, reuse = true, header = false },
     ["alt-f"] = { fn = actions.toggle_follow, reuse = true, header = false },
   },
