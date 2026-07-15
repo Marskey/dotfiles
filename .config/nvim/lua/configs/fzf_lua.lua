@@ -2,6 +2,8 @@ local fzf_lua = require "fzf-lua"
 local actions = fzf_lua.actions
 local utils = fzf_lua.utils
 
+fzf_lua.ast_grep = require "pickers.ast_grep"
+
 -- Fall back to an empty ignore file so fd/rg do not fail in projects that do
 -- not provide .fzf-lua-ignore. The shell expression is evaluated in the
 -- picker's cwd, so it also works after changing directories.
@@ -82,6 +84,7 @@ fzf_lua.setup {
     height = 0.90,
     width = 0.77,
     preview = {
+      default = "bat",
       wrap = "wrap",
       layout = "vertical", -- horizontal|vertical|flex
       vertical = "down:50%", -- right|left:size
@@ -94,6 +97,11 @@ fzf_lua.setup {
   },
   fzf_args = "--bind=change:+first", -- reset cursor to first entry on key change
   fzf_opts = { ["--cycle"] = true, ["--layout"] = "reverse", ["--marker"] = "+ ", ['--history'] = vim.fn.stdpath("data") .. '/fzf-lua-history', },
+  previewers = {
+    bat = {
+      args = "--color=always --style=numbers,changes --theme=ansi",
+    },
+  },
   fzf_colors = {
     ["gutter"] = "-1",
     ["marker"] = { "fg", "TelescopePromptPrefix" },
@@ -148,6 +156,8 @@ fzf_lua.setup {
       ["ctrl-a"] = "beginning-of-line",
       ["ctrl-e"] = "end-of-line",
       ["alt-a"] = "toggle-all",
+      ["ctrl-j"] = "preview-down",
+      ["ctrl-k"] = "preview-up",
       -- Only valid with fzf previewers (bat/cat/git/etc)
       ["ctrl-q"] = "select-all+accept",
       ["down"] = "next-history",

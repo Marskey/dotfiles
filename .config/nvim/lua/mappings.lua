@@ -103,6 +103,14 @@ map("v", "<leader>ft", function()
     search = getVisualSelection()
   }
 end, { desc = "Find Text" })
+map("n", "<leader>fg", function()
+  require("fzf-lua").ast_grep()
+end, { desc = "Structural search" })
+map("v", "<leader>fg", function()
+  require("fzf-lua").ast_grep {
+    search = getVisualSelection(),
+  }
+end, { desc = "Structural search" })
 map("n", "<leader>fb", "<cmd> FzfLua buffers <CR>", { desc = "find buffers" })
 map("n", "<leader>fo", "<cmd> FzfLua oldfiles cwd_only=false line_query=true <CR>", { desc = "find oldfiles" })
 map("n", "<leader>fr", "<cmd> FzfLua resume <CR>", { desc = "Resume last find" })
@@ -216,13 +224,6 @@ map("n", "<leader>lo", "<cmd>AerialOpen<cr>", { desc = "Open outline" })
 map("n", "<leader>lx", "<cmd>AerialClose<cr>", { desc = "Close outline" })
 -- map("n", "<leader>ls", "<cmd> Telescope aerial default_selection_index=1 <CR>", { desc = "document functions" })
 -- }
-
--- map("n", "<leader>fg", "<cmd> Telescope ast_grep<CR>", { desc = "Structural search" })
--- map("v", "<leader>fg", function()
---   require("telescope").extensions.ast_grep.ast_grep {
---     default_text = getVisualSelection(),
---   }
--- end, { desc = "Structural search" })
 
 -- M.flash = {
 map("n", "s", function()
