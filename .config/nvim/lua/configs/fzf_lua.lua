@@ -103,7 +103,7 @@ fzf_lua.setup {
     },
   },
   fzf_colors = {
-    ["gutter"] = "-1",
+    ["gutter"] = "",
     ["marker"] = { "fg", "TelescopePromptPrefix" },
     ["fg"] = { "fg", "TelescopeNormal" },
     ["bg"] = { "bg", "TelescopeNormal" },

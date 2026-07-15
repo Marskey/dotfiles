@@ -32,6 +32,18 @@ local language_by_filetype = {
   zsh = "bash",
 }
 
+local languages = {}
+do
+  local seen = {}
+  for _, language in pairs(language_by_filetype) do
+    if not seen[language] then
+      seen[language] = true
+      languages[#languages + 1] = language
+    end
+  end
+  table.sort(languages)
+end
+
 local function ast_grep(opts)
   opts = opts or {}
 
@@ -40,14 +52,23 @@ local function ast_grep(opts)
     return
   end
 
-  local lang = opts.lang or language_by_filetype[vim.bo.filetype]
+  local filetype = vim.bo.filetype
+  if filetype == "" then
+    filetype = vim.filetype.match { buf = 0 } or ""
+  end
+
+  local lang = opts.lang or language_by_filetype[filetype]
   if not lang then
-    vim.notify(
-      ("No ast-grep language is configured for filetype %q; pass lang=<language> to override it"):format(
-        vim.bo.filetype
-      ),
-      vim.log.levels.ERROR,
-      { title = "FzfLua ast_grep" }
+    require("fzf-lua.providers.ui_select").ui_select(
+      languages,
+      { prompt = "Ast-grep language:", kind = "ast_grep_language" },
+      function(language)
+        if not language then
+          return
+        end
+        opts.lang = language
+        ast_grep(opts)
+      end
     )
     return
   end
