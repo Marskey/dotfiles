@@ -489,20 +489,21 @@ return {
     },
   },
   {
-		"LunarVim/bigfile.nvim",
+    "pteroctopus/faster.nvim",
     lazy = false,
-		opts = {
-			filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
-			pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-			features = { -- features to disable
-				"indent_blankline",
-				"illuminate",
-				"lsp",
-				"treesitter",
-				"syntax",
-				"matchparen",
-				"filetype",
-			},
-		}
-  }
+    opts = {
+      features = {
+        -- faster.nvim sets undolevels=-1 when disabling vimopts, which
+        -- prevents undo in large files. Keep buffer-local Vim options intact.
+        vimopts = {
+          on = false,
+        },
+      },
+      behaviours = {
+        bigfile = {
+          filesize = 1,
+        },
+      },
+    },
+  },
 }
