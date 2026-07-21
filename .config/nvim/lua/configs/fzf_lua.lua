@@ -99,7 +99,7 @@ fzf_lua.setup {
   fzf_opts = { ["--cycle"] = true, ["--layout"] = "reverse", ["--marker"] = "+ ", ['--history'] = vim.fn.stdpath("data") .. '/fzf-lua-history', },
   previewers = {
     bat = {
-      args = "--color=always --style=numbers,changes --theme=ansi",
+      args = "--color=always --style=numbers,changes --theme=base16",
     },
   },
   fzf_colors = {
