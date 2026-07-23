@@ -48,6 +48,20 @@ local function without_smart_case(opts)
   return (opts:gsub("%s%-%-smart%-case", "", 1))
 end
 
+local function line_query(query)
+  if not query then
+    return
+  end
+
+  -- Native previewers normally record the query, but they do not run while
+  -- the preview is hidden. Preserve it here so file actions can read the row.
+  require("fzf-lua").get_info().query = query
+
+  local row = query:match ":(%d+)$"
+  local filename, count = query:gsub(":%d*$", "")
+  return row, count > 0 and filename or nil
+end
+
 local function yank_filename(selected, opts)
   local ret = selected[1]:match "([%w-_]+%.%w+)"
   if vim.o.clipboard == "unnamed" then
@@ -178,6 +192,7 @@ fzf_lua.setup {
   },
 
   files = {
+    line_query = line_query,
     fd_opts = with_ignore_file(fzf_lua.defaults.files.fd_opts),
     rg_opts = with_ignore_file(fzf_lua.defaults.files.rg_opts),
     fzf_opts = {

@@ -87,14 +87,13 @@ map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "focus filetree" })
 -- M.fzflua = {
 map({ "n", "v", "i" }, "<C-x><C-f>", "<cmd> FzfLua complete_path <CR>", { silent = true, desc = "Fuzzy complete path" })
 
-map("n", "<leader>ff", "<cmd> FzfLua files line_query=true follow=true <CR>", { desc = "find files" })
+map("n", "<leader>ff", "<cmd> FzfLua files follow=true <CR>", { desc = "find files" })
 map("v", "<leader>ff", function()
   require("fzf-lua").files {
     fzf_opts = {
       ["-q"] = getVisualSelection(),
     },
-    line_query = true,
-    follow = true
+    follow = true,
   }
 end, { desc = "find files" })
 map("n", "<leader>ft", "<cmd> FzfLua live_grep <CR>", { desc = "live grep" })
