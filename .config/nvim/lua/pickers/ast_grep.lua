@@ -44,8 +44,12 @@ do
   table.sort(languages)
 end
 
-local function ast_grep(opts)
+local ast_grep
+local ast_grep_fuzzy
+
+local function run_ast_grep(opts)
   opts = opts or {}
+  local fuzzy = opts.__ast_grep_fuzzy == true
 
   if vim.fn.executable "ast-grep" ~= 1 then
     vim.notify("ast-grep executable not found", vim.log.levels.ERROR, { title = "FzfLua ast_grep" })
@@ -73,7 +77,6 @@ local function ast_grep(opts)
     return
   end
 
-  local query = opts.search or opts.query or ""
   local cmd = table.concat({
     "ast-grep run",
     "--lang",
@@ -84,18 +87,21 @@ local function ast_grep(opts)
     "--pattern",
   }, " ")
 
+  local actions = require "fzf-lua.actions"
   opts = vim.tbl_deep_extend("force", {
     cmd = cmd,
-    search = query,
+    lang = lang,
     no_esc = true,
-    query = query,
     rg_glob = false,
-    prompt = ("Ast-grep (%s)> "):format(lang),
+    prompt = (fuzzy and "Ast-grep fuzzy (%s)> " or "Ast-grep (%s)> "):format(lang),
     fzf_opts = {
       ["--history"] = vim.fn.stdpath "data" .. "/fzf-lua-ast-grep-history",
     },
     actions = {
-      ["ctrl-g"] = false,
+      ["ctrl-g"] = {
+        actions.grep_lgrep,
+        header = fuzzy and "Ast-grep Search" or "Fuzzy Search",
+      },
       ["alt-i"] = false,
       ["alt-h"] = false,
       ["alt-f"] = false,
@@ -121,7 +127,30 @@ local function ast_grep(opts)
     utils.map_set(opts, "winopts.treesitter", false)
   end
 
-  opts.__call_fn = ast_grep
+  local query = opts.search or opts.query or ""
+  opts.search = query
+  opts.__call_fn = fuzzy and ast_grep_fuzzy or ast_grep
+  opts.__ACT_TO = function(toggle_opts)
+    toggle_opts.lang = lang
+    if fuzzy then
+      return ast_grep(toggle_opts)
+    end
+    return ast_grep_fuzzy(toggle_opts)
+  end
+
+  if fuzzy then
+    -- In this mode the ast-grep pattern is fixed and the prompt filters its
+    -- result set with fzf. Keep fuzzy queries separate from the AST pattern.
+    opts.__resume_set = false
+    opts.__resume_get = false
+    opts.is_live = false
+    opts.query = ""
+    opts.cmd = ("%s %s"):format(cmd, vim.fn.shellescape(query))
+    opts = core.set_title_flags(opts, { "cmd" })
+    opts = core.set_fzf_field_index(opts)
+    return core.fzf_exec(opts.cmd, opts)
+  end
+
   opts.__resume_set = function(what, value, picker_opts)
     if what == "query" then
       config.resume_set("search", value, { __resume_key = picker_opts.__resume_key })
@@ -137,7 +166,7 @@ local function ast_grep(opts)
     return config.resume_get(what == "query" and "search" or what, { __resume_key = picker_opts.__resume_key })
   end
 
-  opts.query = opts.search or ""
+  opts.query = query
   opts = core.set_title_flags(opts, { "cmd", "live" })
   opts = core.set_fzf_field_index(opts)
 
@@ -146,6 +175,18 @@ local function ast_grep(opts)
   end
 
   return core.fzf_live(contents, opts)
+end
+
+ast_grep = function(opts)
+  opts = opts or {}
+  opts.__ast_grep_fuzzy = false
+  return run_ast_grep(opts)
+end
+
+ast_grep_fuzzy = function(opts)
+  opts = opts or {}
+  opts.__ast_grep_fuzzy = true
+  return run_ast_grep(opts)
 end
 
 return ast_grep
