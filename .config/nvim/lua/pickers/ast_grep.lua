@@ -81,8 +81,7 @@ local function run_ast_grep(opts)
     "ast-grep run",
     "--lang",
     vim.fn.shellescape(lang),
-    "--heading never",
-    "--color always",
+    "--json=stream",
     "--follow",
     "--pattern",
   }, " ")
@@ -93,6 +92,7 @@ local function run_ast_grep(opts)
     lang = lang,
     no_esc = true,
     rg_glob = false,
+    fn_transform = [[return require("pickers.ast_grep_entry").transform]],
     prompt = (fuzzy and "Ast-grep fuzzy (%s)> " or "Ast-grep (%s)> "):format(lang),
     fzf_opts = {
       ["--history"] = vim.fn.stdpath "data" .. "/fzf-lua-ast-grep-history",
@@ -109,8 +109,8 @@ local function run_ast_grep(opts)
   }, opts)
 
   -- Follow fzf-lua's live_grep function-producer path, but keep this as an
-  -- independent provider. Running the command through fzf-lua's libuv pipe
-  -- also avoids ast-grep being stopped as a native fzf reload child.
+  -- independent provider. JSON stream output preserves one record per AST
+  -- match, and the entry transform adapts it to fzf-lua's grep format.
   opts.multiprocess = false
   opts.rg_glob = false
 
