@@ -14,7 +14,7 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
-    enabled = true,
+    enabled = false,
     cmd = { "ToggleTerm" },
     keys = { "<c-\\>" },
     config = function()
