@@ -330,6 +330,15 @@ M.blinkcmp = {
     -- default = { "lsp", "path", "snippets", "buffer", "copilot" },
     default = { "lsp", "path", "snippets", "buffer" },
     providers = {
+      cmdline = {
+        override = {
+          enabled = function(source)
+            -- blink.cmp v1 may parse incomplete shell expressions in the
+            -- command-line window as Vim filename brace expansions (E220).
+            return vim.fn.win_gettype() ~= "command" and source:enabled()
+          end,
+        },
+      },
       copilot = {
         name = "copilot",
         module = "blink-cmp-copilot",
