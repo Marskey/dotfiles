@@ -24,6 +24,9 @@ opt.mousemodel = "extend"
 opt.jumpoptions = "stack"
 opt.laststatus = 3
 
+vim.o.cmdheight = 0
+require('vim._core.ui2').enable()
+
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
@@ -183,4 +186,3 @@ vim.api.nvim_create_user_command("Unescape", function(args)
   local stringData = content
   vim.api.nvim_buf_set_lines(cur_buffer, line1 - 1, line2, false, vim.split(stringData, "\n"))
 end, { range = true })
-
