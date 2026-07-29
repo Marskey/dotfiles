@@ -17,7 +17,7 @@ function M.transform(line, opts)
     return line
   end
 
-  local text = type(match.text) == "string" and match.text or ""
+  local text = type(match.lines) == "string" and match.lines or type(match.text) == "string" and match.text or ""
   local first_line = text:match "^[^\r\n]*" or ""
   local entry = ("%s:%d:%d:%s"):format(match.file, row + 1, col + 1, first_line)
 
