@@ -136,31 +136,36 @@ local lazygit = nil
 -- M.toggleterm = {
 
 map("n", "<leader>gg", function()
-  vim.cmd("terminal lazygit")
-  vim.cmd("startinsert")
-  -- -- if not lazygit then
-  -- local Terminal = require("toggleterm.terminal").Terminal
-  -- lazygit = Terminal:new {
-  --   -- cmd = "cd " .. vim.fn.expand "%:p:h" .. "&& lazygit",
-  --   cmd = "lazygit",
-  --   direction = "float",
-  --   -- function to run on opening the terminal
-  --   on_open = function(term)
-  --     vim.cmd "startinsert!"
-  --     vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-  --   end,
-  --   -- function to run on closing the terminal
-  --   on_close = function(term)
-  --     vim.cmd "startinsert!"
-  --     vim.cmd "checktime"
-  --   end,
-  --
-  --   on_exit = function(term)
-  --     lazygit = nil
-  --   end,
-  -- }
-  -- -- end
-  -- lazygit:toggle()
+  if not lazygit then
+    local Terminal = require("toggleterm.terminal").Terminal
+
+    lazygit = Terminal:new {
+      cmd = "lazygit",
+      direction = "float",
+
+      on_open = function(term)
+        vim.cmd "startinsert!"
+
+        vim.keymap.set("n", "q", function()
+          term:close()
+        end, {
+          buffer = term.bufnr,
+          silent = true,
+          desc = "Close lazygit",
+        })
+      end,
+
+      on_close = function()
+        vim.cmd "checktime"
+      end,
+
+      on_exit = function()
+        lazygit = nil
+      end,
+    }
+  end
+
+  lazygit:toggle()
 end, { desc = "term lazygit" })
 -- }
 

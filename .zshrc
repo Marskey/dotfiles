@@ -111,6 +111,8 @@ alias scd='(){if [[ -n $1 ]]; then cd $(find $1/* -type d | fzf); else cd $(find
 alias grepc="grep --color=always"
 alias gete='(){LC_CTYPE=C sed -n "/$1/,/^[^[:blank:]]/p" $2}'
 alias svndiff='(){svn diff -r PREV:HEAD $1 | delta}'
+alias dotgit='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
+alias dotlazygit='lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
 
 # Using 256-colors mode
 # export TERM="xterm-256color"
@@ -127,12 +129,6 @@ bindkey '^j' autosuggest-accept
 export FZF_COMPLETION_OPTS='--border --info=inline'
 
 export PATH="$HOME/.local/bin:$PATH"
-
-if [ -n "$NVIM" ]; then
-    alias nvim="nvr -l --remote"
-else
-    alias nvim="nvim"
-fi
 
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
