@@ -15,6 +15,11 @@ git:
       pager: riff --no-pager
 confirmOnQuit: true
 showCommandLog: true
+keybinding:
+  universal:
+    return:
+      - '<esc>'
+      - '<ctrl+[>'
 customCommands:
   - key: 'P'
     command: '{{.Form.pushType}}'
