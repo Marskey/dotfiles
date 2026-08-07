@@ -24,7 +24,7 @@ opt.mousemodel = "extend"
 opt.jumpoptions = "stack"
 opt.laststatus = 3
 
-vim.o.cmdheight = 0
+vim.o.cmdheight = 1
 require('vim._core.ui2').enable()
 
 -- Numbers
