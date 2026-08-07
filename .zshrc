@@ -193,3 +193,5 @@ svnget() {
 
   svn export "$url" "$out"
 }
+
+export PATH="$HOME/.cargo/bin:$PATH"
