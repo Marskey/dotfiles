@@ -7,7 +7,7 @@ enabled = true
 [bar.default]
 background_opacity = 0.69999998435378075
 end = [ "tray", "notifications", "network", "bluetooth", "battery", "control-center", "session" ]
-start = [ "workspaces" ]
+start = [ "workspaces", "active_window" ]
 
 [desktop_widgets]
 schema_version = 2
@@ -106,7 +106,7 @@ telemetry_enabled = true
 
 [theme]
 builtin = "Kanagawa"
-wallpaper_scheme = "m3-fruit-salad"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "ghostty", "niri" ]
@@ -120,9 +120,19 @@ path = "/home/marskey/Pictures/Wallpapers/wallhaven-e82xxr.jpg"
 [wallpaper.monitors.eDP-1]
 path = "/home/marskey/Pictures/Wallpapers/wallhaven-e82xxr.jpg"
 
+[widget.active_window]
+capsule = true
+capsule_opacity = 0.5
+font_weight = 380
+title_scroll = "always"
+
 [widget.battery]
-scale = 1.5
-show_label = false
+display_mode = "graphic"
+scale = 0.90000000000000013
+
+[widget.clock]
+format = "{:%H:%M  ·  %a  %b %-d}"
+timezone = "Asia/Shanghai"
 
 [widget.control-center]
 glyph = "north-star"
