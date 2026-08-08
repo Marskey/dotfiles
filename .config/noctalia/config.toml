@@ -169,6 +169,9 @@ timezone = "Asia/Shanghai"
 [widget.control-center]
 glyph = "north-star"
 
+[widget.cpu]
+display = "text"
+
 [widget.network]
 show_label = false
 
