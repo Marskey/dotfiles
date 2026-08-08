@@ -40,5 +40,4 @@ keybind = shift+enter=text:\n
 # Rando stuff
 gtk-single-instance = true
 
-custom-shader=shader/custom_cursor_smear_fade.glsl
-theme = noctalia
+# custom-shader=shader/custom_cursor_smear_fade.glsl
