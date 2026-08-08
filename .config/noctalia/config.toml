@@ -160,7 +160,9 @@ font_weight = 380
 title_scroll = "always"
 
 [widget.battery]
+display_mode = "graphic"
 hide_when_full = true
+show_label = false
 
 [widget.clock]
 format = "{:%H:%M  ·  %a  %b %-d}"
