@@ -6,7 +6,18 @@ enabled = true
 
 [bar.default]
 background_opacity = 0.69999998435378075
-end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "battery", "control-center", "session" ]
+end = [
+    "cpu",
+    "temp",
+    "tray",
+    "notifications",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "battery",
+    "control-center",
+    "session"
+]
 start = [ "workspaces", "active_window" ]
 
 [desktop_widgets]
@@ -157,9 +168,6 @@ timezone = "Asia/Shanghai"
 
 [widget.control-center]
 glyph = "north-star"
-
-[widget.cpu]
-display = "text"
 
 [widget.network]
 show_label = false
