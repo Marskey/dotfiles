@@ -6,6 +6,7 @@ enabled = true
 
 [bar.default]
 background_opacity = 0.69999998435378075
+end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "battery", "control-center", "session" ]
 start = [ "workspaces", "active_window" ]
 
 [desktop_widgets]
@@ -148,10 +149,7 @@ font_weight = 380
 title_scroll = "always"
 
 [widget.battery]
-display_mode = "glyph"
 hide_when_full = true
-scale = 1.3
-show_label = false
 
 [widget.clock]
 format = "{:%H:%M  ·  %a  %b %-d}"
