@@ -49,6 +49,10 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     enabled = true
     timeout = 300.0
 
+[keybinds]
+down = [ "Down", "Ctrl+j" ]
+up = [ "Up", "Ctrl+k" ]
+
 [location]
 address = "fuzhou,china"
 
