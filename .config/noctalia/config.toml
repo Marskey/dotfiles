@@ -51,6 +51,8 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 
 [keybinds]
 down = [ "Down", "Ctrl+j" ]
+left = [ "Left", "Ctrl+h" ]
+right = [ "Right", "Ctrl+l" ]
 up = [ "Up", "Ctrl+k" ]
 
 [location]
@@ -130,6 +132,9 @@ background_opacity = 0.69999998435378075
 
 [osd]
 background_opacity = 0.69999998435378075
+
+[plugins]
+enabled = [ "nightwatch75/file-search" ]
 
 [shell]
 font_family = "Adwaita Sans"
