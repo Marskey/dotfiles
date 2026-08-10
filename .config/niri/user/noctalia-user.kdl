@@ -7,6 +7,20 @@ window-rule {
   draw-border-with-background false
 }
 
+window-rule {
+   opacity 0.85
+}
+
+window-rule {
+    match is-focused=true
+    opacity 0.9
+}
+
+window-rule {
+    match is-active=true
+    opacity 0.95
+}
+
 // Floating Noctalia settings window.
 window-rule {
   match app-id="dev.noctalia.Noctalia"
