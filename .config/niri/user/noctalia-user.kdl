@@ -4,6 +4,7 @@ window-rule {
 
   // Clips window contents to the rounded corner boundaries.
   clip-to-geometry true
+  draw-border-with-background false
 }
 
 // Floating Noctalia settings window.
@@ -79,5 +80,3 @@ blur {
   noise 0.03      // grain overlay (default: 0.02)
   saturation 1.0  // color saturation boost (default: 1.5)
 }
-
-prefer-no-csd
