@@ -41,3 +41,9 @@ keybind = shift+enter=text:\n
 gtk-single-instance = true
 
 # custom-shader=shader/custom_cursor_smear_fade.glsl
+theme = noctalia
+
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend
