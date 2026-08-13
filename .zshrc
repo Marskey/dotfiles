@@ -133,7 +133,9 @@ export PATH="$HOME/.local/bin:$PATH"
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ "$ZSH_THEME" != "powerlevel10k/powerlevel10k" || ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-eval "$(zoxide init zsh)"
+if command -v zoxide >/dev/null 2>&1;then
+    eval "$(zoxide init zsh)"
+fi
 
 is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
