@@ -287,7 +287,7 @@ M.blinkcmp = {
   -- 'enter' for enter to accept
   -- 'none' for no mappings
   --
-  -- All presets have the following mappings:
+  -- The default preset has the following mappings:
   -- C-space: Open menu or open docs if already open
   -- C-n/C-p or Up/Down: Select next/previous item
   -- C-e: Hide menu
@@ -299,11 +299,11 @@ M.blinkcmp = {
     -- ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
     -- ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
     ["<C-space>"] = {},
-    ["<C-k>"] = {
-      "show",
-      "show_documentation",
-      "hide_documentation",
-    },
+    -- Use j/k for completion navigation instead of n/p.
+    ["<C-n>"] = false,
+    ["<C-p>"] = false,
+    ["<C-j>"] = { "select_next", "fallback_to_mappings" },
+    ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
   },
 
   appearance = {

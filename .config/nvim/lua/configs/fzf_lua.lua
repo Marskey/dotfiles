@@ -152,8 +152,6 @@ fzf_lua.setup {
       ["<Esc>"] = "hide",
       ["<F1>"] = "toggle-help",
 
-      ["<c-j>"] = "preview-down",
-      ["<c-k>"] = "preview-up",
       -- Only valid with the 'builtin' previewer
       ["<F3>"] = "toggle-preview-wrap",
       ["<F5>"] = "toggle-preview-ccw",
@@ -170,14 +168,12 @@ fzf_lua.setup {
       ["ctrl-a"] = "beginning-of-line",
       ["ctrl-e"] = "end-of-line",
       ["alt-a"] = "toggle-all",
-      ["ctrl-j"] = "preview-down",
-      ["ctrl-k"] = "preview-up",
+      ["ctrl-j"] = "down",
+      ["ctrl-k"] = "up",
       -- Only valid with fzf previewers (bat/cat/git/etc)
       ["ctrl-q"] = "select-all+accept",
       ["down"] = "next-history",
       ["up"] = "prev-history",
-      ["ctrl-n"] = "down",
-      ["ctrl-p"] = "up",
     },
   },
 
