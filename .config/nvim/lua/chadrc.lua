@@ -23,13 +23,13 @@ end
 M.ui = {
   statusline = {
     theme = "default",
-    separator_style = "round",
-    modules = {
-      lsp = function()
-        return "%#St_Lsp#" .. M.___lsp()
-      end,
-      cursor = "%#St_pos_sep#" .. "" .. "%#St_pos_icon# %#St_pos_text# %p %% ",
-    },
+    separator_style = "block",
+  --   modules = {
+  --     lsp = function()
+  --       return "%#St_Lsp#" .. M.___lsp()
+  --     end,
+  --     cursor = "%#St_pos_sep#" .. "" .. "%#St_pos_icon# %#St_pos_text# %p %% ",
+  --   },
   },
   cmp = {
     lspkind_text = true,
