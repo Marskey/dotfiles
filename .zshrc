@@ -16,7 +16,7 @@ if [[ -r "$P10K_THEME_FILE" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   fi
 else
-  ZSH_THEME="robbyrussell"
+  ZSH_THEME="simple"
 fi
 
 # Set name of the theme to load --- if set to "random", it will
