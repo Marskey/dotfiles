@@ -1,2 +1,4 @@
 # Selected locally on each machine.
+config
+config.ghostty
 platform.conf
