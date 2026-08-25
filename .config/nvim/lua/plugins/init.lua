@@ -24,12 +24,12 @@ return {
   -- misc plugins
   {
     "nvim-tree/nvim-tree.lua",
-    enabled = true,
+    enabled = false,
     opts = overrides.nvimtree,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
+    enabled = true,
     cmd = { "NeoTreeReveal", "NeoTreeFocusToggle", "NeoTreeShowToggle", "Neotree" },
     config = function()
       require "configs.neo_tree"

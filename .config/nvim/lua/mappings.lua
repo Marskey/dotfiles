@@ -76,12 +76,12 @@ end, { desc = "lsp formatting" })
 
 -- M.neotree = {
 -- toggle
--- map("n", "<C-n>", "<cmd> Neotree filesystem focus toggle <CR>", { desc = "toggle filetree" })
-map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "toggle filetree" })
+map("n", "<C-n>", "<cmd> Neotree filesystem focus toggle <CR>", { desc = "toggle filetree" })
+-- map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "toggle filetree" })
 
 -- focus
--- map("n", "<leader>e", "<cmd> Neotree filesystem reveal <CR>", { desc = "focus filetree" })
-map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "focus filetree" })
+map("n", "<leader>e", "<cmd> Neotree filesystem reveal <CR>", { desc = "focus filetree" })
+-- map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "focus filetree" })
 -- }
 
 -- M.fzflua = {
