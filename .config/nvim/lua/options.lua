@@ -21,11 +21,11 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
 opt.mousemodel = "extend"
-opt.jumpoptions = "stack"
+opt.jumpoptions = { "clean", "stack" }
 opt.laststatus = 3
 
 vim.o.cmdheight = 1
-require('vim._core.ui2').enable()
+require("vim._core.ui2").enable()
 
 -- Numbers
 opt.number = true
@@ -134,7 +134,7 @@ vim.api.nvim_create_user_command("Json2lua", function(args)
   local cur_buffer = vim.api.nvim_get_current_buf()
   local lines = vim.api.nvim_buf_get_lines(cur_buffer, line1 - 1, line2, false)
   local content = table.concat(lines)
-  if content:find('\\"') or content:find("\\\\") or content:find("\\n") or content:find("\\t") then
+  if content:find '\\"' or content:find "\\\\" or content:find "\\n" or content:find "\\t" then
     content = load("return " .. content)()
   end
   local ret = vim.json.decode(content, { luanil = { object = true, array = true } })
@@ -142,7 +142,6 @@ vim.api.nvim_create_user_command("Json2lua", function(args)
   stringData = string.gsub(stringData, "vim.empty_dict%(%)", "{}")
   vim.api.nvim_buf_set_lines(cur_buffer, line1 - 1, line2, false, vim.split(stringData, "\n"))
 end, { range = true })
-
 
 vim.api.nvim_create_user_command("Lua2json", function(args)
   local line1 = args.line1
@@ -180,7 +179,7 @@ vim.api.nvim_create_user_command("Unescape", function(args)
   local cur_buffer = vim.api.nvim_get_current_buf()
   local lines = vim.api.nvim_buf_get_lines(cur_buffer, line1 - 1, line2, false)
   local content = table.concat(lines)
-  if content:find('\\"') or content:find("\\\\") or content:find("\\n") or content:find("\\t") then
+  if content:find '\\"' or content:find "\\\\" or content:find "\\n" or content:find "\\t" then
     content = load("return " .. content)()
   end
   local stringData = content
