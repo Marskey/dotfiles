@@ -325,6 +325,7 @@ return {
   },
   {
     "monkoose/neocodeium",
+    enabled = false,
     event = "BufEnter",
     config = function()
       local neocodeium = require "neocodeium"
@@ -333,13 +334,80 @@ return {
         manual = false,
       }
 
-      vim.keymap.set("i", "<C-j>", neocodeium.accept, { desc = "Accept NeoCodeium suggestion" })
+      vim.keymap.set("i", "<C-l>", neocodeium.accept, { desc = "Accept NeoCodeium suggestion" })
       vim.keymap.set("i", "<M-]>", function()
         neocodeium.cycle_or_complete(1)
       end, { desc = "Next NeoCodeium suggestion" })
       vim.keymap.set("i", "<M-[>", function()
         neocodeium.cycle_or_complete(-1)
       end, { desc = "Previous NeoCodeium suggestion" })
+    end,
+  },
+  {
+    "milanglacier/minuet-ai.nvim",
+    lazy = false,
+    opts = function()
+      local sub2api_endpoint = "http://10.0.0.61:9090/v1/chat/completions"
+      local probe = vim.system({
+        "curl",
+        "--silent",
+        "--output",
+        "/dev/null",
+        "--connect-timeout",
+        "0.2",
+        "--max-time",
+        "0.5",
+        sub2api_endpoint,
+      }):wait()
+
+      local provider
+      if probe.code == 0 then
+        provider = {
+          name = "Sub2API",
+          end_point = sub2api_endpoint,
+          api_key = "SUB2API_API_KEY_4_MINUET",
+          model = "gpt-5.5-mini",
+          optional = {
+            max_completion_tokens = 128,
+            reasoning_effort = "none",
+          },
+        }
+      else
+        provider = {
+          name = "DeepSeek",
+          end_point = "https://api.deepseek.com/chat/completions",
+          api_key = "DEEPSEEK_API_KEY_4_MINUET",
+          model = "deepseek-chat",
+          optional = {
+            max_tokens = 128,
+          },
+        }
+      end
+
+      vim.schedule(function()
+        vim.notify(
+          string.format("Using %s (%s)", provider.name, provider.model),
+          vim.log.levels.INFO,
+          { title = "Minuet" }
+        )
+      end)
+
+      return {
+        provider = "openai_compatible",
+        virtualtext = {
+          auto_trigger_ft = { "*" },
+          auto_trigger_ignore_ft = { "TelescopePrompt", "fzf", "lazy", "mason", "neo-tree" },
+          keymap = {
+            accept = "<C-l>",
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+        provider_options = {
+          openai_compatible = provider,
+        },
+      }
     end,
   },
   {
