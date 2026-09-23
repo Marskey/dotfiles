@@ -158,6 +158,8 @@ fzf_lua.setup {
       ["<F6>"] = "toggle-preview-cw",
       -- ["<C-d>"] = "preview-page-down",
       -- ["<C-u>"] = "preview-page-up",
+      ["<C-n>"] = "preview-down",
+      ["<C-p>"] = "preview-up",
       ["<c-h>"] = "toggle-preview",
       ["<c-l>"] = "preview-reset",
     },
@@ -171,6 +173,8 @@ fzf_lua.setup {
       ["ctrl-j"] = "down",
       ["ctrl-k"] = "up",
       -- Only valid with fzf previewers (bat/cat/git/etc)
+      ["ctrl-n"] = "preview-down",
+      ["ctrl-p"] = "preview-up",
       ["ctrl-q"] = "select-all+accept",
       ["down"] = "next-history",
       ["up"] = "prev-history",
