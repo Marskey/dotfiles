@@ -115,7 +115,7 @@ fzf_lua.setup {
     builtin = {
       treesitter = {
         enabled = true,
-        context = { max_lines = 1, trim_scope = "inner", mode = "cursor" },
+        context = { max_lines = 1, trim_scope = "inner", mode = "topline" },
       },
     },
     bat = {
