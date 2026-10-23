@@ -98,7 +98,7 @@ fzf_lua.setup {
     height = 0.90,
     width = 0.77,
     preview = {
-      default = "bat",
+      default = "builtin",
       wrap = "wrap",
       layout = "vertical", -- horizontal|vertical|flex
       vertical = "down:50%", -- right|left:size
@@ -112,6 +112,12 @@ fzf_lua.setup {
   fzf_args = "--bind=change:+first", -- reset cursor to first entry on key change
   fzf_opts = { ["--cycle"] = true, ["--layout"] = "reverse", ["--marker"] = "+ ", ['--history'] = vim.fn.stdpath("data") .. '/fzf-lua-history', },
   previewers = {
+    builtin = {
+      treesitter = {
+        enabled = true,
+        context = { max_lines = 1, trim_scope = "inner", mode = "cursor" },
+      },
+    },
     bat = {
       args = "--color=always --style=numbers,changes --theme='1337'",
     },
@@ -156,6 +162,7 @@ fzf_lua.setup {
       ["<F3>"] = "toggle-preview-wrap",
       ["<F5>"] = "toggle-preview-ccw",
       ["<F6>"] = "toggle-preview-cw",
+      ["<F7>"] = "toggle-preview-ts-ctx",
       -- ["<C-d>"] = "preview-page-down",
       -- ["<C-u>"] = "preview-page-up",
       ["<C-n>"] = "preview-down",

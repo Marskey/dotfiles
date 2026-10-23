@@ -66,6 +66,11 @@ M.base46 = {
     DiagnosticUnderlineError = { undercurl = true, sp = "red" },
     DiagnosticUnderlineHint = { undercurl = true, sp = "blue" },
     DiagnosticUnderlineWarn = { undercurl = true, sp = "yellow" },
+    -- Distinguish pinned preview context from the surrounding code.
+    TreesitterContext = { bg = "#36433D" },
+    TreesitterContextLineNumber = { fg = "#A7C080", bg = "#36433D", bold = true },
+    TreesitterContextBottom = { underline = true, sp = "#5D7051" },
+    TreesitterContextLineNumberBottom = { link = "TreesitterContextBottom" },
     -- TabLine = { link = "NonText" }, -- xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
     -- TabLineFill = { link = "WinBar" }, --    xxx cterm=reverse gui=reverse
   },

@@ -86,7 +86,14 @@ return {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     cmd = "FzfLua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        -- Let fzf-lua manage context in its preview window.
+        opts = { enable = false },
+      },
+    },
     config = function()
       require "configs.fzf_lua"
     end,

@@ -6,13 +6,13 @@ os:
   editAtLineAndWait: 'nvim +{{line}} {{filename}}'
 promptToReturnFromSubprocess: false
 git:
-  pagers:
+  diffRenderers:
     - colorArg: never
-    # - colorArg: always
+      # - colorArg: always
       # pager: delta --paging=never --diff-so-fancy --max-line-length=0
       # pager: ydiff -p cat -s --wrap --width={{columnWidth}}
       # pager: diffr
-      pager: riff --no-pager
+      command: riff --no-pager
 confirmOnQuit: true
 showCommandLog: true
 keybinding:
