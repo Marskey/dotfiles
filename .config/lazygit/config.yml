@@ -13,6 +13,10 @@ git:
       # pager: ydiff -p cat -s --wrap --width={{columnWidth}}
       # pager: diffr
       command: riff --no-pager
+    - name: Anchored functions
+      type: rawGit
+      args:
+        - --anchored=function
 confirmOnQuit: true
 showCommandLog: true
 keybinding:
