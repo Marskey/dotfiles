@@ -290,9 +290,7 @@ return {
         "BufWinEnter",
         "CursorHold",
         "InsertLeave",
-
-        -- include this if you have set `show_modified` to `true`
-        -- "BufModifiedSet",
+        "BufModifiedSet",
       }, {
         group = vim.api.nvim_create_augroup("barbecue.updater", {}),
         callback = function()
@@ -373,7 +371,7 @@ return {
           name = "Sub2API",
           end_point = sub2api_endpoint,
           api_key = "SUB2API_API_KEY_4_MINUET",
-          model = "gpt-5.5-mini",
+          model = "gpt-6-luna",
           optional = {
             max_completion_tokens = 128,
             reasoning_effort = "none",
